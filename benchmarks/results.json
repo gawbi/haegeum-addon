@@ -1,0 +1,510 @@
+{
+  "meta": {
+    "generated_at": "2026-09-21T19:43:19+0900",
+    "environment": {
+      "python": "3.14.3",
+      "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+      "machine": "arm64",
+      "processor": "arm",
+      "cpu_brand": "Apple M5",
+      "torch": "2.11.0",
+      "torch_num_threads": 1,
+      "cuda_available": false,
+      "numpy": "2.4.3",
+      "cpu_count": 10
+    },
+    "torch_num_threads_used": 1,
+    "iters": 2000,
+    "warmup": 300,
+    "seed": 42,
+    "quantization_engine": "qnnpack",
+    "note": "모든 수치는 본 스크립트 실행으로 실측한 값 (추정치 없음)"
+  },
+  "sensor": {
+    "source": "sensor_publisher.py (declare_parameter rate_hz 기본값)",
+    "rate_hz": 10.0,
+    "period_ms": 100.0,
+    "window_size": 20
+  },
+  "model": {
+    "uav": {
+      "weight_file": "vae_uav.pth",
+      "input_dim": 160,
+      "n_features": 8,
+      "params": 60992,
+      "state_dict_bytes_fp32": 249417,
+      "state_dict_bytes_int8": 72599,
+      "size_reduction_pct": 70.9
+    },
+    "ugv": {
+      "weight_file": "vae_ugv.pth",
+      "input_dim": 200,
+      "n_features": 10,
+      "params": 71272,
+      "state_dict_bytes_fp32": 290505,
+      "state_dict_bytes_int8": 82967,
+      "size_reduction_pct": 71.4
+    }
+  },
+  "latency": {
+    "uav": {
+      "fp32": {
+        "1": {
+          "batch": 1,
+          "iters": 2000,
+          "warmup": 300,
+          "mean_ms": 0.03658,
+          "p50_ms": 0.03196,
+          "p95_ms": 0.06188,
+          "p99_ms": 0.11914,
+          "min_ms": 0.02979,
+          "max_ms": 0.28992,
+          "std_ms": 0.01763,
+          "throughput_windows_per_sec": 27338.4
+        },
+        "8": {
+          "batch": 8,
+          "iters": 2000,
+          "warmup": 300,
+          "mean_ms": 0.0421,
+          "p50_ms": 0.0415,
+          "p95_ms": 0.04538,
+          "p99_ms": 0.05062,
+          "min_ms": 0.03842,
+          "max_ms": 0.08387,
+          "std_ms": 0.00287,
+          "throughput_windows_per_sec": 190016.9
+        },
+        "32": {
+          "batch": 32,
+          "iters": 2000,
+          "warmup": 300,
+          "mean_ms": 0.05271,
+          "p50_ms": 0.05196,
+          "p95_ms": 0.05704,
+          "p99_ms": 0.07052,
+          "min_ms": 0.04671,
+          "max_ms": 0.09987,
+          "std_ms": 0.00387,
+          "throughput_windows_per_sec": 607056.0
+        }
+      },
+      "int8": {
+        "1": {
+          "batch": 1,
+          "iters": 2000,
+          "warmup": 300,
+          "mean_ms": 0.12394,
+          "p50_ms": 0.12258,
+          "p95_ms": 0.13171,
+          "p99_ms": 0.15275,
+          "min_ms": 0.11613,
+          "max_ms": 0.20838,
+          "std_ms": 0.00619,
+          "throughput_windows_per_sec": 8068.3
+        },
+        "8": {
+          "batch": 8,
+          "iters": 2000,
+          "warmup": 300,
+          "mean_ms": 0.12592,
+          "p50_ms": 0.12458,
+          "p95_ms": 0.13338,
+          "p99_ms": 0.15608,
+          "min_ms": 0.11942,
+          "max_ms": 0.23192,
+          "std_ms": 0.00584,
+          "throughput_windows_per_sec": 63530.9
+        },
+        "32": {
+          "batch": 32,
+          "iters": 2000,
+          "warmup": 300,
+          "mean_ms": 0.16113,
+          "p50_ms": 0.15879,
+          "p95_ms": 0.17146,
+          "p99_ms": 0.19771,
+          "min_ms": 0.15196,
+          "max_ms": 0.48363,
+          "std_ms": 0.01097,
+          "throughput_windows_per_sec": 198596.0
+        }
+      }
+    },
+    "ugv": {
+      "fp32": {
+        "1": {
+          "batch": 1,
+          "iters": 2000,
+          "warmup": 300,
+          "mean_ms": 0.03379,
+          "p50_ms": 0.03342,
+          "p95_ms": 0.03567,
+          "p99_ms": 0.04113,
+          "min_ms": 0.03079,
+          "max_ms": 0.06633,
+          "std_ms": 0.002,
+          "throughput_windows_per_sec": 29592.9
+        },
+        "8": {
+          "batch": 8,
+          "iters": 2000,
+          "warmup": 300,
+          "mean_ms": 0.04375,
+          "p50_ms": 0.04329,
+          "p95_ms": 0.04667,
+          "p99_ms": 0.05096,
+          "min_ms": 0.03887,
+          "max_ms": 0.06829,
+          "std_ms": 0.0022,
+          "throughput_windows_per_sec": 182875.9
+        },
+        "32": {
+          "batch": 32,
+          "iters": 2000,
+          "warmup": 300,
+          "mean_ms": 0.05334,
+          "p50_ms": 0.05292,
+          "p95_ms": 0.05558,
+          "p99_ms": 0.06142,
+          "min_ms": 0.04858,
+          "max_ms": 0.07988,
+          "std_ms": 0.00205,
+          "throughput_windows_per_sec": 599949.1
+        }
+      },
+      "int8": {
+        "1": {
+          "batch": 1,
+          "iters": 2000,
+          "warmup": 300,
+          "mean_ms": 0.12432,
+          "p50_ms": 0.12333,
+          "p95_ms": 0.13038,
+          "p99_ms": 0.14817,
+          "min_ms": 0.11858,
+          "max_ms": 0.18029,
+          "std_ms": 0.00438,
+          "throughput_windows_per_sec": 8043.8
+        },
+        "8": {
+          "batch": 8,
+          "iters": 2000,
+          "warmup": 300,
+          "mean_ms": 0.13731,
+          "p50_ms": 0.12887,
+          "p95_ms": 0.15147,
+          "p99_ms": 0.3276,
+          "min_ms": 0.12112,
+          "max_ms": 2.10492,
+          "std_ms": 0.07099,
+          "throughput_windows_per_sec": 58261.8
+        },
+        "32": {
+          "batch": 32,
+          "iters": 2000,
+          "warmup": 300,
+          "mean_ms": 0.16919,
+          "p50_ms": 0.167,
+          "p95_ms": 0.18418,
+          "p99_ms": 0.20204,
+          "min_ms": 0.16121,
+          "max_ms": 0.24375,
+          "std_ms": 0.00794,
+          "throughput_windows_per_sec": 189141.0
+        }
+      }
+    }
+  },
+  "thread_scaling": {
+    "uav": {
+      "1": {
+        "fp32": {
+          "p50_ms": 0.03329,
+          "p99_ms": 0.04095,
+          "throughput_windows_per_sec": 29431.5
+        },
+        "int8": {
+          "p50_ms": 0.12217,
+          "p99_ms": 0.15419,
+          "throughput_windows_per_sec": 8098.7
+        }
+      },
+      "2": {
+        "fp32": {
+          "p50_ms": 0.03329,
+          "p99_ms": 0.04566,
+          "throughput_windows_per_sec": 29569.4
+        },
+        "int8": {
+          "p50_ms": 0.12442,
+          "p99_ms": 0.16508,
+          "throughput_windows_per_sec": 7876.6
+        }
+      },
+      "4": {
+        "fp32": {
+          "p50_ms": 0.03283,
+          "p99_ms": 0.0377,
+          "throughput_windows_per_sec": 30065.3
+        },
+        "int8": {
+          "p50_ms": 0.12402,
+          "p99_ms": 0.16029,
+          "throughput_windows_per_sec": 7960.8
+        }
+      }
+    },
+    "ugv": {
+      "1": {
+        "fp32": {
+          "p50_ms": 0.03338,
+          "p99_ms": 0.03998,
+          "throughput_windows_per_sec": 29623.6
+        },
+        "int8": {
+          "p50_ms": 0.12306,
+          "p99_ms": 0.15426,
+          "throughput_windows_per_sec": 7999.3
+        }
+      },
+      "2": {
+        "fp32": {
+          "p50_ms": 0.03229,
+          "p99_ms": 0.34064,
+          "throughput_windows_per_sec": 14403.5
+        },
+        "int8": {
+          "p50_ms": 0.12671,
+          "p99_ms": 0.30414,
+          "throughput_windows_per_sec": 7366.5
+        }
+      },
+      "4": {
+        "fp32": {
+          "p50_ms": 0.03242,
+          "p99_ms": 0.13842,
+          "throughput_windows_per_sec": 26439.8
+        },
+        "int8": {
+          "p50_ms": 0.1315,
+          "p99_ms": 0.17259,
+          "throughput_windows_per_sec": 7471.9
+        }
+      }
+    }
+  },
+  "detection": {
+    "uav": {
+      "threshold_fp32_p95": 1.2301,
+      "attacks": {
+        "GPS_Spoofing": {
+          "fp32": {
+            "precision": 0.9784,
+            "recall": 1.0,
+            "f1": 0.9891,
+            "FP": 4,
+            "FN": 0,
+            "delay_ms": 100
+          },
+          "int8": {
+            "precision": 0.9784,
+            "recall": 1.0,
+            "f1": 0.9891,
+            "FP": 4,
+            "FN": 0,
+            "delay_ms": 100
+          }
+        },
+        "Altitude_Spoofing": {
+          "fp32": {
+            "precision": 0.9784,
+            "recall": 1.0,
+            "f1": 0.9891,
+            "FP": 4,
+            "FN": 0,
+            "delay_ms": 0
+          },
+          "int8": {
+            "precision": 0.9784,
+            "recall": 1.0,
+            "f1": 0.9891,
+            "FP": 4,
+            "FN": 0,
+            "delay_ms": 0
+          }
+        },
+        "Command_Injection": {
+          "fp32": {
+            "precision": 0.9784,
+            "recall": 1.0,
+            "f1": 0.9891,
+            "FP": 4,
+            "FN": 0,
+            "delay_ms": 0
+          },
+          "int8": {
+            "precision": 0.9784,
+            "recall": 1.0,
+            "f1": 0.9891,
+            "FP": 4,
+            "FN": 0,
+            "delay_ms": 0
+          }
+        },
+        "Composite_GPS+CmdInj": {
+          "fp32": {
+            "precision": 0.9784,
+            "recall": 1.0,
+            "f1": 0.9891,
+            "FP": 4,
+            "FN": 0,
+            "delay_ms": 0
+          },
+          "int8": {
+            "precision": 0.9784,
+            "recall": 1.0,
+            "f1": 0.9891,
+            "FP": 4,
+            "FN": 0,
+            "delay_ms": 0
+          }
+        },
+        "Gradual_GPS_rate0.3": {
+          "fp32": {
+            "precision": 0.9784,
+            "recall": 1.0,
+            "f1": 0.9891,
+            "FP": 4,
+            "FN": 0,
+            "delay_ms": 200
+          },
+          "int8": {
+            "precision": 0.9784,
+            "recall": 1.0,
+            "f1": 0.9891,
+            "FP": 4,
+            "FN": 0,
+            "delay_ms": 200
+          }
+        }
+      },
+      "normal_score_distribution": {
+        "fp32": {
+          "mean": 1.0242,
+          "p95": 1.2301,
+          "p99": 1.3597
+        },
+        "int8": {
+          "mean": 1.0242,
+          "p95": 1.2293,
+          "p99": 1.3586
+        },
+        "pearson_r": 1.0,
+        "fp_rate_int8_at_fp32_threshold": 0.05
+      }
+    },
+    "ugv": {
+      "threshold_fp32_p95": 1.1884,
+      "note": "공격 주입 구간에 완전히 포함된 윈도우만 양성, 무관한 윈도우만 음성으로 라벨링하고 경계 윈도우는 평가에서 제외",
+      "attacks": {
+        "GPS_Spoofing": {
+          "fp32": {
+            "TP": 31,
+            "FP": 19,
+            "TN": 893,
+            "FN": 0,
+            "precision": 0.62,
+            "recall": 1.0,
+            "f1": 0.7654
+          },
+          "int8": {
+            "TP": 31,
+            "FP": 19,
+            "TN": 893,
+            "FN": 0,
+            "precision": 0.62,
+            "recall": 1.0,
+            "f1": 0.7654
+          }
+        },
+        "Wheel_Slip": {
+          "fp32": {
+            "TP": 648,
+            "FP": 19,
+            "TN": 295,
+            "FN": 0,
+            "precision": 0.9715,
+            "recall": 1.0,
+            "f1": 0.9856
+          },
+          "int8": {
+            "TP": 648,
+            "FP": 19,
+            "TN": 295,
+            "FN": 0,
+            "precision": 0.9715,
+            "recall": 1.0,
+            "f1": 0.9856
+          }
+        },
+        "Command_Anomaly": {
+          "fp32": {
+            "TP": 648,
+            "FP": 19,
+            "TN": 295,
+            "FN": 0,
+            "precision": 0.9715,
+            "recall": 1.0,
+            "f1": 0.9856
+          },
+          "int8": {
+            "TP": 648,
+            "FP": 19,
+            "TN": 295,
+            "FN": 0,
+            "precision": 0.9715,
+            "recall": 1.0,
+            "f1": 0.9856
+          }
+        }
+      },
+      "normal_score_distribution": {
+        "fp32": {
+          "mean": 0.9975,
+          "p95": 1.1884,
+          "p99": 1.216
+        },
+        "int8": {
+          "mean": 0.9975,
+          "p95": 1.1884,
+          "p99": 1.216
+        },
+        "pearson_r": 1.0,
+        "fp_rate_int8_at_fp32_threshold": 0.0508
+      }
+    }
+  },
+  "realtime_assessment": {
+    "uav": {
+      "sensor_period_ms": 100.0,
+      "p99_ms_fp32": 0.11914,
+      "p99_ms_int8": 0.15275,
+      "budget_used_pct_fp32": 0.119,
+      "budget_used_pct_int8": 0.153,
+      "headroom_x_fp32": 839.3,
+      "max_sustainable_rate_hz_fp32": 8393.5,
+      "realtime_ok_fp32": true
+    },
+    "ugv": {
+      "sensor_period_ms": 100.0,
+      "p99_ms_fp32": 0.04113,
+      "p99_ms_int8": 0.14817,
+      "budget_used_pct_fp32": 0.041,
+      "budget_used_pct_int8": 0.148,
+      "headroom_x_fp32": 2431.3,
+      "max_sustainable_rate_hz_fp32": 24313.2,
+      "realtime_ok_fp32": true
+    }
+  }
+}
