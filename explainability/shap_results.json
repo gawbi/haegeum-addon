@@ -1,0 +1,492 @@
+{
+  "meta": {
+    "generated_at": "2026-09-21T19:45:49+0900",
+    "environment": {
+      "python": "3.14.3",
+      "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+      "machine": "arm64",
+      "processor": "arm",
+      "cpu_brand": "Apple M5",
+      "torch": "2.11.0",
+      "torch_num_threads": 4,
+      "cuda_available": false,
+      "numpy": "2.4.3",
+      "cpu_count": 10
+    },
+    "shap_version": "0.52.0",
+    "seed": 42,
+    "explained_function": "window -> VAE reconstruction error (z = mu, 결정적)"
+  },
+  "platforms": {
+    "uav": {
+      "platform": "uav",
+      "feature_names": [
+        "gps_vel_x",
+        "gps_vel_y",
+        "imu_ax",
+        "imu_ay",
+        "residual_x",
+        "residual_y",
+        "baro_alt",
+        "pitch_rate"
+      ],
+      "threshold_p95_deterministic": 1.1864,
+      "deterministic_vs_sampled_score_pearson_r": 0.9287,
+      "shap": {
+        "explainer": "shap.KernelExplainer",
+        "background": "shap.kmeans(normal_windows, 30)",
+        "nsamples": 8192,
+        "n_explained_windows_per_condition": 10,
+        "expected_value": 0.146
+      },
+      "conditions": {
+        "Normal": {
+          "mean_score": 0.9864,
+          "shap_signed_by_feature": {
+            "gps_vel_x": 0.098334,
+            "gps_vel_y": 0.100994,
+            "imu_ax": 0.098922,
+            "imu_ay": 0.098692,
+            "residual_x": 0.13215,
+            "residual_y": 0.097494,
+            "baro_alt": 0.108782,
+            "pitch_rate": 0.104948
+          },
+          "shap_abs_by_feature": {
+            "gps_vel_x": 0.104015,
+            "gps_vel_y": 0.109499,
+            "imu_ax": 0.104921,
+            "imu_ay": 0.10688,
+            "residual_x": 0.137814,
+            "residual_y": 0.102522,
+            "baro_alt": 0.111,
+            "pitch_rate": 0.110466
+          },
+          "recon_error_by_feature": {
+            "gps_vel_x": 0.94464,
+            "gps_vel_y": 1.451264,
+            "imu_ax": 0.963495,
+            "imu_ay": 1.424309,
+            "residual_x": 1.173241,
+            "residual_y": 0.884006,
+            "baro_alt": 0.969456,
+            "pitch_rate": 0.956865
+          },
+          "elapsed_sec": 1.6
+        },
+        "GPS_Spoofing": {
+          "mean_score": 5446.207,
+          "shap_signed_by_feature": {
+            "gps_vel_x": 31.137907,
+            "gps_vel_y": 8.542574,
+            "imu_ax": 0.140156,
+            "imu_ay": 0.049446,
+            "residual_x": 4314.827907,
+            "residual_y": 1091.17727,
+            "baro_alt": 0.12111,
+            "pitch_rate": 0.064773
+          },
+          "shap_abs_by_feature": {
+            "gps_vel_x": 31.185106,
+            "gps_vel_y": 8.616777,
+            "imu_ax": 0.636198,
+            "imu_ay": 0.699051,
+            "residual_x": 4314.827907,
+            "residual_y": 1091.17727,
+            "baro_alt": 0.600445,
+            "pitch_rate": 0.656248
+          },
+          "recon_error_by_feature": {
+            "gps_vel_x": 247.838669,
+            "gps_vel_y": 80.994659,
+            "imu_ax": 1.059857,
+            "imu_ay": 15.791731,
+            "residual_x": 34516.832031,
+            "residual_y": 8714.035156,
+            "baro_alt": 0.972548,
+            "pitch_rate": 1.205938
+          },
+          "elapsed_sec": 1.4
+        },
+        "Altitude_Spoofing": {
+          "mean_score": 2733.4138,
+          "shap_signed_by_feature": {
+            "gps_vel_x": 0.051361,
+            "gps_vel_y": 0.078519,
+            "imu_ax": 0.060466,
+            "imu_ay": 0.04399,
+            "residual_x": 0.093491,
+            "residual_y": 0.186181,
+            "baro_alt": 2732.623298,
+            "pitch_rate": 0.13038
+          },
+          "shap_abs_by_feature": {
+            "gps_vel_x": 0.156217,
+            "gps_vel_y": 0.451012,
+            "imu_ax": 0.165054,
+            "imu_ay": 0.476726,
+            "residual_x": 0.16741,
+            "residual_y": 0.244039,
+            "baro_alt": 2732.623298,
+            "pitch_rate": 0.216869
+          },
+          "recon_error_by_feature": {
+            "gps_vel_x": 0.887495,
+            "gps_vel_y": 5.873341,
+            "imu_ax": 0.825575,
+            "imu_ay": 5.67071,
+            "residual_x": 0.808236,
+            "residual_y": 1.373763,
+            "baro_alt": 21845.333984,
+            "pitch_rate": 1.273317
+          },
+          "elapsed_sec": 1.5
+        },
+        "Command_Injection": {
+          "mean_score": 592.9243,
+          "shap_signed_by_feature": {
+            "gps_vel_x": 0.103351,
+            "gps_vel_y": 0.109124,
+            "imu_ax": 0.099948,
+            "imu_ay": 0.105737,
+            "residual_x": 0.109967,
+            "residual_y": 0.109163,
+            "baro_alt": 0.111628,
+            "pitch_rate": 592.029322
+          },
+          "shap_abs_by_feature": {
+            "gps_vel_x": 0.116654,
+            "gps_vel_y": 0.131745,
+            "imu_ax": 0.111022,
+            "imu_ay": 0.130018,
+            "residual_x": 0.121189,
+            "residual_y": 0.119095,
+            "baro_alt": 0.119579,
+            "pitch_rate": 592.029322
+          },
+          "recon_error_by_feature": {
+            "gps_vel_x": 0.99599,
+            "gps_vel_y": 2.867826,
+            "imu_ax": 0.993674,
+            "imu_ay": 2.820749,
+            "residual_x": 1.026022,
+            "residual_y": 0.986596,
+            "baro_alt": 1.004375,
+            "pitch_rate": 4733.038574
+          },
+          "elapsed_sec": 1.4
+        }
+      },
+      "agreement_with_reconstruction_error": {
+        "Normal": {
+          "spearman_rho": 0.5714,
+          "top3_shap": [
+            "residual_x",
+            "baro_alt",
+            "pitch_rate"
+          ],
+          "top3_recon_error": [
+            "gps_vel_y",
+            "imu_ay",
+            "residual_x"
+          ],
+          "top1_match": false,
+          "top3_set_overlap": 1
+        },
+        "GPS_Spoofing": {
+          "spearman_rho": 1.0,
+          "top3_shap": [
+            "residual_x",
+            "residual_y",
+            "gps_vel_x"
+          ],
+          "top3_recon_error": [
+            "residual_x",
+            "residual_y",
+            "gps_vel_x"
+          ],
+          "top1_match": true,
+          "top3_set_overlap": 3
+        },
+        "Altitude_Spoofing": {
+          "spearman_rho": 0.881,
+          "top3_shap": [
+            "baro_alt",
+            "imu_ay",
+            "gps_vel_y"
+          ],
+          "top3_recon_error": [
+            "baro_alt",
+            "gps_vel_y",
+            "imu_ay"
+          ],
+          "top1_match": true,
+          "top3_set_overlap": 3
+        },
+        "Command_Injection": {
+          "spearman_rho": 0.9286,
+          "top3_shap": [
+            "pitch_rate",
+            "gps_vel_y",
+            "imu_ay"
+          ],
+          "top3_recon_error": [
+            "pitch_rate",
+            "gps_vel_y",
+            "imu_ay"
+          ],
+          "top1_match": true,
+          "top3_set_overlap": 3
+        }
+      }
+    },
+    "ugv": {
+      "platform": "ugv",
+      "feature_names": [
+        "gps_vel_x",
+        "gps_vel_y",
+        "imu_ax",
+        "imu_ay",
+        "residual_x",
+        "residual_y",
+        "wheel_vel_l",
+        "wheel_vel_r",
+        "cmd_vel_x",
+        "cmd_vel_w"
+      ],
+      "threshold_p95_deterministic": 1.2314,
+      "deterministic_vs_sampled_score_pearson_r": 1.0,
+      "shap": {
+        "explainer": "shap.KernelExplainer",
+        "background": "shap.kmeans(normal_windows, 30)",
+        "nsamples": 8192,
+        "n_explained_windows_per_condition": 10,
+        "expected_value": 0.1366
+      },
+      "conditions": {
+        "Normal": {
+          "mean_score": 0.9946,
+          "shap_signed_by_feature": {
+            "gps_vel_x": 0.078745,
+            "gps_vel_y": 0.090155,
+            "imu_ax": 0.075237,
+            "imu_ay": 0.084135,
+            "residual_x": 0.079797,
+            "residual_y": 0.082528,
+            "wheel_vel_l": 0.093453,
+            "wheel_vel_r": 0.086305,
+            "cmd_vel_x": 0.105673,
+            "cmd_vel_w": 0.081892
+          },
+          "shap_abs_by_feature": {
+            "gps_vel_x": 0.086334,
+            "gps_vel_y": 0.096743,
+            "imu_ax": 0.084041,
+            "imu_ay": 0.092842,
+            "residual_x": 0.085144,
+            "residual_y": 0.087482,
+            "wheel_vel_l": 0.096471,
+            "wheel_vel_r": 0.091887,
+            "cmd_vel_x": 0.109374,
+            "cmd_vel_w": 0.08562
+          },
+          "recon_error_by_feature": {
+            "gps_vel_x": 0.954283,
+            "gps_vel_y": 1.077955,
+            "imu_ax": 0.925693,
+            "imu_ay": 1.019326,
+            "residual_x": 0.923776,
+            "residual_y": 0.952352,
+            "wheel_vel_l": 1.034515,
+            "wheel_vel_r": 0.976741,
+            "cmd_vel_x": 1.152237,
+            "cmd_vel_w": 0.921762
+          },
+          "elapsed_sec": 1.8
+        },
+        "GPS_Spoofing": {
+          "mean_score": 473504.8438,
+          "shap_signed_by_feature": {
+            "gps_vel_x": 126361.657282,
+            "gps_vel_y": 31996.625608,
+            "imu_ax": 0.022297,
+            "imu_ay": 0.196371,
+            "residual_x": 247970.881426,
+            "residual_y": 67175.208974,
+            "wheel_vel_l": 0.060446,
+            "wheel_vel_r": 0.07658,
+            "cmd_vel_x": 0.150379,
+            "cmd_vel_w": -0.14413
+          },
+          "shap_abs_by_feature": {
+            "gps_vel_x": 126361.657282,
+            "gps_vel_y": 31996.625608,
+            "imu_ax": 1.634674,
+            "imu_ay": 1.804015,
+            "residual_x": 247970.881426,
+            "residual_y": 67175.208974,
+            "wheel_vel_l": 1.569174,
+            "wheel_vel_r": 1.669537,
+            "cmd_vel_x": 1.599381,
+            "cmd_vel_w": 1.750625
+          },
+          "recon_error_by_feature": {
+            "gps_vel_x": 36131659841536.0,
+            "gps_vel_y": 41806871920640.0,
+            "imu_ax": 40991792824320.0,
+            "imu_ay": 38922474225664.0,
+            "residual_x": 29463093968896.0,
+            "residual_y": 64160289259520.0,
+            "wheel_vel_l": 37834127835136.0,
+            "wheel_vel_r": 27553704181760.0,
+            "cmd_vel_x": 63771124957184.0,
+            "cmd_vel_w": 29048503795712.0
+          },
+          "elapsed_sec": 1.8
+        },
+        "Wheel_Slip": {
+          "mean_score": 1366.682,
+          "shap_signed_by_feature": {
+            "gps_vel_x": 0.078054,
+            "gps_vel_y": 0.075736,
+            "imu_ax": 0.046071,
+            "imu_ay": 0.019027,
+            "residual_x": 0.115312,
+            "residual_y": 0.089272,
+            "wheel_vel_l": 709.424786,
+            "wheel_vel_r": 656.527803,
+            "cmd_vel_x": 0.069809,
+            "cmd_vel_w": 0.099554
+          },
+          "shap_abs_by_feature": {
+            "gps_vel_x": 0.087844,
+            "gps_vel_y": 0.083253,
+            "imu_ax": 0.055693,
+            "imu_ay": 0.034361,
+            "residual_x": 0.118406,
+            "residual_y": 0.095603,
+            "wheel_vel_l": 709.424786,
+            "wheel_vel_r": 656.527803,
+            "cmd_vel_x": 0.073345,
+            "cmd_vel_w": 0.105345
+          },
+          "recon_error_by_feature": {
+            "gps_vel_x": 0.957848,
+            "gps_vel_y": 0.938603,
+            "imu_ax": 0.628035,
+            "imu_ay": 0.369161,
+            "residual_x": 1.27615,
+            "residual_y": 1.01277,
+            "wheel_vel_l": 7094.48291,
+            "wheel_vel_r": 6565.029785,
+            "cmd_vel_x": 0.802541,
+            "cmd_vel_w": 1.099367
+          },
+          "elapsed_sec": 2.1
+        },
+        "Command_Anomaly": {
+          "mean_score": 504.6815,
+          "shap_signed_by_feature": {
+            "gps_vel_x": 0.083434,
+            "gps_vel_y": 0.074473,
+            "imu_ax": 0.082758,
+            "imu_ay": 0.06908,
+            "residual_x": 0.087559,
+            "residual_y": 0.080299,
+            "wheel_vel_l": 258.682823,
+            "wheel_vel_r": 245.217957,
+            "cmd_vel_x": 0.090414,
+            "cmd_vel_w": 0.076055
+          },
+          "shap_abs_by_feature": {
+            "gps_vel_x": 0.091133,
+            "gps_vel_y": 0.082588,
+            "imu_ax": 0.090121,
+            "imu_ay": 0.076846,
+            "residual_x": 0.091229,
+            "residual_y": 0.085188,
+            "wheel_vel_l": 258.682823,
+            "wheel_vel_r": 245.217957,
+            "cmd_vel_x": 0.094189,
+            "cmd_vel_w": 0.078427
+          },
+          "recon_error_by_feature": {
+            "gps_vel_x": 1.001005,
+            "gps_vel_y": 0.920103,
+            "imu_ax": 1.004582,
+            "imu_ay": 0.867045,
+            "residual_x": 0.999936,
+            "residual_y": 0.929856,
+            "wheel_vel_l": 2587.016113,
+            "wheel_vel_r": 2452.692871,
+            "cmd_vel_x": 1.006735,
+            "cmd_vel_w": 0.864108
+          },
+          "elapsed_sec": 1.7
+        }
+      },
+      "agreement_with_reconstruction_error": {
+        "Normal": {
+          "spearman_rho": 0.9394,
+          "top3_shap": [
+            "cmd_vel_x",
+            "gps_vel_y",
+            "wheel_vel_l"
+          ],
+          "top3_recon_error": [
+            "cmd_vel_x",
+            "gps_vel_y",
+            "wheel_vel_l"
+          ],
+          "top1_match": true,
+          "top3_set_overlap": 3
+        },
+        "GPS_Spoofing": {
+          "spearman_rho": -0.0788,
+          "top3_shap": [
+            "residual_x",
+            "gps_vel_x",
+            "residual_y"
+          ],
+          "top3_recon_error": [
+            "residual_y",
+            "cmd_vel_x",
+            "gps_vel_y"
+          ],
+          "top1_match": false,
+          "top3_set_overlap": 1
+        },
+        "Wheel_Slip": {
+          "spearman_rho": 1.0,
+          "top3_shap": [
+            "wheel_vel_l",
+            "wheel_vel_r",
+            "residual_x"
+          ],
+          "top3_recon_error": [
+            "wheel_vel_l",
+            "wheel_vel_r",
+            "residual_x"
+          ],
+          "top1_match": true,
+          "top3_set_overlap": 3
+        },
+        "Command_Anomaly": {
+          "spearman_rho": 0.9394,
+          "top3_shap": [
+            "wheel_vel_l",
+            "wheel_vel_r",
+            "cmd_vel_x"
+          ],
+          "top3_recon_error": [
+            "wheel_vel_l",
+            "wheel_vel_r",
+            "cmd_vel_x"
+          ],
+          "top1_match": true,
+          "top3_set_overlap": 3
+        }
+      }
+    }
+  }
+}

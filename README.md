@@ -187,6 +187,145 @@ Red Agent는 APT(지능형 지속 위협) 구조를 모사한 **4단계 캠페�
 
 ---
 
+## 실시간 추론 성능
+
+오프라인 배치 실험만으로는 "온보드에서 제때 돌아가는가"를 답할 수 없어, 기존 VAE와
+가중치를 그대로 로드해 CPU 추론 지연시간을 실측했습니다. 전체 수치·방법은
+[`benchmarks/README.md`](benchmarks/README.md), 원시 결과는
+[`benchmarks/results.json`](benchmarks/results.json).
+
+**측정 환경**: Apple M5 (10코어) / macOS 26.4 arm64 / Python 3.14.3 / PyTorch 2.11.0 CPU /
+`torch.set_num_threads(1)` / 워밍업 300회 + 측정 2,000회 / 시드 42.
+1회 측정 구간은 `AnomalyDetector._infer()` 와 동일한 **VAE forward + 재구성 MSE** 입니다.
+
+### 단일 윈도우 지연시간 / 처리량
+
+| 플랫폼 | 정밀도 | 배치 | p50 (ms) | p95 (ms) | p99 (ms) | 처리량 (windows/sec) |
+|---|---|---|---|---|---|---|
+| UAV (input 160) | FP32 | 1 | 0.032 | 0.062 | 0.119 | 27,338 |
+| UAV | FP32 | 8 | 0.042 | 0.045 | 0.051 | 190,017 |
+| UAV | FP32 | 32 | 0.052 | 0.057 | 0.071 | 607,056 |
+| UAV | INT8 | 1 | 0.123 | 0.132 | 0.153 | 8,068 |
+| UGV (input 200) | FP32 | 1 | 0.033 | 0.036 | 0.041 | 29,593 |
+| UGV | FP32 | 8 | 0.043 | 0.047 | 0.051 | 182,876 |
+| UGV | FP32 | 32 | 0.053 | 0.056 | 0.061 | 599,949 |
+| UGV | INT8 | 1 | 0.123 | 0.130 | 0.148 | 8,044 |
+
+![지연시간 분포](docs/images/latency_distribution.png)
+![배치별 처리량](docs/images/latency_batch_throughput.png)
+
+### 센서 주기 대비 실시간성 판단
+
+`sensor_publisher.py` 의 발행 주기는 `rate_hz` 기본값 **10 Hz**, 즉 샘플당 예산 **100 ms** 입니다.
+
+| 플랫폼 | 센서 주기 | p99 지연 (FP32) | 예산 사용률 | 여유 | 지속 가능 최대 주기 |
+|---|---|---|---|---|---|
+| UAV | 100 ms | 0.119 ms | 0.12 % | 839× | 8,393 Hz |
+| UGV | 100 ms | 0.041 ms | 0.04 % | 2,431× | 24,313 Hz |
+
+**실시간 처리 가능.** 최악(p99)에서도 주기의 0.12 % 만 사용하며, 단일 스레드로 UAV·UGV를
+동시에 돌려도 여유가 3자리수 배입니다. Docker(linux/arm64) 컨테이너에서 재측정했을 때도
+p99 는 1.91 ms(UAV) / 2.86 ms(UGV)로 예산의 3 % 미만이었습니다.
+다만 **추론 지연 ≠ 탐지 지연**입니다. 실제 반응 시간은 슬라이딩 윈도우가 공격 데이터로
+채워지는 시간(최대 20 샘플 = 2 s @10 Hz)과 위 점진적 스푸핑 실험의 탐지 지연(최대 500 ms)이
+지배하며, ROS2/DDS 전송 지연은 포함되지 않았습니다.
+
+### 경량화 (동적 양자화, qint8)
+
+`torch.ao.quantization.quantize_dynamic(model, {nn.Linear}, qint8)` 적용 결과.
+
+| 항목 | UAV | UGV |
+|---|---|---|
+| 모델 크기 (FP32 → INT8) | 244 KB → 71 KB (**-70.9 %**) | 284 KB → 81 KB (**-71.4 %**) |
+| p50 지연 (batch=1, 호스트) | 0.032 → 0.123 ms (**3.8× 느려짐**) | 0.033 → 0.123 ms (**3.7× 느려짐**) |
+| p50 지연 (batch=1, 컨테이너) | 0.163 → 0.100 ms (**1.6× 빨라짐**) | 0.178 → 0.114 ms (**1.6× 빨라짐**) |
+| 정상 점수 p95 (임계값) | 1.2301 → 1.2293 | 1.1884 → 1.1884 |
+| FP32-INT8 점수 상관 | Pearson r = 1.0000 | Pearson r = 1.0000 |
+| 기존 임계값에서의 F1 | 0.9891 → 0.9891 (5개 공격 전부) | 0.9856 → 0.9856 (Wheel Slip / Cmd Anomaly) |
+
+- **탐지 성능은 그대로**입니다. 재구성 오차 분포가 유지되므로 임계값 재보정 없이 양자화
+  모델을 투입할 수 있습니다.
+- **지연시간 이득은 환경에 따라 부호가 바뀝니다.** 행렬이 작아(최대 200×128) 양자화
+  커널 오버헤드가 연산 절감을 넘어서는 경우가 있습니다. 이 규모에서 양자화의 근거는
+  속도가 아니라 **메모리/플래시 71 % 절감**이며, 실제 타깃 보드에서 재확인이 필요합니다.
+
+---
+
+## 설명가능성 (SHAP)
+
+"왜 이 경보가 울렸는가"를 운용자가 확인할 수 있어야 오탐 판단과 사후 검증이 가능합니다.
+재구성 오차를 출력하는 함수를 `shap.KernelExplainer` 로 분해해, 어느 센서가 이상 점수를
+만들었는지 정량화했습니다. 상세: [`explainability/README.md`](explainability/README.md).
+
+- 설명 대상: `윈도우 → 재구성 오차(anomaly score)` 스칼라 함수 (모델 출력이 아님)
+- 입력 20 타임스텝 × N 피처의 SHAP 값을 타임스텝 축으로 합산 → 센서 단위 기여도
+- 배경 분포 `shap.kmeans(정상 윈도우, 30)`, `nsamples=8192`, 조건별 상위 10개 윈도우
+
+| 플랫폼 | 조건 | SHAP 상위 3 | 기존 재구성오차 상위 3 | Spearman ρ |
+|---|---|---|---|---|
+| UAV | GPS Spoofing | residual_x, residual_y, gps_vel_x | 동일 | 1.00 |
+| UAV | Altitude Spoofing | baro_alt, imu_ay, gps_vel_y | baro_alt, gps_vel_y, imu_ay | 0.88 |
+| UAV | Command Injection | pitch_rate, gps_vel_y, imu_ay | 동일 | 0.93 |
+| UGV | GPS Spoofing | residual_x, gps_vel_x, residual_y | residual_y, cmd_vel_x, gps_vel_y | **-0.08** |
+| UGV | Wheel Slip | wheel_vel_l, wheel_vel_r, residual_x | 동일 | 1.00 |
+| UGV | Command Anomaly | wheel_vel_l, wheel_vel_r, cmd_vel_x | 동일 | 0.94 |
+
+![UAV SHAP 기여도](docs/images/shap_attack_contribution_uav.png)
+![UGV SHAP 기여도](docs/images/shap_attack_contribution_ugv.png)
+
+| UAV SHAP summary | UGV SHAP summary |
+|---|---|
+| ![UAV SHAP summary](docs/images/shap_summary_uav.png) | ![UGV SHAP summary](docs/images/shap_summary_ugv.png) |
+
+**공격 유형별 서명이 분리**되며, `anomaly_detector.py` 의 `FEATURE_TO_ATTACK` 매핑
+(residual/gps → GPS_SPOOFING, baro_alt → ALTITUDE_SPOOFING, pitch_rate·휠 →
+COMMAND_INJECTION)이 SHAP 기준으로도 근거가 있음을 확인했습니다.
+
+**기존 기여도 이미지와의 대조 (정직한 기록)**
+
+- **일치**: UAV GPS Spoofing / Altitude Spoofing, UGV Wheel Slip / Command Anomaly —
+  상위 피처가 그대로 재현됩니다.
+- **부분 불일치 (원인 규명)**: UAV Command Injection 은 기존 이미지에서 `imu_ax` 가 1위,
+  SHAP 에서는 `pitch_rate` 가 1위입니다. 노트북 생성기는 `pitch_rate` + `imu_ax/ay` 를 함께
+  교란하고, 본 분석이 쓴 `advanced_attacks.atk_cmd_injection()` 은 `pitch_rate` 만 교란하기
+  때문입니다. 설명이 갈린 게 아니라 **설명 대상 데이터가 다릅니다.**
+- **불일치 (기존 결과가 신뢰 불가)**: UGV GPS Spoofing 의 기존 패널은 가로축이 1e14 이고
+  휠 속도를 1위로 지목합니다. ① 노트북이 정상(n=1000)과 공격(n=300) 시계열을 섞어 쓰면서
+  정규화 기준이 어긋났고(`generate_normal` 이 `linspace(0,10,n)` 의 gradient 로 속도를
+  만들기 때문), ② 점수가 극단적으로 튀는 구간에서는 재구성 오차가 10개 피처 전체에
+  거의 균일하게 퍼져 "최대 오차 피처" 휴리스틱이 무의미해지기 때문입니다. 같은 윈도우에
+  대해 SHAP 은 실제 주입 지점(`residual_x`, `gps_vel_x`, `residual_y`)을 정확히 지목했습니다.
+
+→ 중간 강도 이상까지는 온보드의 가벼운 휴리스틱으로 충분하지만, **점수가 임계값의 수백 배를
+넘는 강한 공격에서는 휴리스틱의 피처 지목이 무너집니다.** 온보드는 휴리스틱을 유지하고
+지상국에서 SHAP 으로 원인 센서를 확정하는 2단계 설명 구성을 권장합니다.
+
+---
+
+## 재현
+
+```bash
+# 로컬 (CPU)
+make setup        # requirements.txt 설치
+make benchmark    # 지연시간/처리량/양자화 벤치마크 → benchmarks/results.json
+make explain      # SHAP 설명가능성 분석 → explainability/shap_results.json
+make attacks      # 기존 복합·점진적 공격 실험 재실행
+make reproduce    # benchmark + explain 전체
+
+# Docker (CPU 전용 이미지, ROS2 불필요)
+make docker-build           # = docker build -t haegeum-addon:cpu .
+make docker-run             # 컨테이너에서 make reproduce
+```
+
+- 난수 시드는 `utils/seed.py` 의 `set_seed(42)` 로 python/numpy/torch 를 함께 고정합니다.
+- `benchmarks/` 와 `explainability/` 는 ROS2 없이 동작합니다. `utils/load_model.py` 가
+  rclpy 가 없을 때만 최소 스텁을 주입해 **`anomaly_detector.py` 원본을 수정하지 않고**
+  동일한 `VAE` 클래스와 `vae_*.pth` 가중치를 로드합니다.
+- 지연시간은 하드웨어·부하에 따라 달라지므로, 재측정 시 `results.json` 의
+  `meta.environment` 와 함께 읽어야 합니다.
+
+---
+
 ## 저장소 구조
 
 ```
@@ -201,6 +340,21 @@ haegeum-addon/
 ├── UGV_anomaly_vae.ipynb      # UGV VAE 학습·평가 노트북 (Colab)
 ├── UAV_anomaly_vae_SEAD.ipynb # UAV VAE 학습·평가 노트북 (Colab)
 ├── advanced_attack_results.json  # 심화 실험 정량 결과
+├── benchmarks/
+│   ├── latency_benchmark.py   # CPU 추론 지연시간·처리량·양자화 벤치마크
+│   ├── results.json           # 벤치마크 실측 원시 결과
+│   └── README.md              # 측정 방법·환경·결과 표
+├── explainability/
+│   ├── shap_analysis.py       # 재구성 오차에 대한 SHAP 기여도 분석
+│   ├── shap_results.json      # SHAP 실측 원시 결과
+│   └── README.md              # 방산 체계에서의 필요성·기존 결과 대조
+├── utils/
+│   ├── seed.py                # 난수 시드 고정 + 측정 환경 기록
+│   ├── load_model.py          # 기존 anomaly_detector.VAE·가중치 로더 (ROS2 스텁)
+│   └── ugv_data.py            # UGV 합성 센서/공격 데이터 생성기
+├── Dockerfile                 # CPU 재현 이미지 (ROS2 불필요)
+├── Makefile                   # setup / benchmark / explain / reproduce
+├── requirements.txt           # 버전 고정 의존성
 ├── vae_uav.pth                # UAV VAE 가중치 (input=160)
 ├── vae_ugv.pth                # UGV VAE 가중치 (input=200)
 └── docs/images/               # 결과 그래프·혼동행렬·아키텍처 다이어그램
@@ -251,7 +405,9 @@ ros2 run haegeum_addon sensor_publisher --ros-args -p platform:=ugv
 - **딥러닝**: PyTorch (VAE, reparameterization trick)
 - **로보틱스 미들웨어**: ROS2 (rclpy, Float32MultiArray, 커스텀 msg)
 - **수치/시각화**: NumPy, Matplotlib
-- **XAI**: 피처별 재구성 오차 기여도 분석
+- **XAI**: 피처별 재구성 오차 기여도 분석, SHAP (KernelExplainer)
+- **경량화/프로파일링**: PyTorch 동적 양자화(qint8), 지연시간 분위수(p50/p95/p99) 측정
+- **재현성**: Docker (CPU), Makefile, 버전 고정 requirements, 시드 고정 유틸
 - **위협 모델링**: MITRE ATT&CK for ICS, STANAG 4586 시나리오 매핑
 - **평가**: Precision / Recall / F1, 탐지 지연(ms), 혼동행렬, FP/FN 피처 분포
 
@@ -264,6 +420,11 @@ ros2 run haegeum_addon sensor_publisher --ros-args -p platform:=ugv
 - **점진적 스푸핑 취약성**: 값을 아주 천천히 올리는 공격에서 지연이 커집니다(최대 500 ms 관측). 온라인 임계값 적응이나 변화율(rate) 기반 보조 탐지가 필요합니다.
 - **오탐 관리**: 분산이 큰 피처(`residual`, `pitch_rate`)에서 소수의 오탐이 남습니다. 피처별 정규화·robust threshold로 저감 가능.
 - **레이더 융합 미검증**: 레이더/카메라 융합 로직은 구현되어 있으나 정량 평가는 향후 과제입니다.
+- **지연시간 측정 범위**: 추론 커널만 측정했습니다. ROS2/DDS 전송 지연, 실제 온보드 SoC
+  (Jetson 계열 등)에서의 재측정, 다중 노드 동시 구동 시의 간섭은 포함되지 않았습니다.
+- **강한 공격에서의 설명 붕괴**: 점수가 임계값의 수백 배를 넘는 구간에서 기존 피처별
+  재구성 오차 휴리스틱의 원인 지목이 무너지는 것을 SHAP 대조로 확인했습니다
+  (`explainability/README.md`). 온보드 경량 설명 기법의 개선이 필요합니다.
 
 ---
 
