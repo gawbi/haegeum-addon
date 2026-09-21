@@ -1,0 +1,245 @@
+{
+  "meta": {
+    "generated_at": "2026-09-21T20:15:03+0900",
+    "environment": {
+      "python": "3.14.3",
+      "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+      "machine": "arm64",
+      "processor": "arm",
+      "cpu_brand": "Apple M5",
+      "torch": "2.11.0",
+      "torch_num_threads": 4,
+      "cuda_available": false,
+      "numpy": "2.4.3",
+      "cpu_count": 10
+    },
+    "shap_version": "0.52.0",
+    "seed": 42,
+    "series_length": 1000,
+    "window": 20,
+    "threshold_p95_deterministic": 1.2314,
+    "window_selection": "공격 주입 구간에 완전히 포함된 윈도우 중 이상 점수 최고",
+    "recon_contribution_path": "anomaly_detector._classify() 와 동일 (샘플링 경로, 시드 고정)",
+    "shap_path": "z=mu 결정적 경로, KernelExplainer",
+    "nsamples": 8192,
+    "background": "shap.kmeans(normal_windows, 30)"
+  },
+  "attacks": {
+    "GPS Spoofing": {
+      "attack_span_samples": [
+        333,
+        383
+      ],
+      "window_index": 345,
+      "anomaly_score": 473548.0,
+      "score_over_threshold": 384550.2,
+      "recon_error_by_feature": {
+        "gps_vel_x": 34912637812736.0,
+        "gps_vel_y": 40600887885824.0,
+        "imu_ax": 39925596553216.0,
+        "imu_ay": 37682377916416.0,
+        "residual_x": 28513012809728.0,
+        "residual_y": 62197489205248.0,
+        "wheel_vel_l": 36705151221760.0,
+        "wheel_vel_r": 26886931480576.0,
+        "cmd_vel_x": 61803111383040.0,
+        "cmd_vel_w": 28235085643776.0
+      },
+      "recon_ranking": [
+        "residual_y",
+        "cmd_vel_x",
+        "gps_vel_y",
+        "imu_ax",
+        "imu_ay",
+        "wheel_vel_l",
+        "gps_vel_x",
+        "residual_x",
+        "cmd_vel_w",
+        "wheel_vel_r"
+      ],
+      "recon_saturation": {
+        "top1_share": 0.1565,
+        "uniform_share": 0.1,
+        "max_over_min": 2.313,
+        "cv": 0.3032,
+        "saturated": true
+      },
+      "shap_abs_by_feature": {
+        "gps_vel_x": 126360.7217868797,
+        "gps_vel_y": 31996.68699986834,
+        "imu_ax": 1.3922477373860382,
+        "imu_ay": 1.1126742428657002,
+        "residual_x": 248002.84642775846,
+        "residual_y": 67187.14301902433,
+        "wheel_vel_l": 1.5666731540096752,
+        "wheel_vel_r": 1.2970167960482826,
+        "cmd_vel_x": 2.0386113222287237,
+        "cmd_vel_w": 1.5216205444702866
+      },
+      "shap_ranking": [
+        "residual_x",
+        "gps_vel_x",
+        "residual_y",
+        "gps_vel_y",
+        "cmd_vel_x",
+        "wheel_vel_l",
+        "cmd_vel_w",
+        "imu_ax",
+        "wheel_vel_r",
+        "imu_ay"
+      ],
+      "shap_saturation": {
+        "top1_share": 0.5237,
+        "uniform_share": 0.1,
+        "max_over_min": 222888.997,
+        "cv": 1.6437,
+        "saturated": false
+      },
+      "top1_agreement": false
+    },
+    "Wheel Slip": {
+      "attack_span_samples": [
+        333,
+        1000
+      ],
+      "window_index": 340,
+      "anomaly_score": 1397.3566,
+      "score_over_threshold": 1134.7,
+      "recon_error_by_feature": {
+        "gps_vel_x": 0.8227725028991699,
+        "gps_vel_y": 1.0330474376678467,
+        "imu_ax": 0.724299967288971,
+        "imu_ay": 0.41901397705078125,
+        "residual_x": 1.355111837387085,
+        "residual_y": 0.9532936215400696,
+        "wheel_vel_l": 6927.52734375,
+        "wheel_vel_r": 7038.4609375,
+        "cmd_vel_x": 0.9209722280502319,
+        "cmd_vel_w": 0.9178735017776489
+      },
+      "recon_ranking": [
+        "wheel_vel_r",
+        "wheel_vel_l",
+        "residual_x",
+        "gps_vel_y",
+        "residual_y",
+        "cmd_vel_x",
+        "cmd_vel_w",
+        "gps_vel_x",
+        "imu_ax",
+        "imu_ay"
+      ],
+      "recon_saturation": {
+        "top1_share": 0.5037,
+        "uniform_share": 0.1,
+        "max_over_min": 16797.676,
+        "cv": 1.9988,
+        "saturated": false
+      },
+      "shap_abs_by_feature": {
+        "gps_vel_x": 0.07420802512340163,
+        "gps_vel_y": 0.09225659791249259,
+        "imu_ax": 0.0653197828126188,
+        "imu_ay": 0.04072090025150838,
+        "residual_x": 0.12543787236606144,
+        "residual_y": 0.09185923982455807,
+        "wheel_vel_l": 692.7339126127878,
+        "wheel_vel_r": 703.8849964706911,
+        "cmd_vel_x": 0.08639554411824384,
+        "cmd_vel_w": 0.08941433486672992
+      },
+      "shap_ranking": [
+        "wheel_vel_r",
+        "wheel_vel_l",
+        "residual_x",
+        "gps_vel_y",
+        "residual_y",
+        "cmd_vel_w",
+        "cmd_vel_x",
+        "gps_vel_x",
+        "imu_ax",
+        "imu_ay"
+      ],
+      "shap_saturation": {
+        "top1_share": 0.5038,
+        "uniform_share": 0.1,
+        "max_over_min": 17285.595,
+        "cv": 1.9989,
+        "saturated": false
+      },
+      "top1_agreement": true
+    },
+    "Command Anomaly": {
+      "attack_span_samples": [
+        333,
+        1000
+      ],
+      "window_index": 456,
+      "anomaly_score": 505.6272,
+      "score_over_threshold": 410.6,
+      "recon_error_by_feature": {
+        "gps_vel_x": 0.8411176800727844,
+        "gps_vel_y": 1.6117979288101196,
+        "imu_ax": 0.7762688398361206,
+        "imu_ay": 1.1298803091049194,
+        "residual_x": 0.9982709884643555,
+        "residual_y": 0.6887134909629822,
+        "wheel_vel_l": 2616.310302734375,
+        "wheel_vel_r": 2432.966064453125,
+        "cmd_vel_x": 0.8115506172180176,
+        "cmd_vel_w": 0.6187900304794312
+      },
+      "recon_ranking": [
+        "wheel_vel_l",
+        "wheel_vel_r",
+        "gps_vel_y",
+        "imu_ay",
+        "residual_x",
+        "gps_vel_x",
+        "cmd_vel_x",
+        "imu_ax",
+        "residual_y",
+        "cmd_vel_w"
+      ],
+      "recon_saturation": {
+        "top1_share": 0.5174,
+        "uniform_share": 0.1,
+        "max_over_min": 4228.107,
+        "cv": 1.9979,
+        "saturated": false
+      },
+      "shap_abs_by_feature": {
+        "gps_vel_x": 0.076122395168763,
+        "gps_vel_y": 0.1495053852776734,
+        "imu_ax": 0.06685131839588182,
+        "imu_ay": 0.10175085367999014,
+        "residual_x": 0.089903591931818,
+        "residual_y": 0.061765696294445435,
+        "wheel_vel_l": 261.6117361427859,
+        "wheel_vel_r": 243.24490776097127,
+        "cmd_vel_x": 0.07522171284666512,
+        "cmd_vel_w": 0.05360103842061399
+      },
+      "shap_ranking": [
+        "wheel_vel_l",
+        "wheel_vel_r",
+        "gps_vel_y",
+        "imu_ay",
+        "residual_x",
+        "gps_vel_x",
+        "cmd_vel_x",
+        "imu_ax",
+        "residual_y",
+        "cmd_vel_w"
+      ],
+      "shap_saturation": {
+        "top1_share": 0.5175,
+        "uniform_share": 0.1,
+        "max_over_min": 4880.721,
+        "cv": 1.9983,
+        "saturated": false
+      },
+      "top1_agreement": true
+    }
+  }
+}
