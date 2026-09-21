@@ -79,6 +79,10 @@ SHAP 기준으로도 근거가 있습니다.
 | UGV / Command Anomaly | wheel_vel_l, wheel_vel_r | wheel_vel_l, wheel_vel_r | **일치** |
 | UGV / GPS Spoofing | wheel_vel_r, gps_vel_x, cmd_vel_w (스케일 1e14) | residual_x, gps_vel_x, residual_y | **불일치 — 기존 결과가 신뢰 불가** |
 
+> UGV 그림은 아래 「재생성」 절의 스크립트로 다시 만들었습니다
+> (`docs/images/ugv_feature_contribution.png`). 초기 분석본은
+> `docs/images/legacy/ugv_feature_contribution.png` 에 보존했습니다.
+
 ### 불일치 1 — UAV Command Injection: 데이터 생성기가 다름
 
 노트북의 `generate_command_injection()` 은 `pitch_rate` **와 함께** `imu_ax`, `imu_ay` 를
@@ -111,6 +115,56 @@ SHAP 기준으로도 근거가 있습니다.
 온보드에는 휴리스틱을 유지하되, 점수가 임계값의 수백 배를 넘는 경보에 대해서는
 지상국에서 SHAP 재분석을 돌려 원인 센서를 확정하는 2단계 구성이 타당합니다.
 
+## 재생성 — UGV 피처별 기여도 그림
+
+```bash
+make figures   # = python explainability/regen_ugv_feature_contribution.py
+```
+
+위 두 문제를 교정해 `docs/images/ugv_feature_contribution.png` 를 재생성했습니다.
+초기 분석본은 `docs/images/legacy/ugv_feature_contribution.png` 로 보존했습니다
+(**GPS 패널은 신뢰 불가로 판정된 초기본**). 재생성 스크립트는 노트북의 데이터 생성
+로직(`utils/ugv_data.py` 로 이관)과 `anomaly_detector._classify()` 의 기여도 계산을
+그대로 재사용하며, 출처는 스크립트 상단 주석에 명시했습니다. 원시 수치는
+[`ugv_feature_contribution_regen.json`](ugv_feature_contribution_regen.json).
+
+![UGV 피처별 기여도 (재생성본)](../docs/images/ugv_feature_contribution.png)
+
+**교정 내용**
+
+1. 정상·공격 시계열 길이를 **n=1000 으로 통일**해 정규화 기준 붕괴를 제거했습니다.
+2. 포화 여부를 그림에서 바로 읽을 수 있게 **1위 점유율**(= 최대 기여도 / 전체 합)을
+   각 패널 축 라벨에 넣고, 완전 균일(10 % = 1/10 피처)의 2배에 못 미치면 회색 빗금 +
+   "전 피처 균일 포화 — 원인 식별 불가" 경고로 표시했습니다.
+3. 같은 윈도우에 대한 **SHAP 기여도를 아래 행에 나란히** 배치해, 포화 구간에서 원인
+   센서를 식별하는 쪽이 어느 방법인지 그림 하나로 드러나게 했습니다.
+
+**재생성 전후 순위 변화** (공격 구간 내 최고 점수 윈도우 1개 기준, 실측)
+
+| 공격 | 초기본 상위 3 (재구성 오차) | 재생성 재구성 오차 상위 3 | 재생성 SHAP 상위 3 | 1위 점유율 (재구성 / SHAP) |
+|---|---|---|---|---|
+| GPS Spoofing | wheel_vel_r, gps_vel_x, cmd_vel_w | residual_y, cmd_vel_x, gps_vel_y **(포화)** | **residual_x, gps_vel_x, residual_y** | 16 % / **52 %** |
+| Wheel Slip | wheel_vel_l, wheel_vel_r, (나머지 ≈0) | wheel_vel_r, wheel_vel_l, residual_x | wheel_vel_r, wheel_vel_l, residual_x | 50 % / 50 % |
+| Command Anomaly | wheel_vel_l, wheel_vel_r, (나머지 ≈0) | wheel_vel_l, wheel_vel_r, gps_vel_y | wheel_vel_l, wheel_vel_r, gps_vel_y | 52 % / 52 % |
+
+- **Wheel Slip / Command Anomaly**: 초기본과 결론이 같습니다. 휠 속도 2개가 지배하고
+  (1위 점유율 50~52 %), SHAP 순위도 10개 피처 전체에서 사실상 동일합니다
+  (Wheel Slip 은 6·7위만 교체, Command Anomaly 는 10위까지 완전 일치).
+  다만 Wheel Slip 의 1·2위가 `wheel_vel_l` → `wheel_vel_r` 로 뒤바뀌는데, 두 값의 차이가
+  1.6 % 에 불과해(7,038 vs 6,928) 선택 윈도우가 달라지면 순서가 바뀌는 수준입니다.
+- **GPS Spoofing**: 길이 불일치를 고쳐도 **재구성 오차 기여도는 여전히 사용할 수 없습니다.**
+  이 윈도우의 이상 점수는 임계값의 **38만 배**(473,548 vs 1.2314)로, 디코더가 발산하면서
+  10개 피처의 기여도가 2.7×10¹³ ~ 6.2×10¹³ 범위에 몰려(최대/최소 2.3배, 1위 점유율 16 %)
+  순위가 사실상 무의미해집니다. 실제로 1·2위가 `residual_y`, `cmd_vel_x` 로, 주입과 무관한
+  `cmd_vel_x` 가 2위에 올라옵니다. 같은 윈도우에서 SHAP 은 `residual_x`(52 %), `gps_vel_x`,
+  `residual_y`, `gps_vel_y` 를 상위 4개로 지목해 **실제 주입 열(0, 1, 4, 5)과 정확히 일치**하며,
+  나머지 6개 피처의 기여도는 1.1~2.0 으로 4~5자리 낮습니다.
+
+**부수적으로 확인된 사실**: 포화되지 않은 두 패널에서 SHAP 기여도는 재구성 오차 기여도의
+정확히 1/10(= 1/피처 수)로, 순위가 동일합니다. 재구성 오차의 합을 피처 수로 나눈 것이 곧
+이상 점수이므로, **모델이 국소적으로 잘 동작하는 구간에서는 두 방법이 해석적으로 같은 답**을
+주고, 어긋나는 지점이 바로 휴리스틱이 깨지는 구간이라는 뜻입니다.
+
 ## 한계
 
 - 합성 데이터 기반이라는 저장소 전체의 한계를 그대로 가집니다.
@@ -121,3 +175,5 @@ SHAP 기준으로도 근거가 있습니다.
   시점별 설명은 `docs/images/*_timestep_scores.png` 의 시계열 점수와 함께 읽어야 합니다.
 - 본 분석은 온보드 실시간 경로가 아니라 **오프라인 감사 도구**입니다
   (조건당 1.4~2.1 초 소요, `shap_results.json` 의 `elapsed_sec` 참조).
+- 재생성 그림은 공격별로 **윈도우 1개**(공격 구간 내 최고 점수)만 설명합니다. 조건별
+  10개 윈도우 평균은 `shap_results.json` 쪽을 보십시오. 두 결과의 상위 피처는 일치합니다.

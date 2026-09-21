@@ -151,9 +151,11 @@ Red Agent는 APT(지능형 지속 위협) 구조를 모사한 **4단계 캠페�
 |---|---|
 | ![UAV 혼동행렬](docs/images/uav_confusion_matrix.png) | ![UGV 혼동행렬](docs/images/ugv_confusion_matrix.png) |
 
-| UAV 피처별 기여도 (XAI) | UGV 피처별 기여도 (XAI) |
+| UAV 피처별 기여도 (XAI, 노트북 산출) | UGV 피처별 기여도 (XAI, **재생성본**) |
 |---|---|
 | ![UAV 피처 기여도](docs/images/uav_feature_contribution.png) | ![UGV 피처 기여도](docs/images/ugv_feature_contribution.png) |
+
+> UGV 그림은 초기 분석본의 두 가지 문제(정상/공격 시계열 길이 불일치로 인한 정규화 기준 붕괴, 극단 OOD 구간에서의 기여도 포화)를 교정해 `explainability/regen_ugv_feature_contribution.py` 로 재생성한 것입니다. 초기 분석본은 `docs/images/legacy/ugv_feature_contribution.png` 에 보존했으며, **그 GPS 패널은 신뢰 불가로 판정**되었습니다. 자세한 내용은 아래 「설명가능성 (SHAP)」 절.
 
 ### 2) 복합·점진적 공격 — 경계 윈도우 제외 평가 (advanced_attacks.py)
 
@@ -291,12 +293,22 @@ COMMAND_INJECTION)이 SHAP 기준으로도 근거가 있음을 확인했습니�
   SHAP 에서는 `pitch_rate` 가 1위입니다. 노트북 생성기는 `pitch_rate` + `imu_ax/ay` 를 함께
   교란하고, 본 분석이 쓴 `advanced_attacks.atk_cmd_injection()` 은 `pitch_rate` 만 교란하기
   때문입니다. 설명이 갈린 게 아니라 **설명 대상 데이터가 다릅니다.**
-- **불일치 (기존 결과가 신뢰 불가)**: UGV GPS Spoofing 의 기존 패널은 가로축이 1e14 이고
-  휠 속도를 1위로 지목합니다. ① 노트북이 정상(n=1000)과 공격(n=300) 시계열을 섞어 쓰면서
-  정규화 기준이 어긋났고(`generate_normal` 이 `linspace(0,10,n)` 의 gradient 로 속도를
-  만들기 때문), ② 점수가 극단적으로 튀는 구간에서는 재구성 오차가 10개 피처 전체에
-  거의 균일하게 퍼져 "최대 오차 피처" 휴리스틱이 무의미해지기 때문입니다. 같은 윈도우에
-  대해 SHAP 은 실제 주입 지점(`residual_x`, `gps_vel_x`, `residual_y`)을 정확히 지목했습니다.
+- **불일치 (기존 결과가 신뢰 불가 → 그림 재생성)**: UGV GPS Spoofing 의 초기 패널은 가로축이
+  1e14 이고 휠 속도를 1위로 지목합니다. ① 노트북이 정상(n=1000)과 공격(n=300) 시계열을 섞어
+  쓰면서 정규화 기준이 어긋났고(`generate_normal` 이 `linspace(0,10,n)` 의 gradient 로 속도를
+  만들기 때문), ② 점수가 극단적으로 튀는 구간에서는 재구성 오차가 10개 피처 전체에 거의
+  균일하게 퍼져 "최대 오차 피처" 휴리스틱이 무의미해지기 때문입니다.
+
+  **재생성 결과(실측):** ①을 교정해 길이를 n=1000 으로 통일한 뒤에도 GPS 패널의 재구성 오차는
+  여전히 포화 상태였습니다. 해당 윈도우의 이상 점수는 임계값의 **38만 배**(473,548 vs 1.2314)로,
+  기여도가 2.7×10¹³~6.2×10¹³ 범위에 몰려(최대/최소 2.3배) **1위 점유율이 16 %** 에 그칩니다
+  — 완전 균일(10 %)과 큰 차이가 없어 순위가 무의미하고, 실제로 주입과 무관한 `cmd_vel_x` 가
+  2위로 올라옵니다. 같은 윈도우에서 SHAP 은 `residual_x`(1위 점유율 **52 %**), `gps_vel_x`,
+  `residual_y`, `gps_vel_y` 를 상위 4개로 지목해 **실제 주입 열과 정확히 일치**했습니다.
+  재생성 그림은 이 사실이 드러나도록 ㉠ 포화 패널을 회색 빗금 + 경고로 표시하고
+  ㉡ 같은 윈도우의 SHAP 기여도를 아래 행에 나란히 배치했습니다.
+  Wheel Slip / Command Anomaly 는 재생성 후에도 초기본과 결론이 같습니다(휠 속도 2개 지배,
+  1위 점유율 50~52 %, SHAP 순위와 사실상 동일).
 
 → 중간 강도 이상까지는 온보드의 가벼운 휴리스틱으로 충분하지만, **점수가 임계값의 수백 배를
 넘는 강한 공격에서는 휴리스틱의 피처 지목이 무너집니다.** 온보드는 휴리스틱을 유지하고
@@ -311,8 +323,9 @@ COMMAND_INJECTION)이 SHAP 기준으로도 근거가 있음을 확인했습니�
 make setup        # requirements.txt 설치
 make benchmark    # 지연시간/처리량/양자화 벤치마크 → benchmarks/results.json
 make explain      # SHAP 설명가능성 분석 → explainability/shap_results.json
+make figures      # UGV 피처별 기여도 그림 재생성 → docs/images/ugv_feature_contribution.png
 make attacks      # 기존 복합·점진적 공격 실험 재실행
-make reproduce    # benchmark + explain 전체
+make reproduce    # benchmark + explain + figures 전체
 
 # Docker (CPU 전용 이미지, ROS2 불필요)
 make docker-build           # = docker build -t haegeum-addon:cpu .
@@ -348,7 +361,9 @@ haegeum-addon/
 │   └── README.md              # 측정 방법·환경·결과 표
 ├── explainability/
 │   ├── shap_analysis.py       # 재구성 오차에 대한 SHAP 기여도 분석
+│   ├── regen_ugv_feature_contribution.py  # UGV 기여도 그림 재생성
 │   ├── shap_results.json      # SHAP 실측 원시 결과
+│   ├── ugv_feature_contribution_regen.json  # 재생성 그림의 원시 수치
 │   └── README.md              # 방산 체계에서의 필요성·기존 결과 대조
 ├── utils/
 │   ├── seed.py                # 난수 시드 고정 + 측정 환경 기록
@@ -359,7 +374,9 @@ haegeum-addon/
 ├── requirements.txt           # 버전 고정 의존성
 ├── vae_uav.pth                # UAV VAE 가중치 (input=160)
 ├── vae_ugv.pth                # UGV VAE 가중치 (input=200)
-└── docs/images/               # 결과 그래프·혼동행렬·아키텍처 다이어그램
+└── docs/
+    └── images/                # 결과 그래프·혼동행렬·아키텍처 다이어그램
+        └── legacy/            # 초기 분석본 보존 (재생성 전 그림)
 ```
 
 ---
