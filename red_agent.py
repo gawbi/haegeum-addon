@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 DAH 2026 해금팀 — Red Agent (공격 AI) ROS2 노드
-참고 체계: LIG Nex1 드론 탐지 레이더(C-UAS), 한화시스템 지능형 방공 체계
+참고 체계: 국내 C-UAS(대드론) 탐지 레이더, 지능형 방공 체계 (공개 자료 기반 일반 구조)
 
 공격 캠페인 4단계 (APT 구조):
   Phase 1 — 정찰 (Reconnaissance)
@@ -15,7 +15,7 @@ DAH 2026 해금팀 — Red Agent (공격 AI) ROS2 노드
 
   Phase 3 — 포화 공격 (Swarm Saturation)
     군집 드론 N대 다방향 동시 접근 → ai_commander 의사결정 포화
-    LIG Nex1 C-UAS가 처리 가능한 트랙 수 초과 시도 (탐지 한계 초과)
+    C-UAS 체계가 처리 가능한 트랙 수 초과 시도 (탐지 한계 초과)
     MITRE ATT&CK ICS: T0814 (Denial of Service)
 
   Phase 4 — 페이로드 (Payload)
@@ -66,7 +66,7 @@ CMD_INJECT_PITCH      = 0.8     # 비정상 pitch_rate (rad/s)
 EW_DURATION_SEC       = 20.0
 
 # Phase 3: 군집
-SWARM_SIZE            = 6       # 군집 드론 수 (LIG C-UAS 포화 목표)
+SWARM_SIZE            = 6       # 군집 드론 수 (C-UAS 체계 포화 목표)
 SWARM_CLOSING_SPEED   = 20.0    # 접근 속도 (m/s)
 SWARM_APPROACH_DIRS   = [       # 다방향 동시 접근 방위각 (도)
     0, 60, 120, 180, 240, 300
@@ -82,9 +82,9 @@ class RedAgent(Node):
     4단계 공격 캠페인을 자동 실행하는 Red Agent.
 
     공격 전략:
-    - 한화시스템 분석: 탐지→분류→규모파악→방책결심 파이프라인의
+    - 지능형 방공 체계 분석: 탐지→분류→규모파악→방책결심 파이프라인의
       '분류' 단계를 혼란시킴 (낮은 RCS 드론 + GPS없는 SLAM 항법으로 탐지 회피)
-    - LIG Nex1 C-UAS 대응: 레이더 처리 트랙 수 포화 → 과부하 유도
+    - C-UAS 체계 대응: 레이더 처리 트랙 수 포화 → 과부하 유도
     - Blue Agent(광빈) 대응: VAE 임계값 초과 전에 정상 패턴 유지하다
       갑작스러운 신호 점프로 슬라이딩 윈도우 경계 구간에서 공격 실행
       (Recall 취약점 노린 타이밍 공격)
@@ -182,7 +182,7 @@ class RedAgent(Node):
         """
         저고도(15m) 저속(8m/s) 비행으로 방어 레이더 탐지 최소화.
         RCS가 작은 소형 드론(~-10 dBsm) + GPS없는 SLAM 항법 사용으로
-        LIG Nex1 AESA 레이더 탐지 확률 저감 (Swerling-1 모델 기준 Pd ≈ 0.3).
+        AESA 방공 레이더 탐지 확률 저감 (Swerling-1 모델 기준 Pd ≈ 0.3).
         """
         # 스카우트 드론 트랙 1개 — 낮은 RCS(-10 dBsm), 느린 속도
         track = Float32MultiArray()
@@ -275,8 +275,8 @@ class RedAgent(Node):
     def _phase_swarm(self, elapsed: float):
         """
         SWARM_SIZE대의 드론이 360°/N 간격으로 동시 접근.
-        LIG Nex1 C-UAS의 처리 가능 트랙 수를 초과하도록 설계.
-        한화시스템의 AI 분류 단계에서 소형 드론 RCS(-5~0 dBsm)와
+        C-UAS 체계의 처리 가능 트랙 수를 초과하도록 설계.
+        지능형 방공 체계의 AI 분류 단계에서 소형 드론 RCS(-5~0 dBsm)와
         속도 프로파일이 새떼와 유사하도록 조정 → 오분류 유도.
         """
         tracks_data = []

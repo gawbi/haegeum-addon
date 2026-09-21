@@ -6,7 +6,7 @@ DAH 2026 해금팀 — VAE 기반 실시간 이상탐지 ROS2 노드 (레이더 
 
 센서 소스:
   - GPS/IMU: MAVLink GLOBAL_POSITION_INT / HIGHRES_IMU
-  - 레이더:  LIG Nex1 드론 탐지 레이더 (탐지 거리: ~4km, 방위각 분해능: 1°)
+  - 레이더:  국내 C-UAS 드론 탐지 레이더 (탐지 거리: ~4km, 방위각 분해능: 1°)
              → /radar_tracks 토픽으로 수신, 위협 물체 포지션/속도 포함
   - 카메라:  EO/IR 센서 → target_fusion 노드에서 융합
 
@@ -112,7 +112,7 @@ FEATURE_TO_ATTACK = {
 }
 
 # 레이더 트랙 이상 임계값
-# LIG Nex1 드론 탐지 레이더 기준 (탐지 거리 ~4km, 속도 분해능 0.5m/s)
+# 국내 C-UAS 드론 탐지 레이더 기준 (탐지 거리 ~4km, 속도 분해능 0.5m/s)
 RADAR_SWARM_THRESHOLD = 3      # 동시 탐지 트랙 수 ≥ 3 → 군집 드론 의심
 RADAR_CLOSING_SPEED   = 15.0   # m/s 이상 접근 속도 → 위협 드론 의심
 
@@ -247,7 +247,7 @@ class AnomalyDetector(Node):
     # ── 레이더 콜백 — 군집 드론 탐지 ─────────────────────
     def radar_callback(self, msg: Float32MultiArray):
         """
-        레이더 트랙 수신 형식 (LIG Nex1 드론 탐지 레이더 기준):
+        레이더 트랙 수신 형식 (국내 C-UAS 드론 탐지 레이더 기준):
         [track_id, range_m, azimuth_deg, elevation_deg, radial_vel_mps, rcs_dbsm, ...]
         6개 값이 1개 트랙. 복수 트랙이 연속으로 들어옴.
         """
