@@ -32,3 +32,6 @@ env/
 # 로그/임시
 *.log
 *.tmp
+
+# pytest
+.pytest_cache/

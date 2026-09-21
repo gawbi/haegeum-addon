@@ -17,3 +17,6 @@ matplotlib==3.10.8       # 결과 플롯 (Agg 백엔드)
 shap==0.52.0             # KernelExplainer 기반 재구성 오차 기여도 분해
 scipy==1.17.1            # spearmanr (SHAP ↔ 재구성 오차 기여도 순위 상관)
 scikit-learn==1.8.0      # shap.kmeans 배경 분포 요약, 노트북 평가 지표
+
+# 테스트
+pytest==9.1.1            # tests/ 단위 테스트 (make test) — ROS2 없이 동작

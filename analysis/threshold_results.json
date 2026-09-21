@@ -1,0 +1,4831 @@
+{
+  "meta": {
+    "generated_at": "2026-09-21T21:24:37+0900",
+    "environment": {
+      "python": "3.14.3",
+      "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+      "machine": "arm64",
+      "processor": "arm",
+      "cpu_brand": "Apple M5",
+      "torch": "2.11.0",
+      "torch_num_threads": 4,
+      "cuda_available": false,
+      "numpy": "2.4.3",
+      "cpu_count": 10
+    },
+    "seed": 42,
+    "score_path": "anomaly_detector._infer 와 동일 (VAE forward + MSE, z = mu + std·eps 샘플링, torch.manual_seed 고정)",
+    "decision_rule": "score > threshold (strict) — anomaly_detector 와 동일",
+    "sensor_rate_hz": 10.0,
+    "alert_cooldown_sec": 2.0,
+    "sigma_levels": [
+      0.05,
+      0.1,
+      0.2,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "marginal_auc_range": [
+      0.6,
+      0.999
+    ],
+    "note": "모든 수치는 본 스크립트 실행으로 실측한 값 (추정치 없음)"
+  },
+  "platforms": {
+    "uav": {
+      "dataset": {
+        "calibration": "advanced_attacks.gen_normal(1000, seed=42) 전체 윈도우 981개",
+        "negatives": "advanced_attacks.gen_normal(1000, seed=123) — 보정에 미사용",
+        "positives_nominal": "공격 9종: gen_normal(300, seed=123) 에 t=100 부터 주입, 윈도우가 공격 구간으로 완전히 채워진 181개만 양성",
+        "magnitude_sweep": "GPS(gps_vel_x/y + residual 재계산) / Altitude(baro_alt) 에 정상 피처 표준편차의 m 배를 상수 편향으로 주입",
+        "n_calibration_windows": 981,
+        "n_negative_windows": 981,
+        "n_positive_windows_nominal": 1629,
+        "n_positive_windows_marginal": 905,
+        "marginal_set_rule": "개별 AUC 가 0.6~0.999 인 주입 강도만 모은 집합",
+        "marginal_set_members": [
+          "GPS_0.05sigma",
+          "GPS_0.1sigma",
+          "Altitude_0.5sigma",
+          "Altitude_1.0sigma",
+          "Altitude_2.0sigma"
+        ],
+        "min_resolvable_fpr": 0.001019,
+        "min_resolvable_fpr_alarm_load": {
+          "false_alarms_per_hour_raw": 36.7,
+          "false_alarms_per_hour_with_cooldown": 36.7,
+          "mean_minutes_between_false_alarms": 1.64
+        },
+        "negative_sample_duration_sec": 98.1
+      },
+      "score_distribution": {
+        "calibration_normal": {
+          "n": 981,
+          "mean": 1.0242,
+          "std": 0.1147,
+          "min": 0.7566,
+          "p50": 1.0167,
+          "p95": 1.2301,
+          "p99": 1.3597,
+          "max": 1.505
+        },
+        "heldout_normal": {
+          "n": 981,
+          "mean": 1.0065,
+          "std": 0.1132,
+          "min": 0.7186,
+          "p50": 0.9994,
+          "p95": 1.2034,
+          "p99": 1.2911,
+          "max": 1.4553
+        },
+        "attack_nominal": {
+          "n": 1629,
+          "mean": 4224.2807,
+          "std": 2877.5425,
+          "min": 22.1077,
+          "p50": 3708.9871,
+          "p95": 9151.9494,
+          "p99": 9172.3936,
+          "max": 9181.6064
+        },
+        "attack_marginal": {
+          "n": 905,
+          "mean": 1.2324,
+          "std": 0.2048,
+          "min": 0.8839,
+          "p50": 1.1895,
+          "p95": 1.6115,
+          "p99": 1.7105,
+          "max": 1.8113
+        }
+      },
+      "auc": {
+        "nominal_pooled_all_attacks": 1.0,
+        "nominal_pooled_basic_attacks": 1.0,
+        "nominal_per_attack": {
+          "GPS_Spoofing": 1.0,
+          "Altitude_Spoofing": 1.0,
+          "Command_Injection": 1.0,
+          "Composite_GPS+CmdInj": 1.0,
+          "Composite_GPS+Alt": 1.0,
+          "Gradual_GPS_rate0.3": 1.0,
+          "Gradual_GPS_rate0.1": 1.0,
+          "Gradual_Alt_rate0.5": 1.0,
+          "Gradual_Alt_rate0.2": 1.0
+        },
+        "marginal_pooled": 0.8322
+      },
+      "separation_margin_nominal": {
+        "max_normal_score": 1.4553,
+        "min_attack_score": 22.1077,
+        "perfectly_separable": true,
+        "separating_threshold_interval": [
+          1.4553,
+          22.1077
+        ],
+        "gap_ratio_min_attack_over_max_normal": 15.19,
+        "current_threshold": 1.2301,
+        "current_below_max_normal": true,
+        "current_fpr_on_heldout_normal": 0.0326,
+        "verdict": "현재 임계값이 정상 점수 최댓값보다 낮아, 같은 Recall 을 유지하면서도 FPR 만 더 내는 파레토 열위 지점"
+      },
+      "criteria_nominal": {
+        "current_normal_p95": {
+          "TP": 1629,
+          "FP": 32,
+          "TN": 949,
+          "FN": 0,
+          "threshold": 1.2301,
+          "precision": 0.9807,
+          "recall": 1.0,
+          "f1": 0.9903,
+          "fpr": 0.03262,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 1174.3,
+            "false_alarms_per_hour_with_cooldown": 1174.3,
+            "mean_minutes_between_false_alarms": 0.05
+          },
+          "calib_percentile_equivalent": 95.01,
+          "recall_by_group": {
+            "GPS_Spoofing": 1.0,
+            "Altitude_Spoofing": 1.0,
+            "Command_Injection": 1.0,
+            "Composite_GPS+CmdInj": 1.0,
+            "Composite_GPS+Alt": 1.0,
+            "Gradual_GPS_rate0.3": 1.0,
+            "Gradual_GPS_rate0.1": 1.0,
+            "Gradual_Alt_rate0.5": 1.0,
+            "Gradual_Alt_rate0.2": 1.0
+          }
+        },
+        "youden_j": {
+          "TP": 1629,
+          "FP": 0,
+          "TN": 981,
+          "FN": 0,
+          "threshold": 1.4553,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fpr": 0.0,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 0.0,
+            "false_alarms_per_hour_with_cooldown": 0.0,
+            "mean_minutes_between_false_alarms": null
+          },
+          "calib_percentile_equivalent": 99.8,
+          "recall_by_group": {
+            "GPS_Spoofing": 1.0,
+            "Altitude_Spoofing": 1.0,
+            "Command_Injection": 1.0,
+            "Composite_GPS+CmdInj": 1.0,
+            "Composite_GPS+Alt": 1.0,
+            "Gradual_GPS_rate0.3": 1.0,
+            "Gradual_GPS_rate0.1": 1.0,
+            "Gradual_Alt_rate0.5": 1.0,
+            "Gradual_Alt_rate0.2": 1.0
+          }
+        },
+        "target_fpr_1pct": {
+          "TP": 1629,
+          "FP": 0,
+          "TN": 981,
+          "FN": 0,
+          "threshold": 1.4553,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fpr": 0.0,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 0.0,
+            "false_alarms_per_hour_with_cooldown": 0.0,
+            "mean_minutes_between_false_alarms": null
+          },
+          "calib_percentile_equivalent": 99.8,
+          "recall_by_group": {
+            "GPS_Spoofing": 1.0,
+            "Altitude_Spoofing": 1.0,
+            "Command_Injection": 1.0,
+            "Composite_GPS+CmdInj": 1.0,
+            "Composite_GPS+Alt": 1.0,
+            "Gradual_GPS_rate0.3": 1.0,
+            "Gradual_GPS_rate0.1": 1.0,
+            "Gradual_Alt_rate0.5": 1.0,
+            "Gradual_Alt_rate0.2": 1.0
+          }
+        },
+        "target_fpr_5pct": {
+          "TP": 1629,
+          "FP": 0,
+          "TN": 981,
+          "FN": 0,
+          "threshold": 1.4553,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fpr": 0.0,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 0.0,
+            "false_alarms_per_hour_with_cooldown": 0.0,
+            "mean_minutes_between_false_alarms": null
+          },
+          "calib_percentile_equivalent": 99.8,
+          "recall_by_group": {
+            "GPS_Spoofing": 1.0,
+            "Altitude_Spoofing": 1.0,
+            "Command_Injection": 1.0,
+            "Composite_GPS+CmdInj": 1.0,
+            "Composite_GPS+Alt": 1.0,
+            "Gradual_GPS_rate0.3": 1.0,
+            "Gradual_GPS_rate0.1": 1.0,
+            "Gradual_Alt_rate0.5": 1.0,
+            "Gradual_Alt_rate0.2": 1.0
+          }
+        },
+        "max_f1": {
+          "TP": 1629,
+          "FP": 0,
+          "TN": 981,
+          "FN": 0,
+          "threshold": 1.4553,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fpr": 0.0,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 0.0,
+            "false_alarms_per_hour_with_cooldown": 0.0,
+            "mean_minutes_between_false_alarms": null
+          },
+          "calib_percentile_equivalent": 99.8,
+          "recall_by_group": {
+            "GPS_Spoofing": 1.0,
+            "Altitude_Spoofing": 1.0,
+            "Command_Injection": 1.0,
+            "Composite_GPS+CmdInj": 1.0,
+            "Composite_GPS+Alt": 1.0,
+            "Gradual_GPS_rate0.3": 1.0,
+            "Gradual_GPS_rate0.1": 1.0,
+            "Gradual_Alt_rate0.5": 1.0,
+            "Gradual_Alt_rate0.2": 1.0
+          }
+        },
+        "min_cost_fn10": {
+          "TP": 1629,
+          "FP": 0,
+          "TN": 981,
+          "FN": 0,
+          "threshold": 1.4553,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fpr": 0.0,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 0.0,
+            "false_alarms_per_hour_with_cooldown": 0.0,
+            "mean_minutes_between_false_alarms": null
+          },
+          "calib_percentile_equivalent": 99.8,
+          "recall_by_group": {
+            "GPS_Spoofing": 1.0,
+            "Altitude_Spoofing": 1.0,
+            "Command_Injection": 1.0,
+            "Composite_GPS+CmdInj": 1.0,
+            "Composite_GPS+Alt": 1.0,
+            "Gradual_GPS_rate0.3": 1.0,
+            "Gradual_GPS_rate0.1": 1.0,
+            "Gradual_Alt_rate0.5": 1.0,
+            "Gradual_Alt_rate0.2": 1.0
+          }
+        }
+      },
+      "criteria_marginal": {
+        "current_normal_p95": {
+          "TP": 390,
+          "FP": 32,
+          "TN": 949,
+          "FN": 515,
+          "threshold": 1.2301,
+          "precision": 0.9242,
+          "recall": 0.4309,
+          "f1": 0.5878,
+          "fpr": 0.03262,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 1174.3,
+            "false_alarms_per_hour_with_cooldown": 1174.3,
+            "mean_minutes_between_false_alarms": 0.05
+          },
+          "calib_percentile_equivalent": 95.01,
+          "recall_by_group": {
+            "GPS_0.05sigma": 0.1326,
+            "GPS_0.1sigma": 0.8343,
+            "Altitude_0.5sigma": 0.0166,
+            "Altitude_1.0sigma": 0.1713,
+            "Altitude_2.0sigma": 1.0
+          }
+        },
+        "youden_j": {
+          "TP": 638,
+          "FP": 214,
+          "TN": 767,
+          "FN": 267,
+          "threshold": 1.0891,
+          "precision": 0.7488,
+          "recall": 0.705,
+          "f1": 0.7262,
+          "fpr": 0.218145,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 7853.2,
+            "false_alarms_per_hour_with_cooldown": 1800.0,
+            "mean_minutes_between_false_alarms": 0.03
+          },
+          "calib_percentile_equivalent": 74.41,
+          "recall_by_group": {
+            "GPS_0.05sigma": 0.4917,
+            "GPS_0.1sigma": 1.0,
+            "Altitude_0.5sigma": 0.326,
+            "Altitude_1.0sigma": 0.7072,
+            "Altitude_2.0sigma": 1.0
+          }
+        },
+        "target_fpr_1pct": {
+          "TP": 302,
+          "FP": 9,
+          "TN": 972,
+          "FN": 603,
+          "threshold": 1.3021,
+          "precision": 0.9711,
+          "recall": 0.3337,
+          "f1": 0.4967,
+          "fpr": 0.009174,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 330.3,
+            "false_alarms_per_hour_with_cooldown": 330.3,
+            "mean_minutes_between_false_alarms": 0.18
+          },
+          "calib_percentile_equivalent": 98.27,
+          "recall_by_group": {
+            "GPS_0.05sigma": 0.0331,
+            "GPS_0.1sigma": 0.6354,
+            "Altitude_0.5sigma": 0.0,
+            "Altitude_1.0sigma": 0.0387,
+            "Altitude_2.0sigma": 0.9613
+          }
+        },
+        "target_fpr_5pct": {
+          "TP": 432,
+          "FP": 49,
+          "TN": 932,
+          "FN": 473,
+          "threshold": 1.2034,
+          "precision": 0.8981,
+          "recall": 0.4773,
+          "f1": 0.6234,
+          "fpr": 0.049949,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 1798.2,
+            "false_alarms_per_hour_with_cooldown": 1798.2,
+            "mean_minutes_between_false_alarms": 0.03
+          },
+          "calib_percentile_equivalent": 93.07,
+          "recall_by_group": {
+            "GPS_0.05sigma": 0.1934,
+            "GPS_0.1sigma": 0.895,
+            "Altitude_0.5sigma": 0.0552,
+            "Altitude_1.0sigma": 0.2431,
+            "Altitude_2.0sigma": 1.0
+          }
+        },
+        "max_f1": {
+          "TP": 809,
+          "FP": 482,
+          "TN": 499,
+          "FN": 96,
+          "threshold": 1.0005,
+          "precision": 0.6266,
+          "recall": 0.8939,
+          "f1": 0.7368,
+          "fpr": 0.491335,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 17688.1,
+            "false_alarms_per_hour_with_cooldown": 1800.0,
+            "mean_minutes_between_false_alarms": 0.03
+          },
+          "calib_percentile_equivalent": 44.24,
+          "recall_by_group": {
+            "GPS_0.05sigma": 0.8398,
+            "GPS_0.1sigma": 1.0,
+            "Altitude_0.5sigma": 0.7017,
+            "Altitude_1.0sigma": 0.9282,
+            "Altitude_2.0sigma": 1.0
+          }
+        },
+        "min_cost_fn10": {
+          "TP": 900,
+          "FP": 778,
+          "TN": 203,
+          "FN": 5,
+          "threshold": 0.9129,
+          "precision": 0.5364,
+          "recall": 0.9945,
+          "f1": 0.6969,
+          "fpr": 0.793068,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 28550.4,
+            "false_alarms_per_hour_with_cooldown": 1800.0,
+            "mean_minutes_between_false_alarms": 0.03
+          },
+          "calib_percentile_equivalent": 17.13,
+          "recall_by_group": {
+            "GPS_0.05sigma": 1.0,
+            "GPS_0.1sigma": 1.0,
+            "Altitude_0.5sigma": 0.9724,
+            "Altitude_1.0sigma": 1.0,
+            "Altitude_2.0sigma": 1.0
+          }
+        }
+      },
+      "cost_ratio_sweep_marginal": {
+        "1:1": {
+          "cost_fn_over_fp": 1,
+          "threshold": 1.1276,
+          "recall": 0.6199,
+          "fpr": 0.137615,
+          "precision": 0.806,
+          "f1": 0.7008,
+          "FN": 344,
+          "FP": 135,
+          "false_alarms_per_hour_with_cooldown": 1800.0
+        },
+        "3:1": {
+          "cost_fn_over_fp": 3,
+          "threshold": 0.972,
+          "recall": 0.9403,
+          "fpr": 0.600408,
+          "precision": 0.591,
+          "f1": 0.7258,
+          "FN": 54,
+          "FP": 589,
+          "false_alarms_per_hour_with_cooldown": 1800.0
+        },
+        "10:1": {
+          "cost_fn_over_fp": 10,
+          "threshold": 0.9129,
+          "recall": 0.9945,
+          "fpr": 0.793068,
+          "precision": 0.5364,
+          "f1": 0.6969,
+          "FN": 5,
+          "FP": 778,
+          "false_alarms_per_hour_with_cooldown": 1800.0
+        },
+        "30:1": {
+          "cost_fn_over_fp": 30,
+          "threshold": 0.8836,
+          "recall": 1.0,
+          "fpr": 0.866463,
+          "precision": 0.5157,
+          "f1": 0.6805,
+          "FN": 0,
+          "FP": 850,
+          "false_alarms_per_hour_with_cooldown": 1800.0
+        },
+        "100:1": {
+          "cost_fn_over_fp": 100,
+          "threshold": 0.8836,
+          "recall": 1.0,
+          "fpr": 0.866463,
+          "precision": 0.5157,
+          "f1": 0.6805,
+          "FN": 0,
+          "FP": 850,
+          "false_alarms_per_hour_with_cooldown": 1800.0
+        }
+      },
+      "magnitude_sweep": {
+        "GPS": [
+          {
+            "magnitude_sigma": 0.05,
+            "n_positive": 181,
+            "attack_score_mean": 1.1073,
+            "auc": 0.7443,
+            "recall_at_current_p95": 0.1326
+          },
+          {
+            "magnitude_sigma": 0.1,
+            "n_positive": 181,
+            "attack_score_mean": 1.3638,
+            "auc": 0.9847,
+            "recall_at_current_p95": 0.8343
+          },
+          {
+            "magnitude_sigma": 0.2,
+            "n_positive": 181,
+            "attack_score_mean": 2.3875,
+            "auc": 1.0,
+            "recall_at_current_p95": 1.0
+          },
+          {
+            "magnitude_sigma": 0.5,
+            "n_positive": 181,
+            "attack_score_mean": 9.5789,
+            "auc": 1.0,
+            "recall_at_current_p95": 1.0
+          },
+          {
+            "magnitude_sigma": 1.0,
+            "n_positive": 181,
+            "attack_score_mean": 35.2987,
+            "auc": 1.0,
+            "recall_at_current_p95": 1.0
+          },
+          {
+            "magnitude_sigma": 2.0,
+            "n_positive": 181,
+            "attack_score_mean": 138.1876,
+            "auc": 1.0,
+            "recall_at_current_p95": 1.0
+          }
+        ],
+        "Altitude": [
+          {
+            "magnitude_sigma": 0.05,
+            "n_positive": 181,
+            "attack_score_mean": 1.0199,
+            "auc": 0.5402,
+            "recall_at_current_p95": 0.0055
+          },
+          {
+            "magnitude_sigma": 0.1,
+            "n_positive": 181,
+            "attack_score_mean": 1.0205,
+            "auc": 0.5419,
+            "recall_at_current_p95": 0.0055
+          },
+          {
+            "magnitude_sigma": 0.2,
+            "n_positive": 181,
+            "attack_score_mean": 1.0237,
+            "auc": 0.5508,
+            "recall_at_current_p95": 0.0055
+          },
+          {
+            "magnitude_sigma": 0.5,
+            "n_positive": 181,
+            "attack_score_mean": 1.0479,
+            "auc": 0.6171,
+            "recall_at_current_p95": 0.0166
+          },
+          {
+            "magnitude_sigma": 1.0,
+            "n_positive": 181,
+            "attack_score_mean": 1.1378,
+            "auc": 0.8169,
+            "recall_at_current_p95": 0.1713
+          },
+          {
+            "magnitude_sigma": 2.0,
+            "n_positive": 181,
+            "attack_score_mean": 1.505,
+            "auc": 0.9982,
+            "recall_at_current_p95": 1.0
+          }
+        ]
+      },
+      "boundary_contamination": {
+        "current_normal_p95": {
+          "threshold": 1.2301,
+          "first_detection": {
+            "GPS_Spoofing": {
+              "first_detected_contamination_k": 2,
+              "implied_detection_delay_ms": 200
+            },
+            "Altitude_Spoofing": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Command_Injection": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Composite_GPS+CmdInj": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Composite_GPS+Alt": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Gradual_GPS_rate0.3": {
+              "first_detected_contamination_k": 3,
+              "implied_detection_delay_ms": 300
+            },
+            "Gradual_GPS_rate0.1": {
+              "first_detected_contamination_k": 4,
+              "implied_detection_delay_ms": 400
+            },
+            "Gradual_Alt_rate0.5": {
+              "first_detected_contamination_k": 4,
+              "implied_detection_delay_ms": 400
+            },
+            "Gradual_Alt_rate0.2": {
+              "first_detected_contamination_k": 6,
+              "implied_detection_delay_ms": 600
+            }
+          },
+          "by_k": {
+            "1": {
+              "GPS_Spoofing": {
+                "mean_score": 0.9542,
+                "detected": false
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 134.2719,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 33.5921,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 33.5921,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 134.2719,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 0.9542,
+                "detected": false
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 0.9542,
+                "detected": false
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 0.9542,
+                "detected": false
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 0.9542,
+                "detected": false
+              }
+            },
+            "2": {
+              "GPS_Spoofing": {
+                "mean_score": 19.0517,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 268.607,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 59.8414,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 77.945,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 286.7161,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 1.2213,
+                "detected": false
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 0.9641,
+                "detected": false
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 0.9516,
+                "detected": false
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 0.9261,
+                "detected": false
+              }
+            },
+            "3": {
+              "GPS_Spoofing": {
+                "mean_score": 87.5702,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 405.9511,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 80.3729,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 167.0434,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 492.6429,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 2.2314,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 1.0175,
+                "detected": false
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 1.1648,
+                "detected": false
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 0.9307,
+                "detected": false
+              }
+            },
+            "4": {
+              "GPS_Spoofing": {
+                "mean_score": 232.364,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 541.2288,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 102.8322,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 334.2201,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 772.6404,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 4.6902,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 1.2947,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 1.6222,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 1.0233,
+                "detected": false
+              }
+            },
+            "5": {
+              "GPS_Spoofing": {
+                "mean_score": 466.5203,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 679.582,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 124.5666,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 590.1904,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 1144.968,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 9.0504,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 1.686,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 2.5009,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 1.146,
+                "detected": false
+              }
+            },
+            "6": {
+              "GPS_Spoofing": {
+                "mean_score": 795.049,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 816.4663,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 148.1123,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 942.1846,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 1609.3302,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 16.9128,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 2.7424,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 3.7644,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 1.3238,
+                "detected": true
+              }
+            },
+            "7": {
+              "GPS_Spoofing": {
+                "mean_score": 1187.5663,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 951.3075,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 181.6082,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 1368.2454,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 2137.8074,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 26.5063,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 3.6684,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 5.8158,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 1.6719,
+                "detected": true
+              }
+            },
+            "8": {
+              "GPS_Spoofing": {
+                "mean_score": 1627.7001,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1088.8308,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 198.3677,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 1825.1178,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 2716.0288,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 39.8002,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 4.9205,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 8.6279,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 2.1029,
+                "detected": true
+              }
+            },
+            "9": {
+              "GPS_Spoofing": {
+                "mean_score": 2087.4158,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1223.281,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 221.9855,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 2308.4614,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 3310.7598,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 58.7856,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 7.2164,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 12.082,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 2.678,
+                "detected": true
+              }
+            },
+            "10": {
+              "GPS_Spoofing": {
+                "mean_score": 2524.8433,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1362.9978,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 254.878,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 2778.4956,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 3887.1855,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 82.777,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 10.0799,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 17.0559,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 3.6113,
+                "detected": true
+              }
+            },
+            "11": {
+              "GPS_Spoofing": {
+                "mean_score": 2903.5054,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1495.7278,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 289.0614,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 3190.6301,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 4399.896,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 111.4987,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 13.3498,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 21.8759,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 4.2531,
+                "detected": true
+              }
+            },
+            "12": {
+              "GPS_Spoofing": {
+                "mean_score": 3201.981,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1628.6709,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 318.9417,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 3519.241,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 4829.1978,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 146.2197,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 17.2597,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 28.0914,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 5.1785,
+                "detected": true
+              }
+            },
+            "13": {
+              "GPS_Spoofing": {
+                "mean_score": 3414.136,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1765.9424,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 337.6611,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 3750.0164,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 5178.5352,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 188.7255,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 22.2946,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 36.0568,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 6.4851,
+                "detected": true
+              }
+            },
+            "14": {
+              "GPS_Spoofing": {
+                "mean_score": 3533.3672,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1899.8174,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 361.3701,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 3893.2358,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 5433.0864,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 235.6635,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 27.2183,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 44.7315,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 7.774,
+                "detected": true
+              }
+            },
+            "15": {
+              "GPS_Spoofing": {
+                "mean_score": 3584.6218,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 2034.4447,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 396.6897,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 3979.3667,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 5622.605,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 291.1697,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 33.2449,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 54.9829,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 9.2765,
+                "detected": true
+              }
+            },
+            "16": {
+              "GPS_Spoofing": {
+                "mean_score": 3592.429,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 2169.0261,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 436.1703,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 4027.1289,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 5764.1328,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 354.0012,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 39.9282,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 66.9069,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 11.0739,
+                "detected": true
+              }
+            },
+            "17": {
+              "GPS_Spoofing": {
+                "mean_score": 3593.9976,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 2304.0886,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 467.6098,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 4060.405,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 5898.0005,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 428.0356,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 48.3547,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 81.3676,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 13.5362,
+                "detected": true
+              }
+            },
+            "18": {
+              "GPS_Spoofing": {
+                "mean_score": 3623.9512,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 2437.0332,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 485.8058,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 4108.6978,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 6059.8877,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 510.4461,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 57.4571,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 96.6286,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 15.8458,
+                "detected": true
+              }
+            },
+            "19": {
+              "GPS_Spoofing": {
+                "mean_score": 3710.7825,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 2572.5703,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 522.2022,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 4231.8799,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 6279.6885,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 606.1766,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 68.8268,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 114.0614,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 18.5802,
+                "detected": true
+              }
+            }
+          }
+        },
+        "marginal_youden_j": {
+          "threshold": 1.0891,
+          "first_detection": {
+            "GPS_Spoofing": {
+              "first_detected_contamination_k": 2,
+              "implied_detection_delay_ms": 200
+            },
+            "Altitude_Spoofing": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Command_Injection": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Composite_GPS+CmdInj": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Composite_GPS+Alt": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Gradual_GPS_rate0.3": {
+              "first_detected_contamination_k": 2,
+              "implied_detection_delay_ms": 200
+            },
+            "Gradual_GPS_rate0.1": {
+              "first_detected_contamination_k": 4,
+              "implied_detection_delay_ms": 400
+            },
+            "Gradual_Alt_rate0.5": {
+              "first_detected_contamination_k": 3,
+              "implied_detection_delay_ms": 300
+            },
+            "Gradual_Alt_rate0.2": {
+              "first_detected_contamination_k": 5,
+              "implied_detection_delay_ms": 500
+            }
+          },
+          "by_k": {
+            "1": {
+              "GPS_Spoofing": {
+                "mean_score": 0.9542,
+                "detected": false
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 134.2719,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 33.5921,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 33.5921,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 134.2719,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 0.9542,
+                "detected": false
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 0.9542,
+                "detected": false
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 0.9542,
+                "detected": false
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 0.9542,
+                "detected": false
+              }
+            },
+            "2": {
+              "GPS_Spoofing": {
+                "mean_score": 19.0517,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 268.607,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 59.8414,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 77.945,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 286.7161,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 1.2213,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 0.9641,
+                "detected": false
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 0.9516,
+                "detected": false
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 0.9261,
+                "detected": false
+              }
+            },
+            "3": {
+              "GPS_Spoofing": {
+                "mean_score": 87.5702,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 405.9511,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 80.3729,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 167.0434,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 492.6429,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 2.2314,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 1.0175,
+                "detected": false
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 1.1648,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 0.9307,
+                "detected": false
+              }
+            },
+            "4": {
+              "GPS_Spoofing": {
+                "mean_score": 232.364,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 541.2288,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 102.8322,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 334.2201,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 772.6404,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 4.6902,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 1.2947,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 1.6222,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 1.0233,
+                "detected": false
+              }
+            },
+            "5": {
+              "GPS_Spoofing": {
+                "mean_score": 466.5203,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 679.582,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 124.5666,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 590.1904,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 1144.968,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 9.0504,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 1.686,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 2.5009,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 1.146,
+                "detected": true
+              }
+            },
+            "6": {
+              "GPS_Spoofing": {
+                "mean_score": 795.049,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 816.4663,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 148.1123,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 942.1846,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 1609.3302,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 16.9128,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 2.7424,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 3.7644,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 1.3238,
+                "detected": true
+              }
+            },
+            "7": {
+              "GPS_Spoofing": {
+                "mean_score": 1187.5663,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 951.3075,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 181.6082,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 1368.2454,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 2137.8074,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 26.5063,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 3.6684,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 5.8158,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 1.6719,
+                "detected": true
+              }
+            },
+            "8": {
+              "GPS_Spoofing": {
+                "mean_score": 1627.7001,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1088.8308,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 198.3677,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 1825.1178,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 2716.0288,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 39.8002,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 4.9205,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 8.6279,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 2.1029,
+                "detected": true
+              }
+            },
+            "9": {
+              "GPS_Spoofing": {
+                "mean_score": 2087.4158,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1223.281,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 221.9855,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 2308.4614,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 3310.7598,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 58.7856,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 7.2164,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 12.082,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 2.678,
+                "detected": true
+              }
+            },
+            "10": {
+              "GPS_Spoofing": {
+                "mean_score": 2524.8433,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1362.9978,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 254.878,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 2778.4956,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 3887.1855,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 82.777,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 10.0799,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 17.0559,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 3.6113,
+                "detected": true
+              }
+            },
+            "11": {
+              "GPS_Spoofing": {
+                "mean_score": 2903.5054,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1495.7278,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 289.0614,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 3190.6301,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 4399.896,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 111.4987,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 13.3498,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 21.8759,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 4.2531,
+                "detected": true
+              }
+            },
+            "12": {
+              "GPS_Spoofing": {
+                "mean_score": 3201.981,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1628.6709,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 318.9417,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 3519.241,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 4829.1978,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 146.2197,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 17.2597,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 28.0914,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 5.1785,
+                "detected": true
+              }
+            },
+            "13": {
+              "GPS_Spoofing": {
+                "mean_score": 3414.136,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1765.9424,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 337.6611,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 3750.0164,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 5178.5352,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 188.7255,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 22.2946,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 36.0568,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 6.4851,
+                "detected": true
+              }
+            },
+            "14": {
+              "GPS_Spoofing": {
+                "mean_score": 3533.3672,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1899.8174,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 361.3701,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 3893.2358,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 5433.0864,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 235.6635,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 27.2183,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 44.7315,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 7.774,
+                "detected": true
+              }
+            },
+            "15": {
+              "GPS_Spoofing": {
+                "mean_score": 3584.6218,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 2034.4447,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 396.6897,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 3979.3667,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 5622.605,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 291.1697,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 33.2449,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 54.9829,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 9.2765,
+                "detected": true
+              }
+            },
+            "16": {
+              "GPS_Spoofing": {
+                "mean_score": 3592.429,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 2169.0261,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 436.1703,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 4027.1289,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 5764.1328,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 354.0012,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 39.9282,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 66.9069,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 11.0739,
+                "detected": true
+              }
+            },
+            "17": {
+              "GPS_Spoofing": {
+                "mean_score": 3593.9976,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 2304.0886,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 467.6098,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 4060.405,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 5898.0005,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 428.0356,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 48.3547,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 81.3676,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 13.5362,
+                "detected": true
+              }
+            },
+            "18": {
+              "GPS_Spoofing": {
+                "mean_score": 3623.9512,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 2437.0332,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 485.8058,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 4108.6978,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 6059.8877,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 510.4461,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 57.4571,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 96.6286,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 15.8458,
+                "detected": true
+              }
+            },
+            "19": {
+              "GPS_Spoofing": {
+                "mean_score": 3710.7825,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 2572.5703,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 522.2022,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 4231.8799,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 6279.6885,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 606.1766,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 68.8268,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 114.0614,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 18.5802,
+                "detected": true
+              }
+            }
+          }
+        },
+        "marginal_min_cost_fn10": {
+          "threshold": 0.9129,
+          "first_detection": {
+            "GPS_Spoofing": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Altitude_Spoofing": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Command_Injection": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Composite_GPS+CmdInj": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Composite_GPS+Alt": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Gradual_GPS_rate0.3": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Gradual_GPS_rate0.1": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Gradual_Alt_rate0.5": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Gradual_Alt_rate0.2": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            }
+          },
+          "by_k": {
+            "1": {
+              "GPS_Spoofing": {
+                "mean_score": 0.9542,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 134.2719,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 33.5921,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 33.5921,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 134.2719,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 0.9542,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 0.9542,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 0.9542,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 0.9542,
+                "detected": true
+              }
+            },
+            "2": {
+              "GPS_Spoofing": {
+                "mean_score": 19.0517,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 268.607,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 59.8414,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 77.945,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 286.7161,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 1.2213,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 0.9641,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 0.9516,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 0.9261,
+                "detected": true
+              }
+            },
+            "3": {
+              "GPS_Spoofing": {
+                "mean_score": 87.5702,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 405.9511,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 80.3729,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 167.0434,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 492.6429,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 2.2314,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 1.0175,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 1.1648,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 0.9307,
+                "detected": true
+              }
+            },
+            "4": {
+              "GPS_Spoofing": {
+                "mean_score": 232.364,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 541.2288,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 102.8322,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 334.2201,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 772.6404,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 4.6902,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 1.2947,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 1.6222,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 1.0233,
+                "detected": true
+              }
+            },
+            "5": {
+              "GPS_Spoofing": {
+                "mean_score": 466.5203,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 679.582,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 124.5666,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 590.1904,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 1144.968,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 9.0504,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 1.686,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 2.5009,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 1.146,
+                "detected": true
+              }
+            },
+            "6": {
+              "GPS_Spoofing": {
+                "mean_score": 795.049,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 816.4663,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 148.1123,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 942.1846,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 1609.3302,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 16.9128,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 2.7424,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 3.7644,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 1.3238,
+                "detected": true
+              }
+            },
+            "7": {
+              "GPS_Spoofing": {
+                "mean_score": 1187.5663,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 951.3075,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 181.6082,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 1368.2454,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 2137.8074,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 26.5063,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 3.6684,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 5.8158,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 1.6719,
+                "detected": true
+              }
+            },
+            "8": {
+              "GPS_Spoofing": {
+                "mean_score": 1627.7001,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1088.8308,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 198.3677,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 1825.1178,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 2716.0288,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 39.8002,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 4.9205,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 8.6279,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 2.1029,
+                "detected": true
+              }
+            },
+            "9": {
+              "GPS_Spoofing": {
+                "mean_score": 2087.4158,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1223.281,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 221.9855,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 2308.4614,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 3310.7598,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 58.7856,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 7.2164,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 12.082,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 2.678,
+                "detected": true
+              }
+            },
+            "10": {
+              "GPS_Spoofing": {
+                "mean_score": 2524.8433,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1362.9978,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 254.878,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 2778.4956,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 3887.1855,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 82.777,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 10.0799,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 17.0559,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 3.6113,
+                "detected": true
+              }
+            },
+            "11": {
+              "GPS_Spoofing": {
+                "mean_score": 2903.5054,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1495.7278,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 289.0614,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 3190.6301,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 4399.896,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 111.4987,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 13.3498,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 21.8759,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 4.2531,
+                "detected": true
+              }
+            },
+            "12": {
+              "GPS_Spoofing": {
+                "mean_score": 3201.981,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1628.6709,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 318.9417,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 3519.241,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 4829.1978,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 146.2197,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 17.2597,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 28.0914,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 5.1785,
+                "detected": true
+              }
+            },
+            "13": {
+              "GPS_Spoofing": {
+                "mean_score": 3414.136,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1765.9424,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 337.6611,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 3750.0164,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 5178.5352,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 188.7255,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 22.2946,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 36.0568,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 6.4851,
+                "detected": true
+              }
+            },
+            "14": {
+              "GPS_Spoofing": {
+                "mean_score": 3533.3672,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 1899.8174,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 361.3701,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 3893.2358,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 5433.0864,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 235.6635,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 27.2183,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 44.7315,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 7.774,
+                "detected": true
+              }
+            },
+            "15": {
+              "GPS_Spoofing": {
+                "mean_score": 3584.6218,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 2034.4447,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 396.6897,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 3979.3667,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 5622.605,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 291.1697,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 33.2449,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 54.9829,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 9.2765,
+                "detected": true
+              }
+            },
+            "16": {
+              "GPS_Spoofing": {
+                "mean_score": 3592.429,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 2169.0261,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 436.1703,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 4027.1289,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 5764.1328,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 354.0012,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 39.9282,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 66.9069,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 11.0739,
+                "detected": true
+              }
+            },
+            "17": {
+              "GPS_Spoofing": {
+                "mean_score": 3593.9976,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 2304.0886,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 467.6098,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 4060.405,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 5898.0005,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 428.0356,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 48.3547,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 81.3676,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 13.5362,
+                "detected": true
+              }
+            },
+            "18": {
+              "GPS_Spoofing": {
+                "mean_score": 3623.9512,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 2437.0332,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 485.8058,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 4108.6978,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 6059.8877,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 510.4461,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 57.4571,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 96.6286,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 15.8458,
+                "detected": true
+              }
+            },
+            "19": {
+              "GPS_Spoofing": {
+                "mean_score": 3710.7825,
+                "detected": true
+              },
+              "Altitude_Spoofing": {
+                "mean_score": 2572.5703,
+                "detected": true
+              },
+              "Command_Injection": {
+                "mean_score": 522.2022,
+                "detected": true
+              },
+              "Composite_GPS+CmdInj": {
+                "mean_score": 4231.8799,
+                "detected": true
+              },
+              "Composite_GPS+Alt": {
+                "mean_score": 6279.6885,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.3": {
+                "mean_score": 606.1766,
+                "detected": true
+              },
+              "Gradual_GPS_rate0.1": {
+                "mean_score": 68.8268,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.5": {
+                "mean_score": 114.0614,
+                "detected": true
+              },
+              "Gradual_Alt_rate0.2": {
+                "mean_score": 18.5802,
+                "detected": true
+              }
+            }
+          }
+        }
+      },
+      "recall_decomposition": {
+        "current_normal_p95": {
+          "threshold": 1.2301,
+          "per_attack": {
+            "GPS_Spoofing": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.7224,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 77,
+              "FN_from_boundary_windows": 1,
+              "FN_from_true_miss": 0
+            },
+            "Altitude_Spoofing": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.726,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 77,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Command_Injection": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.726,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 77,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Composite_GPS+CmdInj": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.726,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 77,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Composite_GPS+Alt": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.726,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 77,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Gradual_GPS_rate0.3": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.7189,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 77,
+              "FN_from_boundary_windows": 2,
+              "FN_from_true_miss": 0
+            },
+            "Gradual_GPS_rate0.1": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.7153,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 77,
+              "FN_from_boundary_windows": 3,
+              "FN_from_true_miss": 0
+            },
+            "Gradual_Alt_rate0.5": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.7153,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 77,
+              "FN_from_boundary_windows": 3,
+              "FN_from_true_miss": 0
+            },
+            "Gradual_Alt_rate0.2": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.7082,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 77,
+              "FN_from_boundary_windows": 5,
+              "FN_from_true_miss": 0
+            }
+          },
+          "aggregate": {
+            "a_label_artifact_FN": 693,
+            "b_boundary_FN": 14,
+            "c_true_missed_FN": 0,
+            "n_full_attack": 1629,
+            "n_boundary": 171,
+            "n_full_normal": 729,
+            "n_windows_total": 2529,
+            "detected_full_attack": 1629,
+            "detected_total": 1822,
+            "total_FN_notebook_style": 707,
+            "share_label_artifact": 0.9802,
+            "share_boundary": 0.0198,
+            "share_true_miss": 0.0,
+            "recall_notebook_style": 0.7204,
+            "recall_full_attack_windows_only": 1.0
+          }
+        },
+        "marginal_youden_j": {
+          "threshold": 1.0891,
+          "per_attack": {
+            "GPS_Spoofing": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.8149,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 51,
+              "FN_from_boundary_windows": 1,
+              "FN_from_true_miss": 0
+            },
+            "Altitude_Spoofing": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.8185,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 51,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Command_Injection": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.8185,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 51,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Composite_GPS+CmdInj": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.8185,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 51,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Composite_GPS+Alt": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.8185,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 51,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Gradual_GPS_rate0.3": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.8149,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 51,
+              "FN_from_boundary_windows": 1,
+              "FN_from_true_miss": 0
+            },
+            "Gradual_GPS_rate0.1": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.8078,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 51,
+              "FN_from_boundary_windows": 3,
+              "FN_from_true_miss": 0
+            },
+            "Gradual_Alt_rate0.5": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.8114,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 51,
+              "FN_from_boundary_windows": 2,
+              "FN_from_true_miss": 0
+            },
+            "Gradual_Alt_rate0.2": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.8043,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 51,
+              "FN_from_boundary_windows": 4,
+              "FN_from_true_miss": 0
+            }
+          },
+          "aggregate": {
+            "a_label_artifact_FN": 459,
+            "b_boundary_FN": 11,
+            "c_true_missed_FN": 0,
+            "n_full_attack": 1629,
+            "n_boundary": 171,
+            "n_full_normal": 729,
+            "n_windows_total": 2529,
+            "detected_full_attack": 1629,
+            "detected_total": 2059,
+            "total_FN_notebook_style": 470,
+            "share_label_artifact": 0.9766,
+            "share_boundary": 0.0234,
+            "share_true_miss": 0.0,
+            "recall_notebook_style": 0.8142,
+            "recall_full_attack_windows_only": 1.0
+          }
+        },
+        "marginal_min_cost_fn10": {
+          "threshold": 0.9129,
+          "per_attack": {
+            "GPS_Spoofing": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.968,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 9,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Altitude_Spoofing": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.968,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 9,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Command_Injection": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.968,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 9,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Composite_GPS+CmdInj": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.968,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 9,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Composite_GPS+Alt": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.968,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 9,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Gradual_GPS_rate0.3": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.968,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 9,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Gradual_GPS_rate0.1": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.968,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 9,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Gradual_Alt_rate0.5": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.968,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 9,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Gradual_Alt_rate0.2": {
+              "n_windows_total": 281,
+              "n_full_normal_content": 81,
+              "n_boundary": 19,
+              "n_full_attack": 181,
+              "recall_notebook_style_all_windows_positive": 0.968,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 9,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            }
+          },
+          "aggregate": {
+            "a_label_artifact_FN": 81,
+            "b_boundary_FN": 0,
+            "c_true_missed_FN": 0,
+            "n_full_attack": 1629,
+            "n_boundary": 171,
+            "n_full_normal": 729,
+            "n_windows_total": 2529,
+            "detected_full_attack": 1629,
+            "detected_total": 2448,
+            "total_FN_notebook_style": 81,
+            "share_label_artifact": 1.0,
+            "share_boundary": 0.0,
+            "share_true_miss": 0.0,
+            "recall_notebook_style": 0.968,
+            "recall_full_attack_windows_only": 1.0
+          }
+        }
+      },
+      "threshold_for_notebook_style_recall": {
+        "recall_0.90": {
+          "required_threshold": 0.9738,
+          "achieved_recall_notebook_style": 0.8988,
+          "heldout_normal_fpr": 0.5953,
+          "false_alarms_per_hour_with_cooldown": 1800.0
+        },
+        "recall_0.95": {
+          "required_threshold": 0.9308,
+          "achieved_recall_notebook_style": 0.9494,
+          "heldout_normal_fpr": 0.7533,
+          "false_alarms_per_hour_with_cooldown": 1800.0
+        },
+        "recall_0.99": {
+          "required_threshold": 0.8769,
+          "achieved_recall_notebook_style": 0.9893,
+          "heldout_normal_fpr": 0.8807,
+          "false_alarms_per_hour_with_cooldown": 1800.0
+        }
+      }
+    },
+    "ugv": {
+      "dataset": {
+        "calibration": "ugv_data.generate_normal(1000, seed=42) 윈도우의 뒤 20 %",
+        "negatives": "ugv_data.generate_normal(1000, seed=123) — 보정에 미사용",
+        "positives_nominal": "window_labels == 1 (공격 주입 구간에 완전히 포함된 윈도우)",
+        "magnitude_sweep": "GPS(gps_vel + residual) / Wheel(wheel_vel_l/r) 에 정상 피처 표준편차의 m 배를 상수 편향으로 주입",
+        "n_calibration_windows": 197,
+        "n_negative_windows": 981,
+        "n_positive_windows_nominal": 1327,
+        "n_positive_windows_marginal": 1944,
+        "marginal_set_rule": "개별 AUC 가 0.6~0.999 인 주입 강도만 모은 집합",
+        "marginal_set_members": [
+          "GPS_0.5sigma",
+          "GPS_1.0sigma",
+          "Wheel_1.0sigma"
+        ],
+        "min_resolvable_fpr": 0.001019,
+        "min_resolvable_fpr_alarm_load": {
+          "false_alarms_per_hour_raw": 36.7,
+          "false_alarms_per_hour_with_cooldown": 36.7,
+          "mean_minutes_between_false_alarms": 1.64
+        },
+        "negative_sample_duration_sec": 98.1
+      },
+      "score_distribution": {
+        "calibration_normal": {
+          "n": 197,
+          "mean": 0.9975,
+          "std": 0.1165,
+          "min": 0.7136,
+          "p50": 0.9734,
+          "p95": 1.1886,
+          "p99": 1.2166,
+          "max": 1.2178
+        },
+        "heldout_normal": {
+          "n": 981,
+          "mean": 1.0004,
+          "std": 0.1336,
+          "min": 0.6894,
+          "p50": 0.9841,
+          "p95": 1.2353,
+          "p99": 1.3682,
+          "max": 1.4393
+        },
+        "attack_nominal": {
+          "n": 1327,
+          "mean": 8664473738716.699,
+          "std": 96558094346281.88,
+          "min": 480.1939,
+          "p50": 1151.6338,
+          "p95": 1333.2276,
+          "p99": 182101341949133.22,
+          "max": 1904155228635136.0
+        },
+        "attack_marginal": {
+          "n": 1944,
+          "mean": 1.2061,
+          "std": 0.1729,
+          "min": 0.7901,
+          "p50": 1.1905,
+          "p95": 1.5158,
+          "p99": 1.6052,
+          "max": 1.6863
+        }
+      },
+      "auc": {
+        "nominal_pooled_all_attacks": 1.0,
+        "nominal_pooled_basic_attacks": 1.0,
+        "nominal_per_attack": {
+          "GPS_Spoofing": 1.0,
+          "Wheel_Slip": 1.0,
+          "Command_Anomaly": 1.0
+        },
+        "marginal_pooled": 0.8271
+      },
+      "separation_margin_nominal": {
+        "max_normal_score": 1.4393,
+        "min_attack_score": 480.1939,
+        "perfectly_separable": true,
+        "separating_threshold_interval": [
+          1.4393,
+          480.1939
+        ],
+        "gap_ratio_min_attack_over_max_normal": 333.63,
+        "current_threshold": 1.1886,
+        "current_below_max_normal": true,
+        "current_fpr_on_heldout_normal": 0.0917,
+        "verdict": "현재 임계값이 정상 점수 최댓값보다 낮아, 같은 Recall 을 유지하면서도 FPR 만 더 내는 파레토 열위 지점"
+      },
+      "criteria_nominal": {
+        "current_normal_p95": {
+          "TP": 1327,
+          "FP": 90,
+          "TN": 891,
+          "FN": 0,
+          "threshold": 1.1886,
+          "precision": 0.9365,
+          "recall": 1.0,
+          "f1": 0.9672,
+          "fpr": 0.091743,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 3302.7,
+            "false_alarms_per_hour_with_cooldown": 1800.0,
+            "mean_minutes_between_false_alarms": 0.03
+          },
+          "calib_percentile_equivalent": 94.92,
+          "recall_by_group": {
+            "GPS_Spoofing": 1.0,
+            "Wheel_Slip": 1.0,
+            "Command_Anomaly": 1.0
+          }
+        },
+        "youden_j": {
+          "TP": 1327,
+          "FP": 0,
+          "TN": 981,
+          "FN": 0,
+          "threshold": 1.4393,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fpr": 0.0,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 0.0,
+            "false_alarms_per_hour_with_cooldown": 0.0,
+            "mean_minutes_between_false_alarms": null
+          },
+          "calib_percentile_equivalent": 100.0,
+          "recall_by_group": {
+            "GPS_Spoofing": 1.0,
+            "Wheel_Slip": 1.0,
+            "Command_Anomaly": 1.0
+          }
+        },
+        "target_fpr_1pct": {
+          "TP": 1327,
+          "FP": 0,
+          "TN": 981,
+          "FN": 0,
+          "threshold": 1.4393,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fpr": 0.0,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 0.0,
+            "false_alarms_per_hour_with_cooldown": 0.0,
+            "mean_minutes_between_false_alarms": null
+          },
+          "calib_percentile_equivalent": 100.0,
+          "recall_by_group": {
+            "GPS_Spoofing": 1.0,
+            "Wheel_Slip": 1.0,
+            "Command_Anomaly": 1.0
+          }
+        },
+        "target_fpr_5pct": {
+          "TP": 1327,
+          "FP": 0,
+          "TN": 981,
+          "FN": 0,
+          "threshold": 1.4393,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fpr": 0.0,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 0.0,
+            "false_alarms_per_hour_with_cooldown": 0.0,
+            "mean_minutes_between_false_alarms": null
+          },
+          "calib_percentile_equivalent": 100.0,
+          "recall_by_group": {
+            "GPS_Spoofing": 1.0,
+            "Wheel_Slip": 1.0,
+            "Command_Anomaly": 1.0
+          }
+        },
+        "max_f1": {
+          "TP": 1327,
+          "FP": 0,
+          "TN": 981,
+          "FN": 0,
+          "threshold": 1.4393,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fpr": 0.0,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 0.0,
+            "false_alarms_per_hour_with_cooldown": 0.0,
+            "mean_minutes_between_false_alarms": null
+          },
+          "calib_percentile_equivalent": 100.0,
+          "recall_by_group": {
+            "GPS_Spoofing": 1.0,
+            "Wheel_Slip": 1.0,
+            "Command_Anomaly": 1.0
+          }
+        },
+        "min_cost_fn10": {
+          "TP": 1327,
+          "FP": 0,
+          "TN": 981,
+          "FN": 0,
+          "threshold": 1.4393,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "fpr": 0.0,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 0.0,
+            "false_alarms_per_hour_with_cooldown": 0.0,
+            "mean_minutes_between_false_alarms": null
+          },
+          "calib_percentile_equivalent": 100.0,
+          "recall_by_group": {
+            "GPS_Spoofing": 1.0,
+            "Wheel_Slip": 1.0,
+            "Command_Anomaly": 1.0
+          }
+        }
+      },
+      "criteria_marginal": {
+        "current_normal_p95": {
+          "TP": 983,
+          "FP": 90,
+          "TN": 891,
+          "FN": 961,
+          "threshold": 1.1886,
+          "precision": 0.9161,
+          "recall": 0.5057,
+          "f1": 0.6516,
+          "fpr": 0.091743,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 3302.7,
+            "false_alarms_per_hour_with_cooldown": 1800.0,
+            "mean_minutes_between_false_alarms": 0.03
+          },
+          "calib_percentile_equivalent": 94.92,
+          "recall_by_group": {
+            "GPS_0.5sigma": 0.1574,
+            "GPS_1.0sigma": 0.9537,
+            "Wheel_1.0sigma": 0.4059
+          }
+        },
+        "youden_j": {
+          "TP": 1432,
+          "FP": 224,
+          "TN": 757,
+          "FN": 512,
+          "threshold": 1.0906,
+          "precision": 0.8647,
+          "recall": 0.7366,
+          "f1": 0.7956,
+          "fpr": 0.228338,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 8220.2,
+            "false_alarms_per_hour_with_cooldown": 1800.0,
+            "mean_minutes_between_false_alarms": 0.03
+          },
+          "calib_percentile_equivalent": 73.6,
+          "recall_by_group": {
+            "GPS_0.5sigma": 0.4676,
+            "GPS_1.0sigma": 0.9969,
+            "Wheel_1.0sigma": 0.7454
+          }
+        },
+        "target_fpr_1pct": {
+          "TP": 360,
+          "FP": 9,
+          "TN": 972,
+          "FN": 1584,
+          "threshold": 1.369,
+          "precision": 0.9756,
+          "recall": 0.1852,
+          "f1": 0.3113,
+          "fpr": 0.009174,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 330.3,
+            "false_alarms_per_hour_with_cooldown": 330.3,
+            "mean_minutes_between_false_alarms": 0.18
+          },
+          "calib_percentile_equivalent": 100.0,
+          "recall_by_group": {
+            "GPS_0.5sigma": 0.0,
+            "GPS_1.0sigma": 0.534,
+            "Wheel_1.0sigma": 0.0216
+          }
+        },
+        "target_fpr_5pct": {
+          "TP": 787,
+          "FP": 49,
+          "TN": 932,
+          "FN": 1157,
+          "threshold": 1.2353,
+          "precision": 0.9414,
+          "recall": 0.4048,
+          "f1": 0.5662,
+          "fpr": 0.049949,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 1798.2,
+            "false_alarms_per_hour_with_cooldown": 1798.2,
+            "mean_minutes_between_false_alarms": 0.03
+          },
+          "calib_percentile_equivalent": 100.0,
+          "recall_by_group": {
+            "GPS_0.5sigma": 0.0633,
+            "GPS_1.0sigma": 0.8735,
+            "Wheel_1.0sigma": 0.2778
+          }
+        },
+        "max_f1": {
+          "TP": 1781,
+          "FP": 504,
+          "TN": 477,
+          "FN": 163,
+          "threshold": 0.9793,
+          "precision": 0.7794,
+          "recall": 0.9162,
+          "f1": 0.8423,
+          "fpr": 0.513761,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 18495.4,
+            "false_alarms_per_hour_with_cooldown": 1800.0,
+            "mean_minutes_between_false_alarms": 0.03
+          },
+          "calib_percentile_equivalent": 51.78,
+          "recall_by_group": {
+            "GPS_0.5sigma": 0.8133,
+            "GPS_1.0sigma": 1.0,
+            "Wheel_1.0sigma": 0.9352
+          }
+        },
+        "min_cost_fn10": {
+          "TP": 1944,
+          "FP": 941,
+          "TN": 40,
+          "FN": 0,
+          "threshold": 0.7887,
+          "precision": 0.6738,
+          "recall": 1.0,
+          "f1": 0.8051,
+          "fpr": 0.959225,
+          "alarm_load": {
+            "false_alarms_per_hour_raw": 34532.1,
+            "false_alarms_per_hour_with_cooldown": 1800.0,
+            "mean_minutes_between_false_alarms": 0.03
+          },
+          "calib_percentile_equivalent": 4.06,
+          "recall_by_group": {
+            "GPS_0.5sigma": 1.0,
+            "GPS_1.0sigma": 1.0,
+            "Wheel_1.0sigma": 1.0
+          }
+        }
+      },
+      "cost_ratio_sweep_marginal": {
+        "1:1": {
+          "cost_fn_over_fp": 1,
+          "threshold": 1.0053,
+          "recall": 0.8786,
+          "fpr": 0.438328,
+          "precision": 0.7989,
+          "f1": 0.8368,
+          "FN": 236,
+          "FP": 430,
+          "false_alarms_per_hour_with_cooldown": 1800.0
+        },
+        "3:1": {
+          "cost_fn_over_fp": 3,
+          "threshold": 0.8859,
+          "recall": 0.9825,
+          "fpr": 0.804281,
+          "precision": 0.7077,
+          "f1": 0.8227,
+          "FN": 34,
+          "FP": 789,
+          "false_alarms_per_hour_with_cooldown": 1800.0
+        },
+        "10:1": {
+          "cost_fn_over_fp": 10,
+          "threshold": 0.7887,
+          "recall": 1.0,
+          "fpr": 0.959225,
+          "precision": 0.6738,
+          "f1": 0.8051,
+          "FN": 0,
+          "FP": 941,
+          "false_alarms_per_hour_with_cooldown": 1800.0
+        },
+        "30:1": {
+          "cost_fn_over_fp": 30,
+          "threshold": 0.7887,
+          "recall": 1.0,
+          "fpr": 0.959225,
+          "precision": 0.6738,
+          "f1": 0.8051,
+          "FN": 0,
+          "FP": 941,
+          "false_alarms_per_hour_with_cooldown": 1800.0
+        },
+        "100:1": {
+          "cost_fn_over_fp": 100,
+          "threshold": 0.7887,
+          "recall": 1.0,
+          "fpr": 0.959225,
+          "precision": 0.6738,
+          "f1": 0.8051,
+          "FN": 0,
+          "FP": 941,
+          "false_alarms_per_hour_with_cooldown": 1800.0
+        }
+      },
+      "magnitude_sweep": {
+        "GPS": [
+          {
+            "magnitude_sigma": 0.05,
+            "n_positive": 648,
+            "attack_score_mean": 0.9721,
+            "auc": 0.4584,
+            "recall_at_current_p95": 0.0
+          },
+          {
+            "magnitude_sigma": 0.1,
+            "n_positive": 648,
+            "attack_score_mean": 0.9757,
+            "auc": 0.4666,
+            "recall_at_current_p95": 0.0
+          },
+          {
+            "magnitude_sigma": 0.2,
+            "n_positive": 648,
+            "attack_score_mean": 0.989,
+            "auc": 0.4974,
+            "recall_at_current_p95": 0.0031
+          },
+          {
+            "magnitude_sigma": 0.5,
+            "n_positive": 648,
+            "attack_score_mean": 1.0767,
+            "auc": 0.6855,
+            "recall_at_current_p95": 0.1574
+          },
+          {
+            "magnitude_sigma": 1.0,
+            "n_positive": 648,
+            "attack_score_mean": 1.383,
+            "auc": 0.9782,
+            "recall_at_current_p95": 0.9537
+          },
+          {
+            "magnitude_sigma": 2.0,
+            "n_positive": 648,
+            "attack_score_mean": 2.5955,
+            "auc": 1.0,
+            "recall_at_current_p95": 1.0
+          }
+        ],
+        "Wheel": [
+          {
+            "magnitude_sigma": 0.05,
+            "n_positive": 648,
+            "attack_score_mean": 0.9704,
+            "auc": 0.4547,
+            "recall_at_current_p95": 0.0
+          },
+          {
+            "magnitude_sigma": 0.1,
+            "n_positive": 648,
+            "attack_score_mean": 0.9713,
+            "auc": 0.4569,
+            "recall_at_current_p95": 0.0
+          },
+          {
+            "magnitude_sigma": 0.2,
+            "n_positive": 648,
+            "attack_score_mean": 0.9761,
+            "auc": 0.4681,
+            "recall_at_current_p95": 0.0
+          },
+          {
+            "magnitude_sigma": 0.5,
+            "n_positive": 648,
+            "attack_score_mean": 1.0146,
+            "auc": 0.557,
+            "recall_at_current_p95": 0.0201
+          },
+          {
+            "magnitude_sigma": 1.0,
+            "n_positive": 648,
+            "attack_score_mean": 1.1587,
+            "auc": 0.8177,
+            "recall_at_current_p95": 0.4059
+          },
+          {
+            "magnitude_sigma": 2.0,
+            "n_positive": 648,
+            "attack_score_mean": 1.7469,
+            "auc": 0.9999,
+            "recall_at_current_p95": 1.0
+          }
+        ]
+      },
+      "boundary_contamination": {
+        "current_normal_p95": {
+          "threshold": 1.1886,
+          "first_detection": {
+            "GPS_Spoofing": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Wheel_Slip": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Command_Anomaly": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            }
+          },
+          "by_k": {
+            "1": {
+              "GPS_Spoofing": {
+                "mean_score": 23679.7129,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 43.2531,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 24.9021,
+                "detected": true
+              }
+            },
+            "2": {
+              "GPS_Spoofing": {
+                "mean_score": 47300.2461,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 89.8235,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 50.0341,
+                "detected": true
+              }
+            },
+            "3": {
+              "GPS_Spoofing": {
+                "mean_score": 70991.2422,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 147.8517,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 73.1426,
+                "detected": true
+              }
+            },
+            "4": {
+              "GPS_Spoofing": {
+                "mean_score": 129702.3438,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 212.9448,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 95.7329,
+                "detected": true
+              }
+            },
+            "5": {
+              "GPS_Spoofing": {
+                "mean_score": 3297382.5,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 258.7452,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 121.4203,
+                "detected": true
+              }
+            },
+            "6": {
+              "GPS_Spoofing": {
+                "mean_score": 221047.2969,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 316.9884,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 147.5571,
+                "detected": true
+              }
+            },
+            "7": {
+              "GPS_Spoofing": {
+                "mean_score": 227944.5469,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 372.5947,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 171.9897,
+                "detected": true
+              }
+            },
+            "8": {
+              "GPS_Spoofing": {
+                "mean_score": 3696246.5,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 469.2544,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 196.2199,
+                "detected": true
+              }
+            },
+            "9": {
+              "GPS_Spoofing": {
+                "mean_score": 1851750.125,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 543.0627,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 219.5292,
+                "detected": true
+              }
+            },
+            "10": {
+              "GPS_Spoofing": {
+                "mean_score": 1378426.875,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 617.0403,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 242.328,
+                "detected": true
+              }
+            },
+            "11": {
+              "GPS_Spoofing": {
+                "mean_score": 1346104704.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 681.8119,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 267.037,
+                "detected": true
+              }
+            },
+            "12": {
+              "GPS_Spoofing": {
+                "mean_score": 30865684480.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 741.0265,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 292.159,
+                "detected": true
+              }
+            },
+            "13": {
+              "GPS_Spoofing": {
+                "mean_score": 307139419570176.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 815.9025,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 316.5789,
+                "detected": true
+              }
+            },
+            "14": {
+              "GPS_Spoofing": {
+                "mean_score": 5412291084288.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 895.7922,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 341.8896,
+                "detected": true
+              }
+            },
+            "15": {
+              "GPS_Spoofing": {
+                "mean_score": 14025438003200.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 939.3455,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 366.9323,
+                "detected": true
+              }
+            },
+            "16": {
+              "GPS_Spoofing": {
+                "mean_score": 9032202406854656.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 1024.2588,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 392.1997,
+                "detected": true
+              }
+            },
+            "17": {
+              "GPS_Spoofing": {
+                "mean_score": 498944639500288.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 1090.7098,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 417.4414,
+                "detected": true
+              }
+            },
+            "18": {
+              "GPS_Spoofing": {
+                "mean_score": 21924392960.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 1166.1603,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 442.5107,
+                "detected": true
+              }
+            },
+            "19": {
+              "GPS_Spoofing": {
+                "mean_score": 41359872360448.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 1246.7258,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 468.7951,
+                "detected": true
+              }
+            }
+          }
+        },
+        "marginal_youden_j": {
+          "threshold": 1.0906,
+          "first_detection": {
+            "GPS_Spoofing": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Wheel_Slip": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Command_Anomaly": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            }
+          },
+          "by_k": {
+            "1": {
+              "GPS_Spoofing": {
+                "mean_score": 23679.7129,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 43.2531,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 24.9021,
+                "detected": true
+              }
+            },
+            "2": {
+              "GPS_Spoofing": {
+                "mean_score": 47300.2461,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 89.8235,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 50.0341,
+                "detected": true
+              }
+            },
+            "3": {
+              "GPS_Spoofing": {
+                "mean_score": 70991.2422,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 147.8517,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 73.1426,
+                "detected": true
+              }
+            },
+            "4": {
+              "GPS_Spoofing": {
+                "mean_score": 129702.3438,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 212.9448,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 95.7329,
+                "detected": true
+              }
+            },
+            "5": {
+              "GPS_Spoofing": {
+                "mean_score": 3297382.5,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 258.7452,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 121.4203,
+                "detected": true
+              }
+            },
+            "6": {
+              "GPS_Spoofing": {
+                "mean_score": 221047.2969,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 316.9884,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 147.5571,
+                "detected": true
+              }
+            },
+            "7": {
+              "GPS_Spoofing": {
+                "mean_score": 227944.5469,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 372.5947,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 171.9897,
+                "detected": true
+              }
+            },
+            "8": {
+              "GPS_Spoofing": {
+                "mean_score": 3696246.5,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 469.2544,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 196.2199,
+                "detected": true
+              }
+            },
+            "9": {
+              "GPS_Spoofing": {
+                "mean_score": 1851750.125,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 543.0627,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 219.5292,
+                "detected": true
+              }
+            },
+            "10": {
+              "GPS_Spoofing": {
+                "mean_score": 1378426.875,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 617.0403,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 242.328,
+                "detected": true
+              }
+            },
+            "11": {
+              "GPS_Spoofing": {
+                "mean_score": 1346104704.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 681.8119,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 267.037,
+                "detected": true
+              }
+            },
+            "12": {
+              "GPS_Spoofing": {
+                "mean_score": 30865684480.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 741.0265,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 292.159,
+                "detected": true
+              }
+            },
+            "13": {
+              "GPS_Spoofing": {
+                "mean_score": 307139419570176.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 815.9025,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 316.5789,
+                "detected": true
+              }
+            },
+            "14": {
+              "GPS_Spoofing": {
+                "mean_score": 5412291084288.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 895.7922,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 341.8896,
+                "detected": true
+              }
+            },
+            "15": {
+              "GPS_Spoofing": {
+                "mean_score": 14025438003200.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 939.3455,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 366.9323,
+                "detected": true
+              }
+            },
+            "16": {
+              "GPS_Spoofing": {
+                "mean_score": 9032202406854656.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 1024.2588,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 392.1997,
+                "detected": true
+              }
+            },
+            "17": {
+              "GPS_Spoofing": {
+                "mean_score": 498944639500288.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 1090.7098,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 417.4414,
+                "detected": true
+              }
+            },
+            "18": {
+              "GPS_Spoofing": {
+                "mean_score": 21924392960.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 1166.1603,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 442.5107,
+                "detected": true
+              }
+            },
+            "19": {
+              "GPS_Spoofing": {
+                "mean_score": 41359872360448.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 1246.7258,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 468.7951,
+                "detected": true
+              }
+            }
+          }
+        },
+        "marginal_min_cost_fn10": {
+          "threshold": 0.7887,
+          "first_detection": {
+            "GPS_Spoofing": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Wheel_Slip": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            },
+            "Command_Anomaly": {
+              "first_detected_contamination_k": 1,
+              "implied_detection_delay_ms": 100
+            }
+          },
+          "by_k": {
+            "1": {
+              "GPS_Spoofing": {
+                "mean_score": 23679.7129,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 43.2531,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 24.9021,
+                "detected": true
+              }
+            },
+            "2": {
+              "GPS_Spoofing": {
+                "mean_score": 47300.2461,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 89.8235,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 50.0341,
+                "detected": true
+              }
+            },
+            "3": {
+              "GPS_Spoofing": {
+                "mean_score": 70991.2422,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 147.8517,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 73.1426,
+                "detected": true
+              }
+            },
+            "4": {
+              "GPS_Spoofing": {
+                "mean_score": 129702.3438,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 212.9448,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 95.7329,
+                "detected": true
+              }
+            },
+            "5": {
+              "GPS_Spoofing": {
+                "mean_score": 3297382.5,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 258.7452,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 121.4203,
+                "detected": true
+              }
+            },
+            "6": {
+              "GPS_Spoofing": {
+                "mean_score": 221047.2969,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 316.9884,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 147.5571,
+                "detected": true
+              }
+            },
+            "7": {
+              "GPS_Spoofing": {
+                "mean_score": 227944.5469,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 372.5947,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 171.9897,
+                "detected": true
+              }
+            },
+            "8": {
+              "GPS_Spoofing": {
+                "mean_score": 3696246.5,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 469.2544,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 196.2199,
+                "detected": true
+              }
+            },
+            "9": {
+              "GPS_Spoofing": {
+                "mean_score": 1851750.125,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 543.0627,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 219.5292,
+                "detected": true
+              }
+            },
+            "10": {
+              "GPS_Spoofing": {
+                "mean_score": 1378426.875,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 617.0403,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 242.328,
+                "detected": true
+              }
+            },
+            "11": {
+              "GPS_Spoofing": {
+                "mean_score": 1346104704.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 681.8119,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 267.037,
+                "detected": true
+              }
+            },
+            "12": {
+              "GPS_Spoofing": {
+                "mean_score": 30865684480.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 741.0265,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 292.159,
+                "detected": true
+              }
+            },
+            "13": {
+              "GPS_Spoofing": {
+                "mean_score": 307139419570176.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 815.9025,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 316.5789,
+                "detected": true
+              }
+            },
+            "14": {
+              "GPS_Spoofing": {
+                "mean_score": 5412291084288.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 895.7922,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 341.8896,
+                "detected": true
+              }
+            },
+            "15": {
+              "GPS_Spoofing": {
+                "mean_score": 14025438003200.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 939.3455,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 366.9323,
+                "detected": true
+              }
+            },
+            "16": {
+              "GPS_Spoofing": {
+                "mean_score": 9032202406854656.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 1024.2588,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 392.1997,
+                "detected": true
+              }
+            },
+            "17": {
+              "GPS_Spoofing": {
+                "mean_score": 498944639500288.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 1090.7098,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 417.4414,
+                "detected": true
+              }
+            },
+            "18": {
+              "GPS_Spoofing": {
+                "mean_score": 21924392960.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 1166.1603,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 442.5107,
+                "detected": true
+              }
+            },
+            "19": {
+              "GPS_Spoofing": {
+                "mean_score": 41359872360448.0,
+                "detected": true
+              },
+              "Wheel_Slip": {
+                "mean_score": 1246.7258,
+                "detected": true
+              },
+              "Command_Anomaly": {
+                "mean_score": 468.7951,
+                "detected": true
+              }
+            }
+          }
+        }
+      },
+      "recall_decomposition": {
+        "current_normal_p95": {
+          "threshold": 1.1886,
+          "per_attack": {
+            "GPS_Spoofing": {
+              "n_windows_total": 981,
+              "n_full_normal_content": 912,
+              "n_boundary": 38,
+              "n_full_attack": 31,
+              "recall_notebook_style_all_windows_positive": 0.0897,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 893,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Wheel_Slip": {
+              "n_windows_total": 981,
+              "n_full_normal_content": 314,
+              "n_boundary": 19,
+              "n_full_attack": 648,
+              "recall_notebook_style_all_windows_positive": 0.6993,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 295,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Command_Anomaly": {
+              "n_windows_total": 981,
+              "n_full_normal_content": 314,
+              "n_boundary": 19,
+              "n_full_attack": 648,
+              "recall_notebook_style_all_windows_positive": 0.6993,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 295,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            }
+          },
+          "aggregate": {
+            "a_label_artifact_FN": 1483,
+            "b_boundary_FN": 0,
+            "c_true_missed_FN": 0,
+            "n_full_attack": 1327,
+            "n_boundary": 76,
+            "n_full_normal": 1540,
+            "n_windows_total": 2943,
+            "detected_full_attack": 1327,
+            "detected_total": 1460,
+            "total_FN_notebook_style": 1483,
+            "share_label_artifact": 1.0,
+            "share_boundary": 0.0,
+            "share_true_miss": 0.0,
+            "recall_notebook_style": 0.4961,
+            "recall_full_attack_windows_only": 1.0
+          }
+        },
+        "marginal_youden_j": {
+          "threshold": 1.0906,
+          "per_attack": {
+            "GPS_Spoofing": {
+              "n_windows_total": 981,
+              "n_full_normal_content": 912,
+              "n_boundary": 38,
+              "n_full_attack": 31,
+              "recall_notebook_style_all_windows_positive": 0.1794,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 805,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Wheel_Slip": {
+              "n_windows_total": 981,
+              "n_full_normal_content": 314,
+              "n_boundary": 19,
+              "n_full_attack": 648,
+              "recall_notebook_style_all_windows_positive": 0.7238,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 271,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Command_Anomaly": {
+              "n_windows_total": 981,
+              "n_full_normal_content": 314,
+              "n_boundary": 19,
+              "n_full_attack": 648,
+              "recall_notebook_style_all_windows_positive": 0.7238,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 271,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            }
+          },
+          "aggregate": {
+            "a_label_artifact_FN": 1347,
+            "b_boundary_FN": 0,
+            "c_true_missed_FN": 0,
+            "n_full_attack": 1327,
+            "n_boundary": 76,
+            "n_full_normal": 1540,
+            "n_windows_total": 2943,
+            "detected_full_attack": 1327,
+            "detected_total": 1596,
+            "total_FN_notebook_style": 1347,
+            "share_label_artifact": 1.0,
+            "share_boundary": 0.0,
+            "share_true_miss": 0.0,
+            "recall_notebook_style": 0.5423,
+            "recall_full_attack_windows_only": 1.0
+          }
+        },
+        "marginal_min_cost_fn10": {
+          "threshold": 0.7887,
+          "per_attack": {
+            "GPS_Spoofing": {
+              "n_windows_total": 981,
+              "n_full_normal_content": 912,
+              "n_boundary": 38,
+              "n_full_attack": 31,
+              "recall_notebook_style_all_windows_positive": 0.9378,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 61,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Wheel_Slip": {
+              "n_windows_total": 981,
+              "n_full_normal_content": 314,
+              "n_boundary": 19,
+              "n_full_attack": 648,
+              "recall_notebook_style_all_windows_positive": 0.9776,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 22,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            },
+            "Command_Anomaly": {
+              "n_windows_total": 981,
+              "n_full_normal_content": 314,
+              "n_boundary": 19,
+              "n_full_attack": 648,
+              "recall_notebook_style_all_windows_positive": 0.9776,
+              "recall_full_attack_windows_only": 1.0,
+              "FN_from_label_artifact": 22,
+              "FN_from_boundary_windows": 0,
+              "FN_from_true_miss": 0
+            }
+          },
+          "aggregate": {
+            "a_label_artifact_FN": 105,
+            "b_boundary_FN": 0,
+            "c_true_missed_FN": 0,
+            "n_full_attack": 1327,
+            "n_boundary": 76,
+            "n_full_normal": 1540,
+            "n_windows_total": 2943,
+            "detected_full_attack": 1327,
+            "detected_total": 2838,
+            "total_FN_notebook_style": 105,
+            "share_label_artifact": 1.0,
+            "share_boundary": 0.0,
+            "share_true_miss": 0.0,
+            "recall_notebook_style": 0.9643,
+            "recall_full_attack_windows_only": 1.0
+          }
+        }
+      },
+      "threshold_for_notebook_style_recall": {
+        "recall_0.90": {
+          "required_threshold": 0.858,
+          "achieved_recall_notebook_style": 0.8998,
+          "heldout_normal_fpr": 0.8685,
+          "false_alarms_per_hour_with_cooldown": 1800.0
+        },
+        "recall_0.95": {
+          "required_threshold": 0.8148,
+          "achieved_recall_notebook_style": 0.949,
+          "heldout_normal_fpr": 0.9235,
+          "false_alarms_per_hour_with_cooldown": 1800.0
+        },
+        "recall_0.99": {
+          "required_threshold": 0.7269,
+          "achieved_recall_notebook_style": 0.9891,
+          "heldout_normal_fpr": 0.9918,
+          "false_alarms_per_hour_with_cooldown": 1800.0
+        }
+      }
+    }
+  }
+}
