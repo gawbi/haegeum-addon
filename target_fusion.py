@@ -5,12 +5,12 @@ DAH 2026 해금팀 — 다중 소스 표적 융합 노드
 
 융합 소스:
   1) VAE 이상탐지 (/target_detected)     — anomaly_detector.py 출력
-  2) 레이더 트랙   (/radar_tracks)        — LIG Nex1 드론 탐지 레이더
+  2) 레이더 트랙   (/radar_tracks)        — 국내 C-UAS 드론 탐지 레이더
   3) EO/IR 카메라  (/camera_detections)  — 광전자/적외선 센서
 
 융합 알고리즘: 가중 평균 기반 신뢰도 융합
   - VAE 탐지: 신뢰도 가중치 0.5 (사이버 공격 특화)
-  - 레이더:   신뢰도 가중치 0.35 (물리적 위협 특화, LIG 탐지거리 ~4km)
+  - 레이더:   신뢰도 가중치 0.35 (물리적 위협 특화, 탐지거리 ~4km)
   - 카메라:   신뢰도 가중치 0.15 (근거리 식별 보조, ~500m)
 
 출력: /fused_targets (TargetDetected) → ai_commander
