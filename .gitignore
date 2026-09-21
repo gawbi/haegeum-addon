@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# 대용량/제출 산출물 (저장소에 넣지 않음)
+*.zip
+*.pdf
+*.docx
+*.doc
+*.hwp
+*.ppt
+*.pptx
+*.xlsx
+
+# 로그/임시
+*.log
+*.tmp

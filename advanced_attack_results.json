@@ -1,0 +1,276 @@
+{
+  "threshold": 1.2283147394657135,
+  "results": [
+    {
+      "attack": "GPS_Spoofing (예선 기준)",
+      "TP": 181,
+      "FP": 8,
+      "TN": 92,
+      "FN": 0,
+      "Precision": 0.9577,
+      "Recall": 1.0,
+      "F1": 0.9784,
+      "delay_ts": 1,
+      "delay_ms": 100,
+      "fp_windows": [
+        49,
+        69,
+        76,
+        77,
+        78
+      ],
+      "fn_windows": []
+    },
+    {
+      "attack": "Altitude_Spoofing (예선 기준)",
+      "TP": 181,
+      "FP": 3,
+      "TN": 97,
+      "FN": 0,
+      "Precision": 0.9837,
+      "Recall": 1.0,
+      "F1": 0.9918,
+      "delay_ts": 0,
+      "delay_ms": 0,
+      "fp_windows": [
+        78,
+        83,
+        84
+      ],
+      "fn_windows": []
+    },
+    {
+      "attack": "Command_Injection (예선 기준)",
+      "TP": 181,
+      "FP": 3,
+      "TN": 97,
+      "FN": 0,
+      "Precision": 0.9837,
+      "Recall": 1.0,
+      "F1": 0.9918,
+      "delay_ts": 0,
+      "delay_ms": 0,
+      "fp_windows": [
+        75,
+        79,
+        83
+      ],
+      "fn_windows": []
+    },
+    {
+      "attack": "복합_A: GPS+CmdInj (신규)",
+      "TP": 181,
+      "FP": 5,
+      "TN": 95,
+      "FN": 0,
+      "Precision": 0.9731,
+      "Recall": 1.0,
+      "F1": 0.9864,
+      "delay_ts": 0,
+      "delay_ms": 0,
+      "fp_windows": [
+        55,
+        69,
+        77,
+        80,
+        84
+      ],
+      "fn_windows": []
+    },
+    {
+      "attack": "복합_B: GPS+Alt (신규)",
+      "TP": 181,
+      "FP": 6,
+      "TN": 94,
+      "FN": 0,
+      "Precision": 0.9679,
+      "Recall": 1.0,
+      "F1": 0.9837,
+      "delay_ts": 0,
+      "delay_ms": 0,
+      "fp_windows": [
+        49,
+        53,
+        76,
+        77,
+        78
+      ],
+      "fn_windows": []
+    },
+    {
+      "attack": "점진적_GPS rate=0.3 (신규)",
+      "TP": 181,
+      "FP": 5,
+      "TN": 95,
+      "FN": 0,
+      "Precision": 0.9731,
+      "Recall": 1.0,
+      "F1": 0.9864,
+      "delay_ts": 2,
+      "delay_ms": 200,
+      "fp_windows": [
+        53,
+        70,
+        77,
+        79,
+        82
+      ],
+      "fn_windows": []
+    },
+    {
+      "attack": "점진적_GPS rate=0.1 (신규)",
+      "TP": 181,
+      "FP": 6,
+      "TN": 94,
+      "FN": 0,
+      "Precision": 0.9679,
+      "Recall": 1.0,
+      "F1": 0.9837,
+      "delay_ts": 4,
+      "delay_ms": 400,
+      "fp_windows": [
+        73,
+        77,
+        78,
+        80,
+        83
+      ],
+      "fn_windows": []
+    },
+    {
+      "attack": "점진적_Alt rate=0.5 (신규)",
+      "TP": 181,
+      "FP": 5,
+      "TN": 95,
+      "FN": 0,
+      "Precision": 0.9731,
+      "Recall": 1.0,
+      "F1": 0.9864,
+      "delay_ts": 3,
+      "delay_ms": 300,
+      "fp_windows": [
+        43,
+        51,
+        78,
+        83,
+        85
+      ],
+      "fn_windows": []
+    },
+    {
+      "attack": "점진적_Alt rate=0.2 (신규)",
+      "TP": 181,
+      "FP": 6,
+      "TN": 94,
+      "FN": 0,
+      "Precision": 0.9679,
+      "Recall": 1.0,
+      "F1": 0.9837,
+      "delay_ts": 5,
+      "delay_ms": 500,
+      "fp_windows": [
+        54,
+        77,
+        82,
+        83,
+        85
+      ],
+      "fn_windows": []
+    }
+  ],
+  "fpfn_analysis": {
+    "fp": [
+      {
+        "window_idx": 55,
+        "top_feature": "residual_x",
+        "top_contrib": 1.761715,
+        "normal_mean": 1.00678,
+        "normal_std": 0.287906,
+        "z_score": 2.622,
+        "all_contribs": {
+          "gps_vel_x": 1.082659,
+          "gps_vel_y": 0.751416,
+          "imu_ax": 1.169368,
+          "imu_ay": 0.768623,
+          "residual_x": 1.761715,
+          "residual_y": 0.913713,
+          "baro_alt": 0.968783,
+          "pitch_rate": 1.076443
+        }
+      },
+      {
+        "window_idx": 69,
+        "top_feature": "pitch_rate",
+        "top_contrib": 1.466958,
+        "normal_mean": 0.982266,
+        "normal_std": 0.247495,
+        "z_score": 1.958,
+        "all_contribs": {
+          "gps_vel_x": 0.911955,
+          "gps_vel_y": 0.742178,
+          "imu_ax": 0.928852,
+          "imu_ay": 0.744076,
+          "residual_x": 1.311524,
+          "residual_y": 1.166177,
+          "baro_alt": 0.975874,
+          "pitch_rate": 1.466958
+        }
+      },
+      {
+        "window_idx": 77,
+        "top_feature": "pitch_rate",
+        "top_contrib": 1.70141,
+        "normal_mean": 0.982266,
+        "normal_std": 0.247495,
+        "z_score": 2.906,
+        "all_contribs": {
+          "gps_vel_x": 1.297016,
+          "gps_vel_y": 0.892181,
+          "imu_ax": 1.311226,
+          "imu_ay": 0.905672,
+          "residual_x": 1.208954,
+          "residual_y": 1.228748,
+          "baro_alt": 1.14549,
+          "pitch_rate": 1.70141
+        }
+      },
+      {
+        "window_idx": 80,
+        "top_feature": "pitch_rate",
+        "top_contrib": 1.489496,
+        "normal_mean": 0.982266,
+        "normal_std": 0.247495,
+        "z_score": 2.049,
+        "all_contribs": {
+          "gps_vel_x": 1.377418,
+          "gps_vel_y": 1.065809,
+          "imu_ax": 1.389608,
+          "imu_ay": 1.034861,
+          "residual_x": 1.17493,
+          "residual_y": 1.022447,
+          "baro_alt": 1.047041,
+          "pitch_rate": 1.489496
+        }
+      },
+      {
+        "window_idx": 84,
+        "top_feature": "gps_vel_x",
+        "top_contrib": 1.449674,
+        "normal_mean": 1.031517,
+        "normal_std": 0.193526,
+        "z_score": 2.161,
+        "all_contribs": {
+          "gps_vel_x": 1.449674,
+          "gps_vel_y": 1.184739,
+          "imu_ax": 1.409679,
+          "imu_ay": 1.13598,
+          "residual_x": 1.053713,
+          "residual_y": 0.962435,
+          "baro_alt": 0.982517,
+          "pitch_rate": 1.361938
+        }
+      }
+    ],
+    "fn": []
+  }
+}
