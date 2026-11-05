@@ -1,8 +1,13 @@
-# 해금(Haegeum) — UAV/UGV 통합 VAE 이상탐지 & Red Agent 공격 시뮬레이션
+# 해금(Haegeum): UAV/UGV 통합 VAE 이상탐지 & Red Agent 공격 시뮬레이션
 
 > 유·무인 복합체계(MUM-T)의 센서 무결성을 실시간으로 검증하는 **L1 방어(Blue) 모듈**과, 이를 시험·평가하기 위한 **4단계 자동 공격 캠페인(Red Agent)**을 함께 담은 방산 AI 보안 프레임워크입니다.
 >
 > DAH 2026(국방 AI 해커톤) 출전작 · 팀 **해금**
+
+### 이 저장소에서 부딪힌 것
+
+판정 근거를 보여주려고 SHAP을 붙이다가, 예전에 돌렸던 분석에 오류가 있던 걸 발견했습니다. 그냥 넘어가지 않고 다시 돌려서 고쳤습니다.
+판정 한 번에 드는 시간은 p99 기준 0.041ms입니다. 전부 합성 데이터로 한 실험이라 실제 기체에서 같은 숫자가 나온다고는 말하지 않습니다.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-VAE-EE4C2C?logo=pytorch&logoColor=white)
