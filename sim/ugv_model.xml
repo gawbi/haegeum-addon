@@ -1,0 +1,101 @@
+<!--
+  UGV 차동구동(differential-drive) 차량 MJCF 모델
+  - 섀시: 박스 + freejoint (6DoF)
+  - 구동륜 2개: 후방 좌/우, hinge 조인트 + velocity 액추에이터(모터 속도 서보)
+  - 캐스터 1개: 전방, 마찰 없는 구(condim=1) → 수동 지지
+  - 센서: imu 사이트의 accelerometer / gyro / velocimeter, 섀시의 framepos / framelinvel / framequat (ground truth)
+  - 카메라: top (고정 탑뷰, 전체 루프), chase (섀시 추적)
+  - 웨이포인트 마커: contype=0 conaffinity=0 → 충돌 없음 (시각용)
+  단위: m, kg, s
+-->
+<mujoco model="ugv_diffdrive">
+  <compiler autolimits="true" angle="radian"/>
+  <option timestep="0.002" gravity="0 0 -9.81" integrator="implicitfast"/>
+
+  <visual>
+    <headlight ambient="0.35 0.35 0.35" diffuse="0.35 0.35 0.35" specular="0 0 0"/>
+    <global offwidth="1280" offheight="720"/>
+    <quality shadowsize="2048"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.55 0.72 0.95" rgb2="0.92 0.95 1.0" width="256" height="256"/>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512"
+             rgb1="0.78 0.80 0.82" rgb2="0.62 0.65 0.68" markrgb="0.3 0.3 0.3" mark="edge"/>
+    <!-- texuniform: texrepeat = 1 m당 반복 횟수 → 0.5 = 2 m 격자 -->
+    <material name="grid" texture="grid" texrepeat="0.5 0.5" texuniform="true" reflectance="0.0"/>
+    <material name="chassis_mat" rgba="0.15 0.45 0.95 1"/>
+    <material name="wheel_mat" rgba="0.12 0.12 0.12 1"/>
+    <material name="marker_mat" rgba="0.95 0.45 0.0 1"/>
+  </asset>
+
+  <default>
+    <geom condim="3" friction="1.0 0.005 0.0001" solref="0.01 1" solimp="0.95 0.99 0.001"/>
+    <default class="wheel">
+      <joint type="hinge" axis="0 1 0" damping="0.05" armature="0.01"/>
+      <geom type="cylinder" zaxis="0 1 0" size="0.20 0.04" material="wheel_mat" mass="2.0" friction="1.2 0.005 0.0001"/>
+    </default>
+    <default class="marker">
+      <geom type="cylinder" contype="0" conaffinity="0" material="marker_mat" size="0.5 0.02"/>
+    </default>
+  </default>
+
+  <worldbody>
+    <light name="sun" directional="true" pos="0 0 20" dir="0.2 0.3 -1" diffuse="0.5 0.5 0.5" specular="0.1 0.1 0.1" castshadow="true"/>
+    <geom name="floor" type="plane" size="40 40 0.1" material="grid"/>
+
+    <!-- 고정 탑뷰 카메라: 원점 상공 38 m, -z 방향(아래) 응시 -->
+    <camera name="top" pos="0 0 38" xyaxes="1 0 0 0 1 0" fovy="45"/>
+
+    <!-- 웨이포인트 마커 (20 x 20 m 모서리 깎은 사각 루프, 8점). ugv_sim.WAYPOINTS와 동일 -->
+    <geom class="marker" name="wp0" pos="10 -5 0.03"/>
+    <geom class="marker" name="wp1" pos="10 5 0.03"/>
+    <geom class="marker" name="wp2" pos="5 10 0.03"/>
+    <geom class="marker" name="wp3" pos="-5 10 0.03"/>
+    <geom class="marker" name="wp4" pos="-10 5 0.03"/>
+    <geom class="marker" name="wp5" pos="-10 -5 0.03"/>
+    <geom class="marker" name="wp6" pos="-5 -10 0.03"/>
+    <geom class="marker" name="wp7" pos="5 -10 0.03"/>
+
+    <body name="chassis" pos="0 -10 0.20">
+      <freejoint name="root"/>
+      <!-- 섀시 본체: 1.0 x 0.6 x 0.16 m, 20 kg -->
+      <geom name="chassis_box" type="box" size="0.50 0.30 0.08" pos="0 0 0.05" material="chassis_mat" mass="20"/>
+      <!-- 진행 방향 표시(앞쪽 흰 블록) -->
+      <geom name="nose" type="box" size="0.08 0.20 0.03" pos="0.45 0 0.16" rgba="1 1 1 1" contype="0" conaffinity="0" mass="0.1"/>
+      <site name="imu" pos="0 0 0.05" size="0.02" rgba="1 0 0 1"/>
+
+      <!-- 전방 캐스터: 마찰 없는 구 (condim=1, priority=1 → 바닥과의 접촉에서 이 설정 우선) -->
+      <geom name="caster" type="sphere" size="0.10" pos="0.35 0 -0.10" condim="1" priority="1" rgba="0.5 0.5 0.5 1" mass="1.0"/>
+
+      <!-- 추적 카메라: 섀시 뒤 3 m, 높이 1.8 m, 전방 아래로 응시 -->
+      <camera name="chase" pos="-3.5 0 2.0" xyaxes="0 -1 0 0.5 0 1" fovy="60"/>
+
+      <body name="wheel_l" pos="-0.25 0.34 0">
+        <joint class="wheel" name="wheel_l"/>
+        <geom class="wheel" name="wheel_l"/>
+      </body>
+      <body name="wheel_r" pos="-0.25 -0.34 0">
+        <joint class="wheel" name="wheel_r"/>
+        <geom class="wheel" name="wheel_r"/>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <!-- 모터 속도 서보: torque = kv * (ctrl - qvel), |torque| <= forcerange. ctrl = 목표 바퀴 각속도 [rad/s] -->
+    <velocity name="motor_l" joint="wheel_l" kv="8" forcerange="-12 12" ctrlrange="-20 20"/>
+    <velocity name="motor_r" joint="wheel_r" kv="8" forcerange="-12 12" ctrlrange="-20 20"/>
+  </actuator>
+
+  <sensor>
+    <accelerometer name="imu_acc" site="imu"/>
+    <gyro name="imu_gyro" site="imu"/>
+    <velocimeter name="imu_vel" site="imu"/>
+    <framepos name="gt_pos" objtype="xbody" objname="chassis"/>
+    <framelinvel name="gt_vel" objtype="xbody" objname="chassis"/>
+    <framequat name="gt_quat" objtype="xbody" objname="chassis"/>
+    <jointvel name="wheel_l_vel" joint="wheel_l"/>
+    <jointvel name="wheel_r_vel" joint="wheel_r"/>
+  </sensor>
+</mujoco>

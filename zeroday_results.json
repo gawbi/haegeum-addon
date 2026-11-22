@@ -1,0 +1,258 @@
+{
+  "threshold": 1.230111539363861,
+  "seed": 42,
+  "normal_score_stats": {
+    "min": 0.7566,
+    "p1": 0.7995,
+    "p5": 0.8487,
+    "mean": 1.0242,
+    "p95": 1.2301,
+    "max": 1.505
+  },
+  "calibration": {
+    "normal_n": 1000,
+    "normal_seed": 42,
+    "percentile": 95,
+    "test_seed": 123,
+    "atk_start": 100,
+    "n_total": 300,
+    "win": 20
+  },
+  "results": [
+    {
+      "attack": "제로데이_GPS_Freeze",
+      "TP": 181,
+      "FP": 4,
+      "TN": 96,
+      "FN": 0,
+      "Precision": 0.9784,
+      "Recall": 1.0,
+      "F1": 0.9891,
+      "delay_ts": 0,
+      "delay_ms": 0,
+      "fp_windows": [
+        77,
+        80,
+        84,
+        86
+      ],
+      "fn_windows": [],
+      "attack_score_mean": 77.9783,
+      "attack_score_max": 99.4716,
+      "attack_score_min": 56.3273,
+      "frac_below_normal_min": 0.0,
+      "first_detect_idx": 100,
+      "top_feats": [
+        {
+          "feature": "residual_x",
+          "contrib": 29.5129,
+          "share": 0.811,
+          "z_score": 98.9
+        },
+        {
+          "feature": "gps_vel_y",
+          "contrib": 1.2878,
+          "share": 0.035,
+          "z_score": 0.9
+        },
+        {
+          "feature": "imu_ay",
+          "contrib": 1.2836,
+          "share": 0.035,
+          "z_score": 0.9
+        }
+      ]
+    },
+    {
+      "attack": "제로데이_GPS_Replay lag=100",
+      "TP": 181,
+      "FP": 4,
+      "TN": 96,
+      "FN": 0,
+      "Precision": 0.9784,
+      "Recall": 1.0,
+      "F1": 0.9891,
+      "delay_ts": 0,
+      "delay_ms": 0,
+      "fp_windows": [
+        77,
+        80,
+        84,
+        86
+      ],
+      "fn_windows": [],
+      "attack_score_mean": 63.5038,
+      "attack_score_max": 87.5407,
+      "attack_score_min": 45.2985,
+      "frac_below_normal_min": 0.0,
+      "first_detect_idx": 100,
+      "top_feats": [
+        {
+          "feature": "residual_y",
+          "contrib": 2.8074,
+          "share": 0.279,
+          "z_score": 5.1
+        },
+        {
+          "feature": "gps_vel_y",
+          "contrib": 1.3534,
+          "share": 0.134,
+          "z_score": 1.1
+        },
+        {
+          "feature": "imu_ay",
+          "contrib": 1.2201,
+          "share": 0.121,
+          "z_score": 0.6
+        }
+      ]
+    },
+    {
+      "attack": "제로데이_GPS_Drift rate=0.02",
+      "TP": 181,
+      "FP": 4,
+      "TN": 96,
+      "FN": 0,
+      "Precision": 0.9784,
+      "Recall": 1.0,
+      "F1": 0.9891,
+      "delay_ts": 9,
+      "delay_ms": 900,
+      "fp_windows": [
+        77,
+        80,
+        84,
+        86
+      ],
+      "fn_windows": [],
+      "attack_score_mean": 323.635,
+      "attack_score_max": 920.4692,
+      "attack_score_min": 4.158,
+      "frac_below_normal_min": 0.0,
+      "first_detect_idx": 109,
+      "top_feats": [
+        {
+          "feature": "residual_x",
+          "contrib": 3.8176,
+          "share": 0.357,
+          "z_score": 9.8
+        },
+        {
+          "feature": "residual_y",
+          "contrib": 1.4521,
+          "share": 0.136,
+          "z_score": 1.2
+        },
+        {
+          "feature": "imu_ay",
+          "contrib": 1.2205,
+          "share": 0.114,
+          "z_score": 0.6
+        }
+      ]
+    },
+    {
+      "attack": "제로데이_GPS_Drift rate=0.005",
+      "TP": 179,
+      "FP": 4,
+      "TN": 96,
+      "FN": 2,
+      "Precision": 0.9781,
+      "Recall": 0.989,
+      "F1": 0.9835,
+      "delay_ts": 21,
+      "delay_ms": 2100,
+      "fp_windows": [
+        77,
+        80,
+        84,
+        86
+      ],
+      "fn_windows": [
+        120
+      ],
+      "attack_score_mean": 21.369,
+      "attack_score_max": 59.7207,
+      "attack_score_min": 1.1391,
+      "frac_below_normal_min": 0.0,
+      "first_detect_idx": 121,
+      "top_feats": [
+        {
+          "feature": "residual_x",
+          "contrib": 2.6551,
+          "share": 0.261,
+          "z_score": 5.7
+        },
+        {
+          "feature": "residual_y",
+          "contrib": 1.6051,
+          "share": 0.157,
+          "z_score": 1.7
+        },
+        {
+          "feature": "imu_ay",
+          "contrib": 1.4178,
+          "share": 0.139,
+          "z_score": 1.4
+        }
+      ]
+    },
+    {
+      "attack": "제로데이_SensorBus_FreezeAll",
+      "TP": 0,
+      "FP": 4,
+      "TN": 96,
+      "FN": 181,
+      "Precision": 0.0,
+      "Recall": 0.0,
+      "F1": 0.0,
+      "delay_ts": -1,
+      "delay_ms": -1,
+      "fp_windows": [
+        77,
+        80,
+        84,
+        86
+      ],
+      "fn_windows": [
+        120,
+        121,
+        122,
+        123,
+        124
+      ],
+      "attack_score_mean": 0.4922,
+      "attack_score_max": 0.8365,
+      "attack_score_min": 0.4286,
+      "frac_below_normal_min": 0.989,
+      "first_detect_idx": null,
+      "top_feats": []
+    }
+  ],
+  "ablation_no_residual": [
+    {
+      "attack": "Freeze (잔차 고정)",
+      "TP": 0,
+      "FP": 4,
+      "FN": 181,
+      "Precision": 0.0,
+      "Recall": 0.0,
+      "F1": 0.0,
+      "delay_ms": -1,
+      "attack_score_mean": 1.0325,
+      "attack_score_max": 1.2146
+    },
+    {
+      "attack": "Replay (잔차 고정)",
+      "TP": 0,
+      "FP": 4,
+      "FN": 181,
+      "Precision": 0.0,
+      "Recall": 0.0,
+      "F1": 0.0,
+      "delay_ms": -1,
+      "attack_score_mean": 1.0308,
+      "attack_score_max": 1.214
+    }
+  ]
+}

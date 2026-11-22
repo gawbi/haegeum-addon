@@ -1,0 +1,9 @@
+# sim/ 전용 의존성 (Python 3.14, Apple Silicon arm64에서 검증)
+# 설치: cd sim && uv venv .venv -p 3.14 && uv pip install -p .venv/bin/python -r requirements.txt
+mujoco==3.16.0
+numpy>=2.0
+pandas>=2.2
+matplotlib>=3.9
+imageio>=2.34
+imageio-ffmpeg>=0.5
+pillow>=10.1

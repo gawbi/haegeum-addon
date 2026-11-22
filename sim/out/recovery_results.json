@@ -1,0 +1,1805 @@
+{
+  "sweep": [
+    {
+      "K": 10,
+      "cond": "f10",
+      "normal_false_runs": 4,
+      "normal_runs": 10,
+      "gps_spoof_bias": {
+        "detected": 10,
+        "runs": 15,
+        "pre_attack_trigger": 0,
+        "xte_mean": 0.832
+      },
+      "gps_spoof_gradual": {
+        "detected": 15,
+        "runs": 15,
+        "pre_attack_trigger": 0,
+        "xte_mean": 0.84
+      },
+      "gps_freeze": {
+        "detected": 14,
+        "runs": 15,
+        "pre_attack_trigger": 1,
+        "xte_mean": 0.128
+      }
+    },
+    {
+      "K": 10,
+      "cond": "f12",
+      "normal_false_runs": 9,
+      "normal_runs": 10,
+      "gps_spoof_bias": {
+        "detected": 11,
+        "runs": 15,
+        "pre_attack_trigger": 4,
+        "xte_mean": 0.145
+      },
+      "gps_spoof_gradual": {
+        "detected": 15,
+        "runs": 15,
+        "pre_attack_trigger": 0,
+        "xte_mean": 0.129
+      },
+      "gps_freeze": {
+        "detected": 12,
+        "runs": 15,
+        "pre_attack_trigger": 3,
+        "xte_mean": 0.133
+      }
+    },
+    {
+      "K": 20,
+      "cond": "f10",
+      "normal_false_runs": 0,
+      "normal_runs": 10,
+      "gps_spoof_bias": {
+        "detected": 10,
+        "runs": 15,
+        "pre_attack_trigger": 0,
+        "xte_mean": 1.139
+      },
+      "gps_spoof_gradual": {
+        "detected": 13,
+        "runs": 15,
+        "pre_attack_trigger": 0,
+        "xte_mean": 1.249
+      },
+      "gps_freeze": {
+        "detected": 1,
+        "runs": 15,
+        "pre_attack_trigger": 0,
+        "xte_mean": 18.087
+      }
+    },
+    {
+      "K": 20,
+      "cond": "f12",
+      "normal_false_runs": 1,
+      "normal_runs": 10,
+      "gps_spoof_bias": {
+        "detected": 15,
+        "runs": 15,
+        "pre_attack_trigger": 0,
+        "xte_mean": 0.216
+      },
+      "gps_spoof_gradual": {
+        "detected": 15,
+        "runs": 15,
+        "pre_attack_trigger": 0,
+        "xte_mean": 0.13
+      },
+      "gps_freeze": {
+        "detected": 15,
+        "runs": 15,
+        "pre_attack_trigger": 0,
+        "xte_mean": 0.15
+      }
+    },
+    {
+      "K": 30,
+      "cond": "f10",
+      "normal_false_runs": 0,
+      "normal_runs": 10,
+      "gps_spoof_bias": {
+        "detected": 5,
+        "runs": 15,
+        "pre_attack_trigger": 0,
+        "xte_mean": 1.504
+      },
+      "gps_spoof_gradual": {
+        "detected": 0,
+        "runs": 15,
+        "pre_attack_trigger": 0,
+        "xte_mean": 2.439
+      },
+      "gps_freeze": {
+        "detected": 0,
+        "runs": 15,
+        "pre_attack_trigger": 0,
+        "xte_mean": 19.331
+      }
+    },
+    {
+      "K": 30,
+      "cond": "f12",
+      "normal_false_runs": 0,
+      "normal_runs": 10,
+      "gps_spoof_bias": {
+        "detected": 15,
+        "runs": 15,
+        "pre_attack_trigger": 0,
+        "xte_mean": 0.259
+      },
+      "gps_spoof_gradual": {
+        "detected": 15,
+        "runs": 15,
+        "pre_attack_trigger": 0,
+        "xte_mean": 0.133
+      },
+      "gps_freeze": {
+        "detected": 15,
+        "runs": 15,
+        "pre_attack_trigger": 0,
+        "xte_mean": 0.187
+      }
+    }
+  ],
+  "K_CONSEC": 20,
+  "ARM_S": 10.0,
+  "ROLLBACK": 50,
+  "STARTS": [
+    20.0,
+    30.0,
+    40.0
+  ],
+  "SEEDS": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "ATTACK_LEN": 40.0,
+  "NORMAL_LEN": 100.0,
+  "thresholds": {
+    "f10": 0.20986120907121214,
+    "f12": 0.28222639169430624
+  },
+  "summary": [
+    {
+      "attack": "normal",
+      "cond": "none",
+      "n_runs": 5,
+      "false_trigger_runs": 0,
+      "detected_after_attack": 0,
+      "delay_s_mean": null,
+      "xte_mean": 0.114,
+      "xte_max_mean": 0.457,
+      "xte_mean_excl_false": 0.114
+    },
+    {
+      "attack": "normal",
+      "cond": "f10",
+      "n_runs": 5,
+      "false_trigger_runs": 0,
+      "detected_after_attack": 0,
+      "delay_s_mean": null,
+      "xte_mean": 0.114,
+      "xte_max_mean": 0.457,
+      "xte_mean_excl_false": 0.114
+    },
+    {
+      "attack": "normal",
+      "cond": "f12",
+      "n_runs": 5,
+      "false_trigger_runs": 0,
+      "detected_after_attack": 0,
+      "delay_s_mean": null,
+      "xte_mean": 0.114,
+      "xte_max_mean": 0.457,
+      "xte_mean_excl_false": 0.114
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "cond": "none",
+      "n_runs": 15,
+      "false_trigger_runs": 0,
+      "detected_after_attack": 0,
+      "delay_s_mean": null,
+      "xte_mean": 2.055,
+      "xte_max_mean": 4.119,
+      "xte_mean_excl_false": 2.055
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "cond": "f10",
+      "n_runs": 15,
+      "false_trigger_runs": 0,
+      "detected_after_attack": 10,
+      "delay_s_mean": 4.73,
+      "xte_mean": 1.139,
+      "xte_max_mean": 3.054,
+      "xte_mean_excl_false": 1.139
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "cond": "f12",
+      "n_runs": 15,
+      "false_trigger_runs": 0,
+      "detected_after_attack": 15,
+      "delay_s_mean": 1.79,
+      "xte_mean": 0.216,
+      "xte_max_mean": 1.063,
+      "xte_mean_excl_false": 0.216
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "cond": "none",
+      "n_runs": 15,
+      "false_trigger_runs": 0,
+      "detected_after_attack": 0,
+      "delay_s_mean": null,
+      "xte_mean": 2.439,
+      "xte_max_mean": 7.736,
+      "xte_mean_excl_false": 2.439
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "cond": "f10",
+      "n_runs": 15,
+      "false_trigger_runs": 0,
+      "detected_after_attack": 13,
+      "delay_s_mean": 18.0,
+      "xte_mean": 1.249,
+      "xte_max_mean": 4.29,
+      "xte_mean_excl_false": 1.249
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "cond": "f12",
+      "n_runs": 15,
+      "false_trigger_runs": 0,
+      "detected_after_attack": 15,
+      "delay_s_mean": 3.34,
+      "xte_mean": 0.13,
+      "xte_max_mean": 0.399,
+      "xte_mean_excl_false": 0.13
+    },
+    {
+      "attack": "gps_freeze",
+      "cond": "none",
+      "n_runs": 15,
+      "false_trigger_runs": 0,
+      "detected_after_attack": 0,
+      "delay_s_mean": null,
+      "xte_mean": 19.331,
+      "xte_max_mean": 46.755,
+      "xte_mean_excl_false": 19.331
+    },
+    {
+      "attack": "gps_freeze",
+      "cond": "f10",
+      "n_runs": 15,
+      "false_trigger_runs": 0,
+      "detected_after_attack": 1,
+      "delay_s_mean": 1.9,
+      "xte_mean": 18.087,
+      "xte_max_mean": 43.691,
+      "xte_mean_excl_false": 18.087
+    },
+    {
+      "attack": "gps_freeze",
+      "cond": "f12",
+      "n_runs": 15,
+      "false_trigger_runs": 0,
+      "detected_after_attack": 15,
+      "delay_s_mean": 1.88,
+      "xte_mean": 0.15,
+      "xte_max_mean": 0.474,
+      "xte_mean_excl_false": 0.15
+    }
+  ],
+  "runs": [
+    {
+      "attack": "normal",
+      "seed": 3000,
+      "start": 100.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 0.11160888303169521,
+      "xte_max": 0.44223841332288927,
+      "cond": "none"
+    },
+    {
+      "attack": "normal",
+      "seed": 3001,
+      "start": 100.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 0.11230660359650894,
+      "xte_max": 0.4490496038341405,
+      "cond": "none"
+    },
+    {
+      "attack": "normal",
+      "seed": 3002,
+      "start": 100.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 0.11434593382821331,
+      "xte_max": 0.481589613068401,
+      "cond": "none"
+    },
+    {
+      "attack": "normal",
+      "seed": 3003,
+      "start": 100.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 0.11911568032635012,
+      "xte_max": 0.4805396811947569,
+      "cond": "none"
+    },
+    {
+      "attack": "normal",
+      "seed": 3004,
+      "start": 100.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 0.1113551079283086,
+      "xte_max": 0.43233429169505133,
+      "cond": "none"
+    },
+    {
+      "attack": "normal",
+      "seed": 3000,
+      "start": 100.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 0.11160888303169521,
+      "xte_max": 0.44223841332288927,
+      "cond": "f10"
+    },
+    {
+      "attack": "normal",
+      "seed": 3001,
+      "start": 100.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 0.11230660359650894,
+      "xte_max": 0.4490496038341405,
+      "cond": "f10"
+    },
+    {
+      "attack": "normal",
+      "seed": 3002,
+      "start": 100.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 0.11434593382821331,
+      "xte_max": 0.481589613068401,
+      "cond": "f10"
+    },
+    {
+      "attack": "normal",
+      "seed": 3003,
+      "start": 100.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 0.11911568032635012,
+      "xte_max": 0.4805396811947569,
+      "cond": "f10"
+    },
+    {
+      "attack": "normal",
+      "seed": 3004,
+      "start": 100.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 0.1113551079283086,
+      "xte_max": 0.43233429169505133,
+      "cond": "f10"
+    },
+    {
+      "attack": "normal",
+      "seed": 3000,
+      "start": 100.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 0.11160888303169521,
+      "xte_max": 0.44223841332288927,
+      "cond": "f12"
+    },
+    {
+      "attack": "normal",
+      "seed": 3001,
+      "start": 100.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 0.11230660359650894,
+      "xte_max": 0.4490496038341405,
+      "cond": "f12"
+    },
+    {
+      "attack": "normal",
+      "seed": 3002,
+      "start": 100.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 0.11434593382821331,
+      "xte_max": 0.481589613068401,
+      "cond": "f12"
+    },
+    {
+      "attack": "normal",
+      "seed": 3003,
+      "start": 100.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 0.11911568032635012,
+      "xte_max": 0.4805396811947569,
+      "cond": "f12"
+    },
+    {
+      "attack": "normal",
+      "seed": 3004,
+      "start": 100.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 0.1113551079283086,
+      "xte_max": 0.43233429169505133,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2000,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.1655287856720262,
+      "xte_max": 4.14334741933613,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2001,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.161058743062685,
+      "xte_max": 4.103477683141293,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2002,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.1438276644904173,
+      "xte_max": 4.1296657490758815,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2003,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.1814333358398983,
+      "xte_max": 4.162897212921352,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2004,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.1492730105495768,
+      "xte_max": 4.1283610013896235,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2000,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 1.9302364328417247,
+      "xte_max": 4.098102428665111,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2001,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 1.9689795234722678,
+      "xte_max": 4.147051923826117,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2002,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 1.9591265729542198,
+      "xte_max": 4.04921921940666,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2003,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 1.9619157498429325,
+      "xte_max": 4.101244311167847,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2004,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 1.9644352924184414,
+      "xte_max": 4.196394221120372,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2000,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.0504808349835564,
+      "xte_max": 4.0881566611158995,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2001,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.0533677648405653,
+      "xte_max": 4.149774486877886,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2002,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.0526143910940307,
+      "xte_max": 4.069602620843571,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2003,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.0545609592033163,
+      "xte_max": 4.0953216843480185,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2004,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.0280131907083274,
+      "xte_max": 4.120632627009616,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2000,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.1655287856720262,
+      "xte_max": 4.14334741933613,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2001,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.161058743062685,
+      "xte_max": 4.103477683141293,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2002,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.1438276644904173,
+      "xte_max": 4.1296657490758815,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2003,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.1814333358398983,
+      "xte_max": 4.162897212921352,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2004,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.1492730105495768,
+      "xte_max": 4.1283610013896235,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2000,
+      "start": 30.0,
+      "detect_t": 38.9,
+      "false_trigger": false,
+      "xte_mean": 1.1022536653866788,
+      "xte_max": 3.5260227987160917,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2001,
+      "start": 30.0,
+      "detect_t": 39.0,
+      "false_trigger": false,
+      "xte_mean": 1.14391400344234,
+      "xte_max": 3.660870657760741,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2002,
+      "start": 30.0,
+      "detect_t": 39.1,
+      "false_trigger": false,
+      "xte_mean": 1.15071660479619,
+      "xte_max": 3.6572814503010687,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2003,
+      "start": 30.0,
+      "detect_t": 31.9,
+      "false_trigger": false,
+      "xte_mean": 0.20823702258446758,
+      "xte_max": 0.9222128191516479,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2004,
+      "start": 30.0,
+      "detect_t": 38.9,
+      "false_trigger": false,
+      "xte_mean": 1.128199871387663,
+      "xte_max": 3.6079636860525515,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2000,
+      "start": 40.0,
+      "detect_t": 41.9,
+      "false_trigger": false,
+      "xte_mean": 0.3105097806402793,
+      "xte_max": 1.965628203773608,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2001,
+      "start": 40.0,
+      "detect_t": 41.9,
+      "false_trigger": false,
+      "xte_mean": 0.3062901188747641,
+      "xte_max": 1.9400148004864226,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2002,
+      "start": 40.0,
+      "detect_t": 41.9,
+      "false_trigger": false,
+      "xte_mean": 0.3134816203137396,
+      "xte_max": 1.9891636875710133,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2003,
+      "start": 40.0,
+      "detect_t": 41.9,
+      "false_trigger": false,
+      "xte_mean": 0.30962643221176556,
+      "xte_max": 1.9184444180647664,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2004,
+      "start": 40.0,
+      "detect_t": 41.9,
+      "false_trigger": false,
+      "xte_mean": 0.3084107885948498,
+      "xte_max": 1.9481445873743821,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2000,
+      "start": 20.0,
+      "detect_t": 21.9,
+      "false_trigger": false,
+      "xte_mean": 0.13399323514126965,
+      "xte_max": 0.3766752844484309,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2001,
+      "start": 20.0,
+      "detect_t": 21.1,
+      "false_trigger": false,
+      "xte_mean": 0.12194851315929808,
+      "xte_max": 0.3241158450054016,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2002,
+      "start": 20.0,
+      "detect_t": 21.0,
+      "false_trigger": false,
+      "xte_mean": 0.1353105108595869,
+      "xte_max": 0.33972486741553887,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2003,
+      "start": 20.0,
+      "detect_t": 21.9,
+      "false_trigger": false,
+      "xte_mean": 0.1297205706302993,
+      "xte_max": 0.3216030085735197,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2004,
+      "start": 20.0,
+      "detect_t": 21.9,
+      "false_trigger": false,
+      "xte_mean": 0.1294591132805709,
+      "xte_max": 0.30844561534269554,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2000,
+      "start": 30.0,
+      "detect_t": 31.9,
+      "false_trigger": false,
+      "xte_mean": 0.19622325135347268,
+      "xte_max": 0.8392378690766691,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2001,
+      "start": 30.0,
+      "detect_t": 31.9,
+      "false_trigger": false,
+      "xte_mean": 0.20641037637028853,
+      "xte_max": 0.9755526203915448,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2002,
+      "start": 30.0,
+      "detect_t": 31.9,
+      "false_trigger": false,
+      "xte_mean": 0.20891488964802407,
+      "xte_max": 0.8430713097044205,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2003,
+      "start": 30.0,
+      "detect_t": 31.9,
+      "false_trigger": false,
+      "xte_mean": 0.20823702258446758,
+      "xte_max": 0.9222128191516479,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2004,
+      "start": 30.0,
+      "detect_t": 31.9,
+      "false_trigger": false,
+      "xte_mean": 0.21418094157499049,
+      "xte_max": 0.9278395254032041,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2000,
+      "start": 40.0,
+      "detect_t": 41.9,
+      "false_trigger": false,
+      "xte_mean": 0.3105097806402793,
+      "xte_max": 1.965628203773608,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2001,
+      "start": 40.0,
+      "detect_t": 41.9,
+      "false_trigger": false,
+      "xte_mean": 0.3062901188747641,
+      "xte_max": 1.9400148004864226,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2002,
+      "start": 40.0,
+      "detect_t": 41.9,
+      "false_trigger": false,
+      "xte_mean": 0.3134816203137396,
+      "xte_max": 1.9891636875710133,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2003,
+      "start": 40.0,
+      "detect_t": 41.9,
+      "false_trigger": false,
+      "xte_mean": 0.30962643221176556,
+      "xte_max": 1.9184444180647664,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_bias",
+      "seed": 2004,
+      "start": 40.0,
+      "detect_t": 41.9,
+      "false_trigger": false,
+      "xte_mean": 0.3084107885948498,
+      "xte_max": 1.9481445873743821,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2100,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.6905975536993276,
+      "xte_max": 8.35659836818828,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2101,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.712387123899792,
+      "xte_max": 8.37959019873544,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2102,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.712157091044523,
+      "xte_max": 8.416410870990184,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2103,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.7237083017697317,
+      "xte_max": 8.385291486365537,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2104,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.7152799693654344,
+      "xte_max": 8.374147244324364,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2100,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 1.9662382010664983,
+      "xte_max": 5.743668345973467,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2101,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 1.9636459002658322,
+      "xte_max": 5.715938354833172,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2102,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 1.9597496826830147,
+      "xte_max": 5.705358946194909,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2103,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 1.955676216945284,
+      "xte_max": 5.7119641434824615,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2104,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 1.9723895326634482,
+      "xte_max": 5.729727204701715,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2100,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.634810355085476,
+      "xte_max": 9.008405696941061,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2101,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.654739659158626,
+      "xte_max": 9.159425806129263,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2102,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.646674118298263,
+      "xte_max": 9.09786047467031,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2103,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.6372374956809326,
+      "xte_max": 9.103079562239763,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2104,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.6456449823900554,
+      "xte_max": 9.157197716565854,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2100,
+      "start": 20.0,
+      "detect_t": 33.4,
+      "false_trigger": false,
+      "xte_mean": 0.7245686675882816,
+      "xte_max": 2.5074088631491946,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2101,
+      "start": 20.0,
+      "detect_t": 33.3,
+      "false_trigger": false,
+      "xte_mean": 0.7039964193836346,
+      "xte_max": 2.526478701657034,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2102,
+      "start": 20.0,
+      "detect_t": 33.5,
+      "false_trigger": false,
+      "xte_mean": 0.7293628252846094,
+      "xte_max": 2.6224963022707346,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2103,
+      "start": 20.0,
+      "detect_t": 33.5,
+      "false_trigger": false,
+      "xte_mean": 0.7352038297751413,
+      "xte_max": 2.6625820569761505,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2104,
+      "start": 20.0,
+      "detect_t": 40.3,
+      "false_trigger": false,
+      "xte_mean": 1.4365975667387776,
+      "xte_max": 3.884365933633939,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2100,
+      "start": 30.0,
+      "detect_t": 38.5,
+      "false_trigger": false,
+      "xte_mean": 0.2393994355693337,
+      "xte_max": 0.9894019151083384,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2101,
+      "start": 30.0,
+      "detect_t": 38.4,
+      "false_trigger": false,
+      "xte_mean": 0.23060361250431682,
+      "xte_max": 0.9770229562192156,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2102,
+      "start": 30.0,
+      "detect_t": 38.6,
+      "false_trigger": false,
+      "xte_mean": 0.24401108791816375,
+      "xte_max": 1.0282073240072656,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2103,
+      "start": 30.0,
+      "detect_t": 38.5,
+      "false_trigger": false,
+      "xte_mean": 0.23487043781238776,
+      "xte_max": 0.9709221145836544,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2104,
+      "start": 30.0,
+      "detect_t": 38.6,
+      "false_trigger": false,
+      "xte_mean": 0.2469335487350828,
+      "xte_max": 1.0690084870375145,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2100,
+      "start": 40.0,
+      "detect_t": 79.2,
+      "false_trigger": false,
+      "xte_mean": 2.6337039123529276,
+      "xte_max": 8.883344453061547,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2101,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.654739659158626,
+      "xte_max": 9.159425806129263,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2102,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 2.646674118298263,
+      "xte_max": 9.09786047467031,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2103,
+      "start": 40.0,
+      "detect_t": 79.1,
+      "false_trigger": false,
+      "xte_mean": 2.635607786256894,
+      "xte_max": 8.95745419930271,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2104,
+      "start": 40.0,
+      "detect_t": 79.1,
+      "false_trigger": false,
+      "xte_mean": 2.6440392957902383,
+      "xte_max": 9.011658838677441,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2100,
+      "start": 20.0,
+      "detect_t": 24.0,
+      "false_trigger": false,
+      "xte_mean": 0.1397053399230925,
+      "xte_max": 0.33474153628875664,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2101,
+      "start": 20.0,
+      "detect_t": 23.7,
+      "false_trigger": false,
+      "xte_mean": 0.12739133098600156,
+      "xte_max": 0.3467512701627552,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2102,
+      "start": 20.0,
+      "detect_t": 24.0,
+      "false_trigger": false,
+      "xte_mean": 0.1244530412173059,
+      "xte_max": 0.3362999567667421,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2103,
+      "start": 20.0,
+      "detect_t": 23.6,
+      "false_trigger": false,
+      "xte_mean": 0.12722008316289923,
+      "xte_max": 0.3462871258584136,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2104,
+      "start": 20.0,
+      "detect_t": 23.9,
+      "false_trigger": false,
+      "xte_mean": 0.1212011009285944,
+      "xte_max": 0.3365927103618773,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2100,
+      "start": 30.0,
+      "detect_t": 32.4,
+      "false_trigger": false,
+      "xte_mean": 0.13511077535161806,
+      "xte_max": 0.35229812921613046,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2101,
+      "start": 30.0,
+      "detect_t": 32.8,
+      "false_trigger": false,
+      "xte_mean": 0.13322335278858333,
+      "xte_max": 0.46862295259702064,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2102,
+      "start": 30.0,
+      "detect_t": 34.0,
+      "false_trigger": false,
+      "xte_mean": 0.14480359040167967,
+      "xte_max": 0.3591047525809543,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2103,
+      "start": 30.0,
+      "detect_t": 32.6,
+      "false_trigger": false,
+      "xte_mean": 0.13440408606123583,
+      "xte_max": 0.43709477547457,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2104,
+      "start": 30.0,
+      "detect_t": 33.2,
+      "false_trigger": false,
+      "xte_mean": 0.13990424137741608,
+      "xte_max": 0.4228430392250999,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2100,
+      "start": 40.0,
+      "detect_t": 43.2,
+      "false_trigger": false,
+      "xte_mean": 0.12173916540825161,
+      "xte_max": 0.432469992202304,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2101,
+      "start": 40.0,
+      "detect_t": 43.0,
+      "false_trigger": false,
+      "xte_mean": 0.11967560067787124,
+      "xte_max": 0.48321087845265964,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2102,
+      "start": 40.0,
+      "detect_t": 43.3,
+      "false_trigger": false,
+      "xte_mean": 0.1201115464180585,
+      "xte_max": 0.4020794809014667,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2103,
+      "start": 40.0,
+      "detect_t": 43.1,
+      "false_trigger": false,
+      "xte_mean": 0.12908500395812766,
+      "xte_max": 0.4339637587802603,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "seed": 2104,
+      "start": 40.0,
+      "detect_t": 43.3,
+      "false_trigger": false,
+      "xte_mean": 0.13497478772233834,
+      "xte_max": 0.48729231466618117,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2200,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 18.61848920369632,
+      "xte_max": 46.118691782319324,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2201,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 18.603868367025797,
+      "xte_max": 46.101424766688154,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2202,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 18.534830818078078,
+      "xte_max": 46.05692631464547,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2203,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 18.741686832046895,
+      "xte_max": 46.26670746125547,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2204,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 18.789337267174588,
+      "xte_max": 46.29893726770454,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2200,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 17.354060851066805,
+      "xte_max": 44.327869766985714,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2201,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 17.290108237760037,
+      "xte_max": 44.269390757383434,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2202,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 17.44886794828213,
+      "xte_max": 44.408366993291985,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2203,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 17.366723486710395,
+      "xte_max": 44.378185314074614,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2204,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 17.384844024952383,
+      "xte_max": 44.37284360407348,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2200,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 22.028653126361597,
+      "xte_max": 49.80181044814021,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2201,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 21.81537052883543,
+      "xte_max": 49.5870210839418,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2202,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 22.04854946536199,
+      "xte_max": 49.829901101437045,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2203,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 22.00047413691948,
+      "xte_max": 49.792510812011955,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2204,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 21.946106471186102,
+      "xte_max": 49.71107148957654,
+      "cond": "none"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2200,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 18.61848920369632,
+      "xte_max": 46.118691782319324,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2201,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 18.603868367025797,
+      "xte_max": 46.101424766688154,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2202,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 18.534830818078078,
+      "xte_max": 46.05692631464547,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2203,
+      "start": 20.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 18.741686832046895,
+      "xte_max": 46.26670746125547,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2204,
+      "start": 20.0,
+      "detect_t": 21.9,
+      "false_trigger": false,
+      "xte_mean": 0.12937043846455185,
+      "xte_max": 0.34384938038470025,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2200,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 17.354060851066805,
+      "xte_max": 44.327869766985714,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2201,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 17.290108237760037,
+      "xte_max": 44.269390757383434,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2202,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 17.44886794828213,
+      "xte_max": 44.408366993291985,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2203,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 17.366723486710395,
+      "xte_max": 44.378185314074614,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2204,
+      "start": 30.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 17.384844024952383,
+      "xte_max": 44.37284360407348,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2200,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 22.028653126361597,
+      "xte_max": 49.80181044814021,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2201,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 21.81537052883543,
+      "xte_max": 49.5870210839418,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2202,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 22.04854946536199,
+      "xte_max": 49.829901101437045,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2203,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 22.00047413691948,
+      "xte_max": 49.792510812011955,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2204,
+      "start": 40.0,
+      "detect_t": NaN,
+      "false_trigger": false,
+      "xte_mean": 21.946106471186102,
+      "xte_max": 49.71107148957654,
+      "cond": "f10"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2200,
+      "start": 20.0,
+      "detect_t": 21.9,
+      "false_trigger": false,
+      "xte_mean": 0.1256932836362562,
+      "xte_max": 0.32605640892404,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2201,
+      "start": 20.0,
+      "detect_t": 21.9,
+      "false_trigger": false,
+      "xte_mean": 0.1313440095442481,
+      "xte_max": 0.33234328149086245,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2202,
+      "start": 20.0,
+      "detect_t": 21.2,
+      "false_trigger": false,
+      "xte_mean": 0.11976986933684501,
+      "xte_max": 0.3788628613053504,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2203,
+      "start": 20.0,
+      "detect_t": 21.9,
+      "false_trigger": false,
+      "xte_mean": 0.1305793009850736,
+      "xte_max": 0.2924717043932085,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2204,
+      "start": 20.0,
+      "detect_t": 21.9,
+      "false_trigger": false,
+      "xte_mean": 0.12937043846455185,
+      "xte_max": 0.34384938038470025,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2200,
+      "start": 30.0,
+      "detect_t": 31.9,
+      "false_trigger": false,
+      "xte_mean": 0.13819465836497116,
+      "xte_max": 0.3949412692416521,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2201,
+      "start": 30.0,
+      "detect_t": 31.9,
+      "false_trigger": false,
+      "xte_mean": 0.13262223032467751,
+      "xte_max": 0.411741678656222,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2202,
+      "start": 30.0,
+      "detect_t": 31.9,
+      "false_trigger": false,
+      "xte_mean": 0.11998539760347503,
+      "xte_max": 0.39568534553969803,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2203,
+      "start": 30.0,
+      "detect_t": 31.9,
+      "false_trigger": false,
+      "xte_mean": 0.13198479412962608,
+      "xte_max": 0.4049062150057452,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2204,
+      "start": 30.0,
+      "detect_t": 31.9,
+      "false_trigger": false,
+      "xte_mean": 0.12663089316723378,
+      "xte_max": 0.41861104942505456,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2200,
+      "start": 40.0,
+      "detect_t": 42.0,
+      "false_trigger": false,
+      "xte_mean": 0.20423883949756472,
+      "xte_max": 0.6914314441768834,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2201,
+      "start": 40.0,
+      "detect_t": 42.0,
+      "false_trigger": false,
+      "xte_mean": 0.1982665656203502,
+      "xte_max": 0.6358284431507286,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2202,
+      "start": 40.0,
+      "detect_t": 42.0,
+      "false_trigger": false,
+      "xte_mean": 0.1913294284554333,
+      "xte_max": 0.7149613793619718,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2203,
+      "start": 40.0,
+      "detect_t": 41.9,
+      "false_trigger": false,
+      "xte_mean": 0.18613318213306632,
+      "xte_max": 0.6584551695391347,
+      "cond": "f12"
+    },
+    {
+      "attack": "gps_freeze",
+      "seed": 2204,
+      "start": 40.0,
+      "detect_t": 42.0,
+      "false_trigger": false,
+      "xte_mean": 0.19031977622742866,
+      "xte_max": 0.7091152834662751,
+      "cond": "f12"
+    }
+  ]
+}

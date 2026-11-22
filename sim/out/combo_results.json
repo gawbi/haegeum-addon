@@ -1,0 +1,9794 @@
+{
+ "summary": [
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "target": "GPS+컴파스",
+   "xte_none": 2.54,
+   "xte_z": 3.013,
+   "exact_z": 0,
+   "covers_z": 0,
+   "n": 15,
+   "xte_seq": 0.916,
+   "exact_seq": 5,
+   "covers_seq": 14
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "target": "GPS+바퀴",
+   "xte_none": 19.248,
+   "xte_z": 19.248,
+   "exact_z": 0,
+   "covers_z": 0,
+   "n": 15,
+   "xte_seq": 19.248,
+   "exact_seq": 0,
+   "covers_seq": 0
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "target": "컴파스+명령",
+   "xte_none": 1.084,
+   "xte_z": 0.562,
+   "exact_z": 0,
+   "covers_z": 0,
+   "n": 15,
+   "xte_seq": 0.263,
+   "exact_seq": 15,
+   "covers_seq": 15
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "target": "GPS",
+   "xte_none": 2.054,
+   "xte_z": 0.212,
+   "exact_z": 15,
+   "covers_z": 15,
+   "n": 15,
+   "xte_seq": 0.282,
+   "exact_seq": 10,
+   "covers_seq": 15
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "target": "GPS",
+   "xte_none": 2.45,
+   "xte_z": 0.135,
+   "exact_z": 15,
+   "covers_z": 15,
+   "n": 15,
+   "xte_seq": 0.135,
+   "exact_seq": 15,
+   "covers_seq": 15
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "target": "GPS",
+   "xte_none": 19.219,
+   "xte_z": 1.288,
+   "exact_z": 14,
+   "covers_z": 14,
+   "n": 15,
+   "xte_seq": 1.288,
+   "exact_seq": 14,
+   "covers_seq": 14
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "target": "GPS",
+   "xte_none": 5.852,
+   "xte_z": 0.258,
+   "exact_z": 15,
+   "covers_z": 15,
+   "n": 15,
+   "xte_seq": 0.25,
+   "exact_seq": 10,
+   "covers_seq": 15
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "target": "컴파스",
+   "xte_none": 1.666,
+   "xte_z": 0.201,
+   "exact_z": 15,
+   "covers_z": 15,
+   "n": 15,
+   "xte_seq": 0.201,
+   "exact_seq": 15,
+   "covers_seq": 15
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "target": "바퀴",
+   "xte_none": 0.115,
+   "xte_z": 0.115,
+   "exact_z": 15,
+   "covers_z": 15,
+   "n": 15,
+   "xte_seq": 0.115,
+   "exact_seq": 15,
+   "covers_seq": 15
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "target": "IMU",
+   "xte_none": 0.116,
+   "xte_z": 0.116,
+   "exact_z": 15,
+   "covers_z": 15,
+   "n": 15,
+   "xte_seq": 0.116,
+   "exact_seq": 15,
+   "covers_seq": 15
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "target": "명령",
+   "xte_none": 0.676,
+   "xte_z": 0.357,
+   "exact_z": 15,
+   "covers_z": 15,
+   "n": 15,
+   "xte_seq": 0.357,
+   "exact_seq": 0,
+   "covers_seq": 15
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "target": "전체",
+   "xte_none": 7.99,
+   "xte_z": 0.502,
+   "exact_z": 15,
+   "covers_z": 15,
+   "n": 15,
+   "xte_seq": 0.502,
+   "exact_seq": 15,
+   "covers_seq": 15
+  }
+ ],
+ "runs": [
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8000,
+   "cond": "none",
+   "xte": 3.4251771252012064,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8000,
+   "cond": "z",
+   "xte": 2.2595663929147944,
+   "det_t": 20.8,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     20.8,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8000,
+   "cond": "seq",
+   "xte": 2.2595663929147944,
+   "det_t": 20.8,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     20.8,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8001,
+   "cond": "none",
+   "xte": 3.407512511586851,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8001,
+   "cond": "z",
+   "xte": 2.9628978660970215,
+   "det_t": 21.8,
+   "pre": false,
+   "diag": "GPS",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.8,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8001,
+   "cond": "seq",
+   "xte": 1.076477098046758,
+   "det_t": 21.8,
+   "pre": false,
+   "diag": "GPS+컴파스+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     21.8,
+     "GPS"
+    ],
+    [
+     23.8,
+     "컴파스"
+    ],
+    [
+     26.0,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8002,
+   "cond": "none",
+   "xte": 3.417479674280654,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8002,
+   "cond": "z",
+   "xte": 2.946802056601833,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8002,
+   "cond": "seq",
+   "xte": 1.0218603158978798,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS+컴파스+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ],
+    [
+     23.9,
+     "컴파스"
+    ],
+    [
+     26.0,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8003,
+   "cond": "none",
+   "xte": 3.40873733060118,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8003,
+   "cond": "z",
+   "xte": 3.0026977255967164,
+   "det_t": 21.8,
+   "pre": false,
+   "diag": "GPS",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.8,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8003,
+   "cond": "seq",
+   "xte": 2.032754498331916,
+   "det_t": 21.8,
+   "pre": false,
+   "diag": "GPS+컴파스+바퀴+명령",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     21.8,
+     "GPS"
+    ],
+    [
+     23.8,
+     "컴파스"
+    ],
+    [
+     25.9,
+     "바퀴"
+    ],
+    [
+     27.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8004,
+   "cond": "none",
+   "xte": 3.45783383951435,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8004,
+   "cond": "z",
+   "xte": 2.973139087048968,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8004,
+   "cond": "seq",
+   "xte": 1.2331899190555686,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS+컴파스+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ],
+    [
+     23.9,
+     "컴파스"
+    ],
+    [
+     26.1,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8010,
+   "cond": "none",
+   "xte": 2.4479585827912005,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8010,
+   "cond": "z",
+   "xte": 3.236581651153061,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8010,
+   "cond": "seq",
+   "xte": 0.49158778138368464,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS+컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ],
+    [
+     33.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8011,
+   "cond": "none",
+   "xte": 2.434056377194121,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8011,
+   "cond": "z",
+   "xte": 3.211628023210394,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8011,
+   "cond": "seq",
+   "xte": 0.45862187075886135,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS+컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ],
+    [
+     33.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8012,
+   "cond": "none",
+   "xte": 2.435644756263615,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8012,
+   "cond": "z",
+   "xte": 3.1951015001505585,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8012,
+   "cond": "seq",
+   "xte": 0.5123801039367681,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS+컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ],
+    [
+     33.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8013,
+   "cond": "none",
+   "xte": 2.4451988631035038,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8013,
+   "cond": "z",
+   "xte": 3.1772245543422684,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8013,
+   "cond": "seq",
+   "xte": 0.4477796234839404,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS+컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ],
+    [
+     33.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8014,
+   "cond": "none",
+   "xte": 2.4339184749320633,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8014,
+   "cond": "z",
+   "xte": 3.2267776693679924,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8014,
+   "cond": "seq",
+   "xte": 0.48415192604028484,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS+컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ],
+    [
+     33.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8020,
+   "cond": "none",
+   "xte": 1.7616466534188333,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8020,
+   "cond": "z",
+   "xte": 3.003411421458369,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8020,
+   "cond": "seq",
+   "xte": 0.6984707513840303,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS+컴파스+명령",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ],
+    [
+     43.9,
+     "컴파스"
+    ],
+    [
+     45.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8021,
+   "cond": "none",
+   "xte": 1.7362864882550653,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8021,
+   "cond": "z",
+   "xte": 2.9976342171723833,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8021,
+   "cond": "seq",
+   "xte": 0.7093944627321546,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS+컴파스+명령",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ],
+    [
+     43.9,
+     "컴파스"
+    ],
+    [
+     45.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8022,
+   "cond": "none",
+   "xte": 1.7789970123213765,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8022,
+   "cond": "z",
+   "xte": 2.983694224691078,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8022,
+   "cond": "seq",
+   "xte": 0.6772895868373916,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS+컴파스+명령",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ],
+    [
+     43.9,
+     "컴파스"
+    ],
+    [
+     45.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8023,
+   "cond": "none",
+   "xte": 1.7790803948286174,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8023,
+   "cond": "z",
+   "xte": 3.0058628836581534,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8023,
+   "cond": "seq",
+   "xte": 0.8016729939933205,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS+컴파스+명령",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ],
+    [
+     43.9,
+     "컴파스"
+    ],
+    [
+     45.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8024,
+   "cond": "none",
+   "xte": 1.732706650098048,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8024,
+   "cond": "z",
+   "xte": 3.0083456677726326,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias+compass_bias",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8024,
+   "cond": "seq",
+   "xte": 0.8358191697320214,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS+컴파스+명령",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ],
+    [
+     43.9,
+     "컴파스"
+    ],
+    [
+     45.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8100,
+   "cond": "none",
+   "xte": 18.73080307834998,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8100,
+   "cond": "z",
+   "xte": 18.73080307834998,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8100,
+   "cond": "seq",
+   "xte": 18.73080307834998,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8101,
+   "cond": "none",
+   "xte": 18.433333293424656,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8101,
+   "cond": "z",
+   "xte": 18.433333293424656,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8101,
+   "cond": "seq",
+   "xte": 18.433333293424656,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8102,
+   "cond": "none",
+   "xte": 18.66940700356135,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8102,
+   "cond": "z",
+   "xte": 18.66940700356135,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8102,
+   "cond": "seq",
+   "xte": 18.66940700356135,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8103,
+   "cond": "none",
+   "xte": 18.5077303937366,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8103,
+   "cond": "z",
+   "xte": 18.5077303937366,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8103,
+   "cond": "seq",
+   "xte": 18.5077303937366,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8104,
+   "cond": "none",
+   "xte": 18.461633941392794,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8104,
+   "cond": "z",
+   "xte": 18.461633941392794,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8104,
+   "cond": "seq",
+   "xte": 18.461633941392794,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8110,
+   "cond": "none",
+   "xte": 17.320953813143007,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8110,
+   "cond": "z",
+   "xte": 17.320953813143007,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8110,
+   "cond": "seq",
+   "xte": 17.320953813143007,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8111,
+   "cond": "none",
+   "xte": 17.29926940357267,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8111,
+   "cond": "z",
+   "xte": 17.29926940357267,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8111,
+   "cond": "seq",
+   "xte": 17.29926940357267,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8112,
+   "cond": "none",
+   "xte": 17.12169043911356,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8112,
+   "cond": "z",
+   "xte": 17.12169043911356,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8112,
+   "cond": "seq",
+   "xte": 17.12169043911356,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8113,
+   "cond": "none",
+   "xte": 17.239834695065458,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8113,
+   "cond": "z",
+   "xte": 17.239834695065458,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8113,
+   "cond": "seq",
+   "xte": 17.239834695065458,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8114,
+   "cond": "none",
+   "xte": 17.270123820369193,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8114,
+   "cond": "z",
+   "xte": 17.270123820369193,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8114,
+   "cond": "seq",
+   "xte": 17.270123820369193,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8120,
+   "cond": "none",
+   "xte": 22.098163927521796,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8120,
+   "cond": "z",
+   "xte": 22.098163927521796,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8120,
+   "cond": "seq",
+   "xte": 22.098163927521796,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8121,
+   "cond": "none",
+   "xte": 22.49470145552058,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8121,
+   "cond": "z",
+   "xte": 22.49470145552058,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8121,
+   "cond": "seq",
+   "xte": 22.49470145552058,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8122,
+   "cond": "none",
+   "xte": 21.60575003366708,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8122,
+   "cond": "z",
+   "xte": 21.60575003366708,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8122,
+   "cond": "seq",
+   "xte": 21.60575003366708,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8123,
+   "cond": "none",
+   "xte": 21.932451323752595,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8123,
+   "cond": "z",
+   "xte": 21.932451323752595,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8123,
+   "cond": "seq",
+   "xte": 21.932451323752595,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8124,
+   "cond": "none",
+   "xte": 21.53315365004666,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8124,
+   "cond": "z",
+   "xte": 21.53315365004666,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze+wheel_scale",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8124,
+   "cond": "seq",
+   "xte": 21.53315365004666,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8200,
+   "cond": "none",
+   "xte": 1.0625660003245327,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8200,
+   "cond": "z",
+   "xte": 0.5767154062097167,
+   "det_t": 20.3,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     20.3,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8200,
+   "cond": "seq",
+   "xte": 0.2534140549876721,
+   "det_t": 20.3,
+   "pre": false,
+   "diag": "컴파스+명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     20.3,
+     "컴파스"
+    ],
+    [
+     22.3,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8201,
+   "cond": "none",
+   "xte": 1.0808633884886456,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8201,
+   "cond": "z",
+   "xte": 0.525884688813298,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8201,
+   "cond": "seq",
+   "xte": 0.25515354220156167,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "컴파스+명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "컴파스"
+    ],
+    [
+     23.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8202,
+   "cond": "none",
+   "xte": 1.0679475313619755,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8202,
+   "cond": "z",
+   "xte": 0.5953227652074322,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8202,
+   "cond": "seq",
+   "xte": 0.27299025883042266,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "컴파스+명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "컴파스"
+    ],
+    [
+     23.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8203,
+   "cond": "none",
+   "xte": 1.069623815086193,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8203,
+   "cond": "z",
+   "xte": 0.5214406826076501,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8203,
+   "cond": "seq",
+   "xte": 0.26032397431673876,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "컴파스+명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "컴파스"
+    ],
+    [
+     23.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8204,
+   "cond": "none",
+   "xte": 1.0788420028548344,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8204,
+   "cond": "z",
+   "xte": 0.5820176894239638,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     21.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 20.0,
+   "seed": 8204,
+   "cond": "seq",
+   "xte": 0.28959477436440695,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "컴파스+명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "컴파스"
+    ],
+    [
+     23.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8210,
+   "cond": "none",
+   "xte": 1.105831822866729,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8210,
+   "cond": "z",
+   "xte": 0.5406243258993,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8210,
+   "cond": "seq",
+   "xte": 0.2138359077346275,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스+명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ],
+    [
+     33.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8211,
+   "cond": "none",
+   "xte": 1.107132708876654,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8211,
+   "cond": "z",
+   "xte": 0.4646584915907631,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8211,
+   "cond": "seq",
+   "xte": 0.20563784547786138,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스+명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ],
+    [
+     33.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8212,
+   "cond": "none",
+   "xte": 1.0907595269848218,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8212,
+   "cond": "z",
+   "xte": 0.6308502320885396,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8212,
+   "cond": "seq",
+   "xte": 0.3117078709030398,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스+명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ],
+    [
+     33.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8213,
+   "cond": "none",
+   "xte": 1.084749270451904,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8213,
+   "cond": "z",
+   "xte": 0.5647046117120962,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8213,
+   "cond": "seq",
+   "xte": 0.26514449783862554,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스+명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ],
+    [
+     33.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8214,
+   "cond": "none",
+   "xte": 1.092315494313326,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8214,
+   "cond": "z",
+   "xte": 0.5317572202805967,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 30.0,
+   "seed": 8214,
+   "cond": "seq",
+   "xte": 0.2417999955545148,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스+명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ],
+    [
+     33.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8220,
+   "cond": "none",
+   "xte": 1.0774445271208035,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8220,
+   "cond": "z",
+   "xte": 0.5959533273656237,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8220,
+   "cond": "seq",
+   "xte": 0.29385068445646,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스+명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ],
+    [
+     43.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8221,
+   "cond": "none",
+   "xte": 1.095308502482999,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8221,
+   "cond": "z",
+   "xte": 0.5624878991574235,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8221,
+   "cond": "seq",
+   "xte": 0.28839161777065586,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스+명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ],
+    [
+     43.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8222,
+   "cond": "none",
+   "xte": 1.0851123425061306,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8222,
+   "cond": "z",
+   "xte": 0.5998004246346451,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8222,
+   "cond": "seq",
+   "xte": 0.28870122393662856,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스+명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ],
+    [
+     43.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8223,
+   "cond": "none",
+   "xte": 1.0816858623614234,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8223,
+   "cond": "z",
+   "xte": 0.6274139755752932,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8223,
+   "cond": "seq",
+   "xte": 0.26433837986512626,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스+명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ],
+    [
+     43.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8224,
+   "cond": "none",
+   "xte": 1.0759123986048746,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8224,
+   "cond": "z",
+   "xte": 0.5142033269585117,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias+cmd_inject",
+   "combo": true,
+   "start": 40.0,
+   "seed": 8224,
+   "cond": "seq",
+   "xte": 0.24109301421243923,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스+명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ],
+    [
+     43.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8300,
+   "cond": "none",
+   "xte": 2.1821943070574705,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8300,
+   "cond": "z",
+   "xte": 0.1358822221735214,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8300,
+   "cond": "seq",
+   "xte": 0.1358822221735214,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8301,
+   "cond": "none",
+   "xte": 2.161406207247733,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8301,
+   "cond": "z",
+   "xte": 0.11672392848367288,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8301,
+   "cond": "seq",
+   "xte": 0.11672392848367288,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8302,
+   "cond": "none",
+   "xte": 2.1414586718388025,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8302,
+   "cond": "z",
+   "xte": 0.1242504162574837,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8302,
+   "cond": "seq",
+   "xte": 0.1242504162574837,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8303,
+   "cond": "none",
+   "xte": 2.1558801421781784,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8303,
+   "cond": "z",
+   "xte": 0.12462125605606583,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8303,
+   "cond": "seq",
+   "xte": 0.12462125605606583,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8304,
+   "cond": "none",
+   "xte": 2.1765181788402916,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8304,
+   "cond": "z",
+   "xte": 0.14028655030487658,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8304,
+   "cond": "seq",
+   "xte": 0.14028655030487658,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8310,
+   "cond": "none",
+   "xte": 1.9346719841528448,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8310,
+   "cond": "z",
+   "xte": 0.20747546932088506,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8310,
+   "cond": "seq",
+   "xte": 0.20747546932088506,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8311,
+   "cond": "none",
+   "xte": 1.9478740100999903,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8311,
+   "cond": "z",
+   "xte": 0.19775946688377025,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8311,
+   "cond": "seq",
+   "xte": 0.19775946688377025,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8312,
+   "cond": "none",
+   "xte": 1.9254838871529734,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8312,
+   "cond": "z",
+   "xte": 0.17864679859739988,
+   "det_t": 31.8,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.8,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8312,
+   "cond": "seq",
+   "xte": 0.17864679859739988,
+   "det_t": 31.8,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.8,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8313,
+   "cond": "none",
+   "xte": 1.9807259599989004,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8313,
+   "cond": "z",
+   "xte": 0.20635080228957497,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8313,
+   "cond": "seq",
+   "xte": 0.20635080228957497,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8314,
+   "cond": "none",
+   "xte": 1.9731870893657129,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8314,
+   "cond": "z",
+   "xte": 0.202879154045294,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8314,
+   "cond": "seq",
+   "xte": 0.202879154045294,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8320,
+   "cond": "none",
+   "xte": 2.0512951227102008,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8320,
+   "cond": "z",
+   "xte": 0.31049018694883734,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8320,
+   "cond": "seq",
+   "xte": 0.5677037553842689,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS+바퀴+명령",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ],
+    [
+     43.9,
+     "바퀴"
+    ],
+    [
+     45.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8321,
+   "cond": "none",
+   "xte": 2.048704411562032,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8321,
+   "cond": "z",
+   "xte": 0.3015346137609014,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8321,
+   "cond": "seq",
+   "xte": 0.5625449080210546,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS+바퀴+명령",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ],
+    [
+     43.9,
+     "바퀴"
+    ],
+    [
+     45.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8322,
+   "cond": "none",
+   "xte": 2.0304739440002906,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8322,
+   "cond": "z",
+   "xte": 0.31268265361937764,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8322,
+   "cond": "seq",
+   "xte": 0.3296729699539581,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ],
+    [
+     43.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8323,
+   "cond": "none",
+   "xte": 2.0630100894670074,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8323,
+   "cond": "z",
+   "xte": 0.31721160698078904,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8323,
+   "cond": "seq",
+   "xte": 0.5590141542032849,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS+바퀴+명령",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ],
+    [
+     43.9,
+     "바퀴"
+    ],
+    [
+     45.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8324,
+   "cond": "none",
+   "xte": 2.0332220742418126,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8324,
+   "cond": "z",
+   "xte": 0.30276119899657716,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8324,
+   "cond": "seq",
+   "xte": 0.5708811857083371,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS+바퀴+명령",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ],
+    [
+     43.9,
+     "바퀴"
+    ],
+    [
+     45.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8400,
+   "cond": "none",
+   "xte": 2.7312448274672247,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8400,
+   "cond": "z",
+   "xte": 0.1450071424257567,
+   "det_t": 24.3,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     24.3,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8400,
+   "cond": "seq",
+   "xte": 0.1450071424257567,
+   "det_t": 24.3,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     24.3,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8401,
+   "cond": "none",
+   "xte": 2.701733709813098,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8401,
+   "cond": "z",
+   "xte": 0.13019062677921245,
+   "det_t": 24.0,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     24.0,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8401,
+   "cond": "seq",
+   "xte": 0.13019062677921245,
+   "det_t": 24.0,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     24.0,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8402,
+   "cond": "none",
+   "xte": 2.728155589313851,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8402,
+   "cond": "z",
+   "xte": 0.1245088553710148,
+   "det_t": 24.3,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     24.3,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8402,
+   "cond": "seq",
+   "xte": 0.1245088553710148,
+   "det_t": 24.3,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     24.3,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8403,
+   "cond": "none",
+   "xte": 2.715768047970056,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8403,
+   "cond": "z",
+   "xte": 0.13795143070202184,
+   "det_t": 24.1,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     24.1,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8403,
+   "cond": "seq",
+   "xte": 0.13795143070202184,
+   "det_t": 24.1,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     24.1,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8404,
+   "cond": "none",
+   "xte": 2.7507563754117177,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8404,
+   "cond": "z",
+   "xte": 0.1320634818699317,
+   "det_t": 24.5,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     24.5,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8404,
+   "cond": "seq",
+   "xte": 0.1320634818699317,
+   "det_t": 24.5,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     24.5,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8410,
+   "cond": "none",
+   "xte": 1.981159818321405,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8410,
+   "cond": "z",
+   "xte": 0.15236558977347925,
+   "det_t": 34.1,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     34.1,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8410,
+   "cond": "seq",
+   "xte": 0.15236558977347925,
+   "det_t": 34.1,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     34.1,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8411,
+   "cond": "none",
+   "xte": 1.9728256845944288,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8411,
+   "cond": "z",
+   "xte": 0.1452889989628966,
+   "det_t": 33.7,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     33.7,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8411,
+   "cond": "seq",
+   "xte": 0.1452889989628966,
+   "det_t": 33.7,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     33.7,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8412,
+   "cond": "none",
+   "xte": 1.963377320858325,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8412,
+   "cond": "z",
+   "xte": 0.13973520809481063,
+   "det_t": 33.8,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     33.8,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8412,
+   "cond": "seq",
+   "xte": 0.13973520809481063,
+   "det_t": 33.8,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     33.8,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8413,
+   "cond": "none",
+   "xte": 1.9731595361814873,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8413,
+   "cond": "z",
+   "xte": 0.1431828587198833,
+   "det_t": 32.8,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     32.8,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8413,
+   "cond": "seq",
+   "xte": 0.1431828587198833,
+   "det_t": 32.8,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     32.8,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8414,
+   "cond": "none",
+   "xte": 1.9689432469412618,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8414,
+   "cond": "z",
+   "xte": 0.13323932378070233,
+   "det_t": 32.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     32.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8414,
+   "cond": "seq",
+   "xte": 0.13323932378070233,
+   "det_t": 32.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     32.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8420,
+   "cond": "none",
+   "xte": 2.6463924153376355,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8420,
+   "cond": "z",
+   "xte": 0.12859045436059305,
+   "det_t": 43.3,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     43.3,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8420,
+   "cond": "seq",
+   "xte": 0.12859045436059305,
+   "det_t": 43.3,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     43.3,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8421,
+   "cond": "none",
+   "xte": 2.646350486727658,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8421,
+   "cond": "z",
+   "xte": 0.1251531431369225,
+   "det_t": 43.3,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     43.3,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8421,
+   "cond": "seq",
+   "xte": 0.1251531431369225,
+   "det_t": 43.3,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     43.3,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8422,
+   "cond": "none",
+   "xte": 2.65416393655587,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8422,
+   "cond": "z",
+   "xte": 0.12139869086172318,
+   "det_t": 43.0,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     43.0,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8422,
+   "cond": "seq",
+   "xte": 0.12139869086172318,
+   "det_t": 43.0,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     43.0,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8423,
+   "cond": "none",
+   "xte": 2.6560849528650032,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8423,
+   "cond": "z",
+   "xte": 0.13516285607610903,
+   "det_t": 43.3,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     43.3,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8423,
+   "cond": "seq",
+   "xte": 0.13516285607610903,
+   "det_t": 43.3,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     43.3,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8424,
+   "cond": "none",
+   "xte": 2.663938602180959,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8424,
+   "cond": "z",
+   "xte": 0.12887660417906394,
+   "det_t": 43.1,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     43.1,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_gradual",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8424,
+   "cond": "seq",
+   "xte": 0.12887660417906394,
+   "det_t": 43.1,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     43.1,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8500,
+   "cond": "none",
+   "xte": 18.64512690607028,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8500,
+   "cond": "z",
+   "xte": 0.13814993494004188,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8500,
+   "cond": "seq",
+   "xte": 0.13814993494004188,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8501,
+   "cond": "none",
+   "xte": 18.622623531749543,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8501,
+   "cond": "z",
+   "xte": 0.1250820368217035,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8501,
+   "cond": "seq",
+   "xte": 0.1250820368217035,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8502,
+   "cond": "none",
+   "xte": 18.528031156098645,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8502,
+   "cond": "z",
+   "xte": 0.1398596347537913,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8502,
+   "cond": "seq",
+   "xte": 0.1398596347537913,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8503,
+   "cond": "none",
+   "xte": 18.495590040492676,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8503,
+   "cond": "z",
+   "xte": 0.12283747761596522,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8503,
+   "cond": "seq",
+   "xte": 0.12283747761596522,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8504,
+   "cond": "none",
+   "xte": 18.40087766833725,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8504,
+   "cond": "z",
+   "xte": 0.13065529296213527,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8504,
+   "cond": "seq",
+   "xte": 0.13065529296213527,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8510,
+   "cond": "none",
+   "xte": 17.207312252565355,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8510,
+   "cond": "z",
+   "xte": 0.1265164924154836,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8510,
+   "cond": "seq",
+   "xte": 0.1265164924154836,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8511,
+   "cond": "none",
+   "xte": 17.316074719897095,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8511,
+   "cond": "z",
+   "xte": 0.1458040524050697,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8511,
+   "cond": "seq",
+   "xte": 0.1458040524050697,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8512,
+   "cond": "none",
+   "xte": 17.05786997368328,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8512,
+   "cond": "z",
+   "xte": 0.1332242983361422,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8512,
+   "cond": "seq",
+   "xte": 0.1332242983361422,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8513,
+   "cond": "none",
+   "xte": 17.263670053133136,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8513,
+   "cond": "z",
+   "xte": 0.14190662982722185,
+   "det_t": 32.0,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     32.0,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8513,
+   "cond": "seq",
+   "xte": 0.14190662982722185,
+   "det_t": 32.0,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     32.0,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8514,
+   "cond": "none",
+   "xte": 17.22561251324427,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8514,
+   "cond": "z",
+   "xte": 17.19126091829621,
+   "det_t": 16.4,
+   "pre": true,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     16.4,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8514,
+   "cond": "seq",
+   "xte": 17.19126091829621,
+   "det_t": 16.4,
+   "pre": true,
+   "diag": "컴파스",
+   "exact": false,
+   "covers": false,
+   "steps": [
+    [
+     16.4,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8520,
+   "cond": "none",
+   "xte": 22.194103033034136,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8520,
+   "cond": "z",
+   "xte": 0.18546169381321184,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8520,
+   "cond": "seq",
+   "xte": 0.18546169381321184,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8521,
+   "cond": "none",
+   "xte": 21.57270245120951,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8521,
+   "cond": "z",
+   "xte": 0.1639409033121448,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8521,
+   "cond": "seq",
+   "xte": 0.1639409033121448,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8522,
+   "cond": "none",
+   "xte": 21.763133073457656,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8522,
+   "cond": "z",
+   "xte": 0.1943451033990597,
+   "det_t": 42.0,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.0,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8522,
+   "cond": "seq",
+   "xte": 0.1943451033990597,
+   "det_t": 42.0,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.0,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8523,
+   "cond": "none",
+   "xte": 21.952645148213918,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8523,
+   "cond": "z",
+   "xte": 0.19643238350614367,
+   "det_t": 42.0,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.0,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8523,
+   "cond": "seq",
+   "xte": 0.19643238350614367,
+   "det_t": 42.0,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.0,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8524,
+   "cond": "none",
+   "xte": 22.046389851330545,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8524,
+   "cond": "z",
+   "xte": 0.18327345180417404,
+   "det_t": 42.0,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.0,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_freeze",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8524,
+   "cond": "seq",
+   "xte": 0.18327345180417404,
+   "det_t": 42.0,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.0,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8600,
+   "cond": "none",
+   "xte": 5.177472786386268,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8600,
+   "cond": "z",
+   "xte": 0.23813048039610427,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8600,
+   "cond": "seq",
+   "xte": 0.23813048039610427,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8601,
+   "cond": "none",
+   "xte": 5.169199349899313,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8601,
+   "cond": "z",
+   "xte": 0.2352627961213521,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8601,
+   "cond": "seq",
+   "xte": 0.2352627961213521,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8602,
+   "cond": "none",
+   "xte": 5.147691663105419,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8602,
+   "cond": "z",
+   "xte": 0.16592028920762583,
+   "det_t": 20.6,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     20.6,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8602,
+   "cond": "seq",
+   "xte": 0.16592028920762583,
+   "det_t": 20.6,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     20.6,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8603,
+   "cond": "none",
+   "xte": 5.164768737458771,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8603,
+   "cond": "z",
+   "xte": 0.23098695870179958,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8603,
+   "cond": "seq",
+   "xte": 0.23098695870179958,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8604,
+   "cond": "none",
+   "xte": 5.159263180614121,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8604,
+   "cond": "z",
+   "xte": 0.22599629737171675,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8604,
+   "cond": "seq",
+   "xte": 0.22599629737171675,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8610,
+   "cond": "none",
+   "xte": 5.521877883994567,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8610,
+   "cond": "z",
+   "xte": 0.24406943115916843,
+   "det_t": 31.7,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.7,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8610,
+   "cond": "seq",
+   "xte": 0.24406943115916843,
+   "det_t": 31.7,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.7,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8611,
+   "cond": "none",
+   "xte": 5.530472388950934,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8611,
+   "cond": "z",
+   "xte": 0.2609886533444258,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8611,
+   "cond": "seq",
+   "xte": 0.2609886533444258,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8612,
+   "cond": "none",
+   "xte": 5.610257364198127,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8612,
+   "cond": "z",
+   "xte": 0.27260244083136703,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8612,
+   "cond": "seq",
+   "xte": 0.27260244083136703,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8613,
+   "cond": "none",
+   "xte": 5.578800790324603,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8613,
+   "cond": "z",
+   "xte": 0.26421516879695356,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8613,
+   "cond": "seq",
+   "xte": 0.26421516879695356,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8614,
+   "cond": "none",
+   "xte": 5.566564106097867,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8614,
+   "cond": "z",
+   "xte": 0.25550097631183827,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8614,
+   "cond": "seq",
+   "xte": 0.25550097631183827,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8620,
+   "cond": "none",
+   "xte": 6.838989761566987,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8620,
+   "cond": "z",
+   "xte": 0.29479471528561685,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8620,
+   "cond": "seq",
+   "xte": 0.274310857757288,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ],
+    [
+     43.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8621,
+   "cond": "none",
+   "xte": 6.82104286310823,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8621,
+   "cond": "z",
+   "xte": 0.2918052066272352,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8621,
+   "cond": "seq",
+   "xte": 0.2771832282836332,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ],
+    [
+     43.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8622,
+   "cond": "none",
+   "xte": 6.8380835702467895,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8622,
+   "cond": "z",
+   "xte": 0.29470342655493703,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8622,
+   "cond": "seq",
+   "xte": 0.2617102466843921,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ],
+    [
+     43.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8623,
+   "cond": "none",
+   "xte": 6.839007447487777,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8623,
+   "cond": "z",
+   "xte": 0.28871026238723935,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8623,
+   "cond": "seq",
+   "xte": 0.26652189970955525,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ],
+    [
+     43.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8624,
+   "cond": "none",
+   "xte": 6.818501887291895,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8624,
+   "cond": "z",
+   "xte": 0.30373931358727846,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ]
+   ]
+  },
+  {
+   "attack": "gps_replay",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8624,
+   "cond": "seq",
+   "xte": 0.27849633907307414,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "GPS+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "GPS"
+    ],
+    [
+     43.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8700,
+   "cond": "none",
+   "xte": 1.6291531985943655,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8700,
+   "cond": "z",
+   "xte": 0.20897932175365724,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8700,
+   "cond": "seq",
+   "xte": 0.20897932175365724,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8701,
+   "cond": "none",
+   "xte": 1.643602800238885,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8701,
+   "cond": "z",
+   "xte": 0.19214525418059003,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8701,
+   "cond": "seq",
+   "xte": 0.19214525418059003,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8702,
+   "cond": "none",
+   "xte": 1.6538814875801244,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8702,
+   "cond": "z",
+   "xte": 0.1669052704235351,
+   "det_t": 21.8,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.8,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8702,
+   "cond": "seq",
+   "xte": 0.1669052704235351,
+   "det_t": 21.8,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.8,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8703,
+   "cond": "none",
+   "xte": 1.6042246110594744,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8703,
+   "cond": "z",
+   "xte": 0.18594055035113402,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8703,
+   "cond": "seq",
+   "xte": 0.18594055035113402,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8704,
+   "cond": "none",
+   "xte": 1.6125114153986908,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8704,
+   "cond": "z",
+   "xte": 0.1779913867524602,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8704,
+   "cond": "seq",
+   "xte": 0.1779913867524602,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8710,
+   "cond": "none",
+   "xte": 1.7200127578141546,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8710,
+   "cond": "z",
+   "xte": 0.21675397591282067,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8710,
+   "cond": "seq",
+   "xte": 0.21675397591282067,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8711,
+   "cond": "none",
+   "xte": 1.6941202158799866,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8711,
+   "cond": "z",
+   "xte": 0.2266673458229172,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8711,
+   "cond": "seq",
+   "xte": 0.2266673458229172,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8712,
+   "cond": "none",
+   "xte": 1.6710091491846653,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8712,
+   "cond": "z",
+   "xte": 0.25068769430141846,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8712,
+   "cond": "seq",
+   "xte": 0.25068769430141846,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8713,
+   "cond": "none",
+   "xte": 1.6852614878468548,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8713,
+   "cond": "z",
+   "xte": 0.20717430681904417,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8713,
+   "cond": "seq",
+   "xte": 0.20717430681904417,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8714,
+   "cond": "none",
+   "xte": 1.7044443018784496,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8714,
+   "cond": "z",
+   "xte": 0.2159743859718411,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8714,
+   "cond": "seq",
+   "xte": 0.2159743859718411,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8720,
+   "cond": "none",
+   "xte": 1.6921544598571654,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8720,
+   "cond": "z",
+   "xte": 0.1631041498553366,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8720,
+   "cond": "seq",
+   "xte": 0.1631041498553366,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8721,
+   "cond": "none",
+   "xte": 1.6788147869226797,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8721,
+   "cond": "z",
+   "xte": 0.20347526669190905,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8721,
+   "cond": "seq",
+   "xte": 0.20347526669190905,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8722,
+   "cond": "none",
+   "xte": 1.687386016713927,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8722,
+   "cond": "z",
+   "xte": 0.18349369775833516,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8722,
+   "cond": "seq",
+   "xte": 0.18349369775833516,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8723,
+   "cond": "none",
+   "xte": 1.6536945957212565,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8723,
+   "cond": "z",
+   "xte": 0.22172205960963381,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8723,
+   "cond": "seq",
+   "xte": 0.22172205960963381,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8724,
+   "cond": "none",
+   "xte": 1.65918514405692,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8724,
+   "cond": "z",
+   "xte": 0.19311033983167317,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "compass_bias",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8724,
+   "cond": "seq",
+   "xte": 0.19311033983167317,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "컴파스",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "컴파스"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8800,
+   "cond": "none",
+   "xte": 0.11317382690087875,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8800,
+   "cond": "z",
+   "xte": 0.11317382690087875,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8800,
+   "cond": "seq",
+   "xte": 0.11317382690087875,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8801,
+   "cond": "none",
+   "xte": 0.11029118480055233,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8801,
+   "cond": "z",
+   "xte": 0.11029118480055233,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8801,
+   "cond": "seq",
+   "xte": 0.11029118480055233,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8802,
+   "cond": "none",
+   "xte": 0.11443526076481568,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8802,
+   "cond": "z",
+   "xte": 0.11443526076481568,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8802,
+   "cond": "seq",
+   "xte": 0.11443526076481568,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8803,
+   "cond": "none",
+   "xte": 0.10480137780671964,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8803,
+   "cond": "z",
+   "xte": 0.10480137780671964,
+   "det_t": 21.8,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.8,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8803,
+   "cond": "seq",
+   "xte": 0.10480137780671964,
+   "det_t": 21.8,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.8,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8804,
+   "cond": "none",
+   "xte": 0.11360560244833957,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8804,
+   "cond": "z",
+   "xte": 0.11360560244833957,
+   "det_t": 21.8,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.8,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8804,
+   "cond": "seq",
+   "xte": 0.11360560244833957,
+   "det_t": 21.8,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.8,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8810,
+   "cond": "none",
+   "xte": 0.1100089728962679,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8810,
+   "cond": "z",
+   "xte": 0.1100089728962679,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8810,
+   "cond": "seq",
+   "xte": 0.1100089728962679,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8811,
+   "cond": "none",
+   "xte": 0.11468128525287559,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8811,
+   "cond": "z",
+   "xte": 0.11468128525287559,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8811,
+   "cond": "seq",
+   "xte": 0.11468128525287559,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8812,
+   "cond": "none",
+   "xte": 0.11815955964788212,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8812,
+   "cond": "z",
+   "xte": 0.11815955964788212,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8812,
+   "cond": "seq",
+   "xte": 0.11815955964788212,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8813,
+   "cond": "none",
+   "xte": 0.11953816691508175,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8813,
+   "cond": "z",
+   "xte": 0.11953816691508175,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8813,
+   "cond": "seq",
+   "xte": 0.11953816691508175,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8814,
+   "cond": "none",
+   "xte": 0.11910798824359162,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8814,
+   "cond": "z",
+   "xte": 0.11910798824359162,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8814,
+   "cond": "seq",
+   "xte": 0.11910798824359162,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8820,
+   "cond": "none",
+   "xte": 0.12400535353242934,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8820,
+   "cond": "z",
+   "xte": 0.12400535353242934,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8820,
+   "cond": "seq",
+   "xte": 0.12400535353242934,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8821,
+   "cond": "none",
+   "xte": 0.12233304950649877,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8821,
+   "cond": "z",
+   "xte": 0.12233304950649877,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8821,
+   "cond": "seq",
+   "xte": 0.12233304950649877,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8822,
+   "cond": "none",
+   "xte": 0.11760237130806184,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8822,
+   "cond": "z",
+   "xte": 0.11760237130806184,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8822,
+   "cond": "seq",
+   "xte": 0.11760237130806184,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8823,
+   "cond": "none",
+   "xte": 0.11756423320229181,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8823,
+   "cond": "z",
+   "xte": 0.11756423320229181,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8823,
+   "cond": "seq",
+   "xte": 0.11756423320229181,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8824,
+   "cond": "none",
+   "xte": 0.11233356814547722,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8824,
+   "cond": "z",
+   "xte": 0.11233356814547722,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "wheel_scale",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8824,
+   "cond": "seq",
+   "xte": 0.11233356814547722,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "바퀴",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8900,
+   "cond": "none",
+   "xte": 0.11137192253557464,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8900,
+   "cond": "z",
+   "xte": 0.11137192253557464,
+   "det_t": 21.3,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.3,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8900,
+   "cond": "seq",
+   "xte": 0.11137192253557464,
+   "det_t": 21.3,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.3,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8901,
+   "cond": "none",
+   "xte": 0.10675986279616147,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8901,
+   "cond": "z",
+   "xte": 0.10675986279616147,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8901,
+   "cond": "seq",
+   "xte": 0.10675986279616147,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8902,
+   "cond": "none",
+   "xte": 0.10833925164467821,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8902,
+   "cond": "z",
+   "xte": 0.10833925164467821,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8902,
+   "cond": "seq",
+   "xte": 0.10833925164467821,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8903,
+   "cond": "none",
+   "xte": 0.11370713099919588,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8903,
+   "cond": "z",
+   "xte": 0.11370713099919588,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8903,
+   "cond": "seq",
+   "xte": 0.11370713099919588,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8904,
+   "cond": "none",
+   "xte": 0.11820702690153378,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8904,
+   "cond": "z",
+   "xte": 0.11820702690153378,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 8904,
+   "cond": "seq",
+   "xte": 0.11820702690153378,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8910,
+   "cond": "none",
+   "xte": 0.11478582150736522,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8910,
+   "cond": "z",
+   "xte": 0.11478582150736522,
+   "det_t": 32.0,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     32.0,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8910,
+   "cond": "seq",
+   "xte": 0.11478582150736522,
+   "det_t": 32.0,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     32.0,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8911,
+   "cond": "none",
+   "xte": 0.11772146909482104,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8911,
+   "cond": "z",
+   "xte": 0.11772146909482104,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8911,
+   "cond": "seq",
+   "xte": 0.11772146909482104,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8912,
+   "cond": "none",
+   "xte": 0.11005648409513136,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8912,
+   "cond": "z",
+   "xte": 0.11005648409513136,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8912,
+   "cond": "seq",
+   "xte": 0.11005648409513136,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8913,
+   "cond": "none",
+   "xte": 0.12100508420337729,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8913,
+   "cond": "z",
+   "xte": 0.12100508420337729,
+   "det_t": 31.8,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.8,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8913,
+   "cond": "seq",
+   "xte": 0.12100508420337729,
+   "det_t": 31.8,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.8,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8914,
+   "cond": "none",
+   "xte": 0.11958772144700774,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8914,
+   "cond": "z",
+   "xte": 0.11958772144700774,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 8914,
+   "cond": "seq",
+   "xte": 0.11958772144700774,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8920,
+   "cond": "none",
+   "xte": 0.12054958986933234,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8920,
+   "cond": "z",
+   "xte": 0.12054958986933234,
+   "det_t": 42.0,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.0,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8920,
+   "cond": "seq",
+   "xte": 0.12054958986933234,
+   "det_t": 42.0,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.0,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8921,
+   "cond": "none",
+   "xte": 0.11387078228047667,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8921,
+   "cond": "z",
+   "xte": 0.11387078228047667,
+   "det_t": 42.0,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.0,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8921,
+   "cond": "seq",
+   "xte": 0.11387078228047667,
+   "det_t": 42.0,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.0,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8922,
+   "cond": "none",
+   "xte": 0.1122389467296729,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8922,
+   "cond": "z",
+   "xte": 0.1122389467296729,
+   "det_t": 42.0,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.0,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8922,
+   "cond": "seq",
+   "xte": 0.1122389467296729,
+   "det_t": 42.0,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.0,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8923,
+   "cond": "none",
+   "xte": 0.12798988724659943,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8923,
+   "cond": "z",
+   "xte": 0.12798988724659943,
+   "det_t": 42.0,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.0,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8923,
+   "cond": "seq",
+   "xte": 0.12798988724659943,
+   "det_t": 42.0,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.0,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8924,
+   "cond": "none",
+   "xte": 0.12401531443168301,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8924,
+   "cond": "z",
+   "xte": 0.12401531443168301,
+   "det_t": 42.0,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.0,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "imu_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 8924,
+   "cond": "seq",
+   "xte": 0.12401531443168301,
+   "det_t": 42.0,
+   "pre": false,
+   "diag": "IMU",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.0,
+     "IMU"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9000,
+   "cond": "none",
+   "xte": 0.69794540880597,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9000,
+   "cond": "z",
+   "xte": 0.3600277068212931,
+   "det_t": 22.2,
+   "pre": false,
+   "diag": "명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     22.2,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9000,
+   "cond": "seq",
+   "xte": 0.3600277068212931,
+   "det_t": 22.2,
+   "pre": false,
+   "diag": "명령+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     22.2,
+     "명령"
+    ],
+    [
+     27.4,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9001,
+   "cond": "none",
+   "xte": 0.6813356035756667,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9001,
+   "cond": "z",
+   "xte": 0.3426540974695673,
+   "det_t": 22.4,
+   "pre": false,
+   "diag": "명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     22.4,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9001,
+   "cond": "seq",
+   "xte": 0.3426540974695673,
+   "det_t": 22.4,
+   "pre": false,
+   "diag": "명령+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     22.4,
+     "명령"
+    ],
+    [
+     27.2,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9002,
+   "cond": "none",
+   "xte": 0.6922992599109535,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9002,
+   "cond": "z",
+   "xte": 0.34297656407411,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9002,
+   "cond": "seq",
+   "xte": 0.34297656407411,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "명령+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "명령"
+    ],
+    [
+     27.5,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9003,
+   "cond": "none",
+   "xte": 0.6412019526725043,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9003,
+   "cond": "z",
+   "xte": 0.3301606604281526,
+   "det_t": 22.5,
+   "pre": false,
+   "diag": "명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     22.5,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9003,
+   "cond": "seq",
+   "xte": 0.3301606604281526,
+   "det_t": 22.5,
+   "pre": false,
+   "diag": "명령+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     22.5,
+     "명령"
+    ],
+    [
+     27.2,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9004,
+   "cond": "none",
+   "xte": 0.6462867845368488,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9004,
+   "cond": "z",
+   "xte": 0.33748229305484334,
+   "det_t": 21.8,
+   "pre": false,
+   "diag": "명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.8,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9004,
+   "cond": "seq",
+   "xte": 0.33748229305484334,
+   "det_t": 21.8,
+   "pre": false,
+   "diag": "명령+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     21.8,
+     "명령"
+    ],
+    [
+     27.4,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9010,
+   "cond": "none",
+   "xte": 0.674771672108427,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9010,
+   "cond": "z",
+   "xte": 0.3396135056017847,
+   "det_t": 32.1,
+   "pre": false,
+   "diag": "명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     32.1,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9010,
+   "cond": "seq",
+   "xte": 0.3396135056017847,
+   "det_t": 32.1,
+   "pre": false,
+   "diag": "명령+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     32.1,
+     "명령"
+    ],
+    [
+     38.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9011,
+   "cond": "none",
+   "xte": 0.6942987844857632,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9011,
+   "cond": "z",
+   "xte": 0.366046959324698,
+   "det_t": 32.1,
+   "pre": false,
+   "diag": "명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     32.1,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9011,
+   "cond": "seq",
+   "xte": 0.366046959324698,
+   "det_t": 32.1,
+   "pre": false,
+   "diag": "명령+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     32.1,
+     "명령"
+    ],
+    [
+     43.4,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9012,
+   "cond": "none",
+   "xte": 0.6737605720013872,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9012,
+   "cond": "z",
+   "xte": 0.36527715127065136,
+   "det_t": 32.0,
+   "pre": false,
+   "diag": "명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     32.0,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9012,
+   "cond": "seq",
+   "xte": 0.36527715127065136,
+   "det_t": 32.0,
+   "pre": false,
+   "diag": "명령+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     32.0,
+     "명령"
+    ],
+    [
+     38.8,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9013,
+   "cond": "none",
+   "xte": 0.6976317260663117,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9013,
+   "cond": "z",
+   "xte": 0.3843792266185611,
+   "det_t": 32.1,
+   "pre": false,
+   "diag": "명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     32.1,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9013,
+   "cond": "seq",
+   "xte": 0.3843792266185611,
+   "det_t": 32.1,
+   "pre": false,
+   "diag": "명령+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     32.1,
+     "명령"
+    ],
+    [
+     38.7,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9014,
+   "cond": "none",
+   "xte": 0.6795108766520783,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9014,
+   "cond": "z",
+   "xte": 0.34529757794740257,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9014,
+   "cond": "seq",
+   "xte": 0.34529757794740257,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "명령+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "명령"
+    ],
+    [
+     43.4,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9020,
+   "cond": "none",
+   "xte": 0.6743562792154231,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9020,
+   "cond": "z",
+   "xte": 0.3557946783400766,
+   "det_t": 42.6,
+   "pre": false,
+   "diag": "명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.6,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9020,
+   "cond": "seq",
+   "xte": 0.3557946783400766,
+   "det_t": 42.6,
+   "pre": false,
+   "diag": "명령+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     42.6,
+     "명령"
+    ],
+    [
+     54.8,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9021,
+   "cond": "none",
+   "xte": 0.6467590789992405,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9021,
+   "cond": "z",
+   "xte": 0.3552547071169863,
+   "det_t": 42.7,
+   "pre": false,
+   "diag": "명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.7,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9021,
+   "cond": "seq",
+   "xte": 0.3552547071169863,
+   "det_t": 42.7,
+   "pre": false,
+   "diag": "명령+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     42.7,
+     "명령"
+    ],
+    [
+     54.9,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9022,
+   "cond": "none",
+   "xte": 0.6719629889843988,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9022,
+   "cond": "z",
+   "xte": 0.38986115629385737,
+   "det_t": 42.6,
+   "pre": false,
+   "diag": "명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.6,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9022,
+   "cond": "seq",
+   "xte": 0.38986115629385737,
+   "det_t": 42.6,
+   "pre": false,
+   "diag": "명령+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     42.6,
+     "명령"
+    ],
+    [
+     54.6,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9023,
+   "cond": "none",
+   "xte": 0.680849531890259,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9023,
+   "cond": "z",
+   "xte": 0.3704119032783748,
+   "det_t": 42.7,
+   "pre": false,
+   "diag": "명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.7,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9023,
+   "cond": "seq",
+   "xte": 0.3704119032783748,
+   "det_t": 42.7,
+   "pre": false,
+   "diag": "명령+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     42.7,
+     "명령"
+    ],
+    [
+     61.1,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9024,
+   "cond": "none",
+   "xte": 0.6875259230189005,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9024,
+   "cond": "z",
+   "xte": 0.36481562326628036,
+   "det_t": 42.3,
+   "pre": false,
+   "diag": "명령",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     42.3,
+     "명령"
+    ]
+   ]
+  },
+  {
+   "attack": "cmd_inject",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9024,
+   "cond": "seq",
+   "xte": 0.36481562326628036,
+   "det_t": 42.3,
+   "pre": false,
+   "diag": "명령+바퀴",
+   "exact": false,
+   "covers": true,
+   "steps": [
+    [
+     42.3,
+     "명령"
+    ],
+    [
+     54.7,
+     "바퀴"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9100,
+   "cond": "none",
+   "xte": 10.91201056453457,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9100,
+   "cond": "z",
+   "xte": 0.05033848284186706,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9100,
+   "cond": "seq",
+   "xte": 0.05033848284186706,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9101,
+   "cond": "none",
+   "xte": 4.6365820327790175,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9101,
+   "cond": "z",
+   "xte": 0.10886573712906283,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9101,
+   "cond": "seq",
+   "xte": 0.10886573712906283,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9102,
+   "cond": "none",
+   "xte": 11.239574696154794,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9102,
+   "cond": "z",
+   "xte": 0.094329207585467,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9102,
+   "cond": "seq",
+   "xte": 0.094329207585467,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9103,
+   "cond": "none",
+   "xte": 4.081163511513954,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9103,
+   "cond": "z",
+   "xte": 0.2482346199765253,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9103,
+   "cond": "seq",
+   "xte": 0.2482346199765253,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9104,
+   "cond": "none",
+   "xte": 3.2341908499995653,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9104,
+   "cond": "z",
+   "xte": 0.11422879316685726,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 20.0,
+   "seed": 9104,
+   "cond": "seq",
+   "xte": 0.11422879316685726,
+   "det_t": 21.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     21.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9110,
+   "cond": "none",
+   "xte": 1.561489804469186,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9110,
+   "cond": "z",
+   "xte": 1.2620824733196727,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9110,
+   "cond": "seq",
+   "xte": 1.2620824733196727,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9111,
+   "cond": "none",
+   "xte": 1.5698361171577317,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9111,
+   "cond": "z",
+   "xte": 1.2429525536405865,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9111,
+   "cond": "seq",
+   "xte": 1.2429525536405865,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9112,
+   "cond": "none",
+   "xte": 1.3110700873338466,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9112,
+   "cond": "z",
+   "xte": 1.3168287981161069,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9112,
+   "cond": "seq",
+   "xte": 1.3168287981161069,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9113,
+   "cond": "none",
+   "xte": 1.296213730554598,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9113,
+   "cond": "z",
+   "xte": 1.3789467531115,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9113,
+   "cond": "seq",
+   "xte": 1.3789467531115,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9114,
+   "cond": "none",
+   "xte": 1.9817035231955027,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9114,
+   "cond": "z",
+   "xte": 1.1406303591041687,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 30.0,
+   "seed": 9114,
+   "cond": "seq",
+   "xte": 1.1406303591041687,
+   "det_t": 31.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     31.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9120,
+   "cond": "none",
+   "xte": 17.509635200894095,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9120,
+   "cond": "z",
+   "xte": 0.1301006498665383,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9120,
+   "cond": "seq",
+   "xte": 0.1301006498665383,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9121,
+   "cond": "none",
+   "xte": 14.729079333004124,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9121,
+   "cond": "z",
+   "xte": 0.0354112277858195,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9121,
+   "cond": "seq",
+   "xte": 0.0354112277858195,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9122,
+   "cond": "none",
+   "xte": 8.238267494832604,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9122,
+   "cond": "z",
+   "xte": 0.015291550275160477,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9122,
+   "cond": "seq",
+   "xte": 0.015291550275160477,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9123,
+   "cond": "none",
+   "xte": 19.778888814302732,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9123,
+   "cond": "z",
+   "xte": 0.20501269529977806,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9123,
+   "cond": "seq",
+   "xte": 0.20501269529977806,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9124,
+   "cond": "none",
+   "xte": 17.768697805312836,
+   "det_t": null,
+   "pre": false,
+   "diag": null,
+   "exact": false,
+   "covers": false,
+   "steps": []
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9124,
+   "cond": "z",
+   "xte": 0.1882323642600421,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "전체"
+    ]
+   ]
+  },
+  {
+   "attack": "freeze_all",
+   "combo": false,
+   "start": 40.0,
+   "seed": 9124,
+   "cond": "seq",
+   "xte": 0.1882323642600421,
+   "det_t": 41.9,
+   "pre": false,
+   "diag": "전체",
+   "exact": true,
+   "covers": true,
+   "steps": [
+    [
+     41.9,
+     "전체"
+    ]
+   ]
+  }
+ ]
+}

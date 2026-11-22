@@ -1,0 +1,74 @@
+{
+  "n_feats": 10,
+  "feats": [
+    "gps_vel_x",
+    "gps_vel_y",
+    "imu_ax",
+    "imu_ay",
+    "residual_x",
+    "residual_y",
+    "wheel_vel_l",
+    "wheel_vel_r",
+    "cmd_vel_x",
+    "cmd_vel_w"
+  ],
+  "threshold": 0.2090357542037964,
+  "train_rows": 6000,
+  "test_rows": 1200,
+  "results": [
+    {
+      "attack": "gps_spoof_bias",
+      "atk_start_ts": 200,
+      "TP": 11,
+      "FP": 28,
+      "TN": 153,
+      "FN": 370,
+      "Precision": 0.2821,
+      "Recall": 0.0289,
+      "F1": 0.0524,
+      "delay_ts": 247,
+      "delay_ms": 24700,
+      "top_feats": [
+        "wheel_vel_r",
+        "imu_ay",
+        "imu_ax"
+      ]
+    },
+    {
+      "attack": "gps_spoof_gradual",
+      "atk_start_ts": 200,
+      "TP": 110,
+      "FP": 30,
+      "TN": 151,
+      "FN": 271,
+      "Precision": 0.7857,
+      "Recall": 0.2887,
+      "F1": 0.4223,
+      "delay_ts": 77,
+      "delay_ms": 7700,
+      "top_feats": [
+        "imu_ax",
+        "wheel_vel_r",
+        "imu_ay"
+      ]
+    },
+    {
+      "attack": "gps_freeze",
+      "atk_start_ts": 200,
+      "TP": 0,
+      "FP": 27,
+      "TN": 154,
+      "FN": 381,
+      "Precision": 0.0,
+      "Recall": 0.0,
+      "F1": 0.0,
+      "delay_ts": 0,
+      "delay_ms": 0,
+      "top_feats": [
+        "residual_x",
+        "imu_ax",
+        "imu_ay"
+      ]
+    }
+  ]
+}
